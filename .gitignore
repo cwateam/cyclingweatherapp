@@ -78,3 +78,6 @@ bower.json
 # Rubymine
 
 /cwa/.idea
+
+# backup files begone
+*~
