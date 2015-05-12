@@ -3,11 +3,14 @@
 <head>
   <title>Cycling weather app</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 <%= yield %>
 
 </body>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false"></script>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>

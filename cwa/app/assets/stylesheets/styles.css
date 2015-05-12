@@ -1,0 +1,14 @@
+html, body, #map-canvas {
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+}
+#panel {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    margin-left: -100px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 1px;
+}
