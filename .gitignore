@@ -75,4 +75,6 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
+# Rubymine
 
+/cwa/.idea
