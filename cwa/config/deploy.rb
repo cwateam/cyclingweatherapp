@@ -4,6 +4,8 @@ lock '3.4.0'
 set :application, 'cwa'
 set :repo_url, 'git@github.com:cwateam/cyclingweatherapp.git'
 
+set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa")
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

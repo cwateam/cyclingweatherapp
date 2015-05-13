@@ -1,20 +1,22 @@
 language: ruby
-
 rvm:
- - 2.2.0
-
+- 2.2.0
 script:
- - cd cwa/
- - bundle install
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
-
+- cd cwa/
+- bundle install
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
 notifications:
   irc:
     channels:
-      - "open.ircnet.net#cwa-travis"
+    - open.ircnet.net#cwa-travis
     on_success: always
     on_failure: always
-
+env:
+  global:
+    secure: WTW5mCeBXhfjPPjTY84Z5yjuZYWQlZxkQyGgD5wiEBEsG+FHUAJIUZZ+zyoysqNlDMYekPhriaSSC4YVaUjCVOeaB+npsldmbUb44pumIsU70FKVT/t8lUgpz2bZ9YL/9ZrkmEFuT2OZUNB0Cs+jM1/0ymBVQqN63w32/Mh1t1hiGRi3yKOm4h5oWCWCiMGZyoO78RRqmfPNh0EIOKnPFlr7YrIaonAuSLysXNjjqLq6keQfW6MjdyWvIFpGiIfMk81CjUgNRXTZk5TS3AQtk/UdjOUBxhSl5RcRlLQ7KxEJ/Uk+3WySqBuMJO1TXAXieeKeAPHsb6iwKQEv4WWluIEW7oTGvEoxtz2vStAhqPtQIxRvtcYCbC5bHMYw2sfl9UVM3eRKDdSAMWPhjW0IdOuAs6h9Bfo1lAvLaLVR19Pjp2AqFnJHbQN6YU8txItZqUV9YqpI35V3+wCIHWZqqkDqnGkUmAkVC5LoWtyMnGfeMBBaUsXTYqHgeNqiJrLDkGXlx2EIbo00+pX4ColDHi6U6Lkb080/IOThPiCIVQczfzfmZTO1+z6OYp9/TCQc4DXmSqvqNMHN73QFKJ8Gnvih7CVYD9r2Cl9CrfBDmmGQncM9aW9S6dlgApATVxwh6ziHygEZGv9nTa7DxF3oa4xCuM121w8ZnhFdHplrbrA=
+after_success:
+  - "openssl aes-256-cbc -k '$DEPLOY_KEY' -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa"
+  - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap deploy"
