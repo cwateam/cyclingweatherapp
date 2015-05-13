@@ -14,7 +14,7 @@ script:
 notifications:
   irc:
     channels:
-      - "irc.cs.hut.fi#cwa-travis"
+      - "open.ircnet.net#cwa-travis"
     on_success: always
     on_failure: always
 
