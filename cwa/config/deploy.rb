@@ -6,6 +6,8 @@ set :repo_url, 'git@github.com:cwateam/cyclingweatherapp.git'
 
 set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa")
 
+set :passenger_restart_with_sudo, true
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
