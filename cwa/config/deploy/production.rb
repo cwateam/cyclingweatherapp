@@ -45,12 +45,12 @@ role :db,  %w{deployer@46.101.185.190}
 #
 # Global options
 # --------------
-set :ssh_options, {
-      forward_agent: false,
-      auth_methods: %w(password),
-      password: 'user_deployers_password',
-      user: 'deployer'
-    }
+#set :ssh_options, {
+#      forward_agent: false,
+#      auth_methods: %w(password),
+#      password: 'user_deployers_password',
+#      user: 'deployer'
+#    }
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
