@@ -12,4 +12,9 @@ script:
  - bundle exec rspec -fd spec/
 
 notifications:
-  irc: "irc.cs.hut.fi#cwa-travis"
+  irc:
+    channels:
+      - "irc.cs.hut.fi#cwa-travis"
+    on_success: always
+    on_failure: always
+
