@@ -9,6 +9,8 @@ set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_i
 set :passenger_restart_with_sudo, true
 set :passenger_restart_command, '-i passenger-config restart-app'
 
+set :bundle_gemfile, -> { release_path.join('cwa/Gemfile') }
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
