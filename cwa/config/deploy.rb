@@ -6,13 +6,17 @@ set :repo_url, 'git@github.com:cwateam/cyclingweatherapp.git'
 
 set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa")
 
-set :passenger_restart_with_sudo, false
+set :passenger_restart_with_sudo, true
+set :passenger_restart_command, '-i passenger-config restart-app'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/deployer/apps/cwa'
+
+# Deployment user on remote servers
+set :user, 'deployer'
 
 # Default value for :scm is :git
 set :scm, :git
