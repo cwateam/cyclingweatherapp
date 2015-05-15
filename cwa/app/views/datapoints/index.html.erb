@@ -1,5 +1,16 @@
 <div id="panel">
-  <button onclick="">Lämpötila</button>
-  <button onclick="">Hiukkaset</button>
+  
+  <form name="routeForm" action="" method="GET">
+    <input type="text" name="origin" value="Origin">
+    <input type="text" name="destination" value="Destination">
+    <input type="button" name="button" value="Route" onClick="calcRoute(this.form)">
+  </form>
+  <button onclick="">Temperature</button>
+  <button onclick="">Particulates</button>
 </div>
 <div id="map-canvas"></div>
+
+$( "#target" ).submit(function( event ) {
+alert( "Handler for .submit() called." );
+event.preventDefault();
+});
