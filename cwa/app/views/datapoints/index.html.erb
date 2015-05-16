@@ -1,14 +1,26 @@
-<div id="panel">
-  
-  <form name="routeForm" action="" method="GET">
-    <input type="text" name="origin" value="Origin">
-    <input type="text" name="destination" value="Destination">
-    <input type="button" name="button" value="Route" onClick="calcRoute(this.form)">
-  </form>
-  <button onclick="">Temperature</button>
-  <button onclick="">Particulates</button>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <form class="navbar-form navbar-left" role="form" id="routingForm">
+      <div class="form-group">
+	<input type="text" name="origin"  class="form-control" placeholder="Origin" value="gustaf hällstömin katu 2, helsinki">
+	<input type="text" name="destination" class="form-control" placeholder="Destination" value="intiankatu 18, helsinki, helsinki">
+      </div>
+      <button type="button" class="btn btn-default" onClick="calcRoute()">Route</button>
+    </form>
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-success navbar-btn">
+	<input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-asterisk"></span>
+      </label>
+      <label class="btn btn-success navbar-btn">
+	<input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-dashboard"></span>
+      </label>
+    </div>
+  </div>
+</nav>
+
+<div class="container-map" style="margin-top:-20px">
+  <div id="map-canvas"></div>
 </div>
-<div id="map-canvas"></div>
 
 $( "#target" ).submit(function( event ) {
 alert( "Handler for .submit() called." );

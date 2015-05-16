@@ -1,4 +1,5 @@
 var map;
+var bikeLayer;
 
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
@@ -14,17 +15,22 @@ function initialize() {
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     directionsDisplay.setMap(map);
-    directionsDisplay.setPanel(document.getElementById('panel'));
+    directionsDisplay.setPanel(document.getElementById('routingInstructions'));
+
+    bikeLayer = new google.maps.BicyclingLayer();
+    bikeLayer.setMap(map);
 }
 
-function calcRoute(form) {
-    var start = form.origin.value;
-    var end = form.destination.value;
+function calcRoute() {
+    var x = document.getElementById("routingForm");
+
+    var start = x.elements[0].value;
+    var end = x.elements[1].value;
     
     var request = {
 	origin: start,
 	destination: end,
-	travelMode: google.maps.TravelMode.DRIVING
+	travelMode: google.maps.TravelMode.BICYCLING
     };
     directionsService.route(request, function(response, status) {
 	if (status == google.maps.DirectionsStatus.OK) {
