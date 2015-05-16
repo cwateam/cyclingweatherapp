@@ -15,3 +15,5 @@ html, body {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
+
+.navbar {min-height:55px !important;}

@@ -33,7 +33,11 @@
   <div id="map-canvas"></div>
 </div>
 
-$( "#target" ).submit(function( event ) {
-alert( "Handler for .submit() called." );
-event.preventDefault();
-});
+<% content_for :head do %>
+<script type="text/javascript">
+  $( "#target" ).submit(function( event ) {
+  alert( "Handler for .submit() called." );
+  event.preventDefault();
+  });
+  </script>
+<% end %>
