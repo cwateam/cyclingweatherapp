@@ -8,10 +8,12 @@ html, body {
     width: 100%;
 }
 
-.container-map  {
-    height:100%;
+.container-map {
+    height: 100%;
     width: 100%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
+
+body { padding-top: 50px; }
