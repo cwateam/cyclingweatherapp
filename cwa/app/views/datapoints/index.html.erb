@@ -15,16 +15,19 @@
 	  <input type="text" name="origin"  class="form-control" placeholder="Origin" value="gustaf hällstömin katu 2, helsinki">
 	  <input type="text" name="destination" class="form-control" placeholder="Destination" value="intiankatu 18, helsinki, helsinki">
 	</div>
-	<button type="button" class="btn btn-default" onClick="calcRoute()">Route</button>
+	<button type="button" class="btn btn-default btn-info" onClick="calcRoute()">Route</button>
       </form>
       <div class="btn-group" data-toggle="buttons">
-	<label class="btn btn-success navbar-btn">
-	  <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-asterisk"></span>
+	<label class="btn btn-warning navbar-btn">
+	  <input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-asterisk"></span>
 	</label>
-	<label class="btn btn-success navbar-btn">
-	  <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-dashboard"></span>
+	<label class="btn btn-warning navbar-btn">
+	  <input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-dashboard"></span>
 	</label>
       </div>
+      <button type="button" class="btn btn-default btn-info" data-placement="bottom" data-toggle="popover">
+	<span class="glyphicon glyphicon-question-sign"></span>
+      </button>
     </div>
   </div>
 </nav>
@@ -33,11 +36,13 @@
   <div id="map-canvas"></div>
 </div>
 
-<% content_for :head do %>
-<script type="text/javascript">
-  $( "#target" ).submit(function( event ) {
-  alert( "Handler for .submit() called." );
-  event.preventDefault();
-  });
-  </script>
-<% end %>
+<div id="popover_content_wrapper" style="display: none">
+  <div>
+    <p>
+      <span class="glyphicon glyphicon-asterisk"></span> Particulates visualization
+    </p>
+    <p>
+      <span class="glyphicon glyphicon-dashboard"></span> Temperature visualization
+    </p>
+  </div>
+</div>
