@@ -17,3 +17,6 @@ html, body {
 }
 
 body { padding-top: 50px; }
+
+#map-canvas {position:absolute;top:50px;left:0;}
+.overlap {position:relative}

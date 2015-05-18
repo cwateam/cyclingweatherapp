@@ -11,3 +11,7 @@ $( "#target" ).submit(function( event ) {
     alert( "Handler for .submit() called." );
     event.preventDefault();
 });
+
+/*
+$('#weather').children().attr('disabled', 'disabled');
+*/

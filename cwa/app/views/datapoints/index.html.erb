@@ -1,48 +1,54 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	<span class="sr-only">Toggle navigation</span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">CWA</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="form" id="routingForm">
-	<div class="form-group">
-	  <input type="text" name="origin"  class="form-control" placeholder="Origin" value="gustaf hällstömin katu 2, helsinki">
-	  <input type="text" name="destination" class="form-control" placeholder="Destination" value="intiankatu 18, helsinki, helsinki">
-	</div>
-	<button type="button" class="btn btn-default btn-info" onClick="calcRoute()">Route</button>
-      </form>
-      <div class="btn-group" data-toggle="buttons">
-	<label class="btn btn-warning navbar-btn">
-	  <input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-asterisk"></span>
-	</label>
-	<label class="btn btn-warning navbar-btn">
-	  <input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-dashboard"></span>
-	</label>
+<div id="content">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	  <span class="sr-only">Toggle navigation</span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	</button>
+	<a class="navbar-brand" href="/">CWA</a>
       </div>
-      <button type="button" class="btn btn-default btn-info" data-placement="bottom" data-toggle="popover">
-	<span class="glyphicon glyphicon-question-sign"></span>
-      </button>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<form class="navbar-form navbar-left" role="form" id="routingForm">
+	  <div class="form-group">
+	    <input type="text" name="origin"  class="form-control" placeholder="Origin" value="gustaf hällstömin katu 2, helsinki">
+	    <input type="text" name="destination" class="form-control" placeholder="Destination" value="intiankatu 18, helsinki, helsinki">
+	  </div>
+	  <button type="button" class="btn btn-default btn-info" onClick="calcRoute()">Route</button>
+	</form>
+	<div class="btn-group" data-toggle="buttons">
+	  <label class="btn btn-warning navbar-btn">
+	    <input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-asterisk"></span>
+	  </label>
+	  <label class="btn btn-warning navbar-btn">
+	    <input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-dashboard"></span>
+	  </label>
+	</div>
+	<button type="button" class="btn btn-default btn-info" data-placement="bottom" data-toggle="popover">
+	  <span class="glyphicon glyphicon-question-sign"></span>
+	</button>
+      </div>
     </div>
+  </nav>
+
+  <div class="container-map">
+    <div id="map-canvas"></div>
   </div>
-</nav>
 
-<div class="container-map">
-  <div id="map-canvas"></div>
-</div>
+  <div class="container overlap" id="weather">
+    <a href="http://cliparts.co/clipart/2432065" title="Image from cliparts.co"><img src="http://cliparts.co/cliparts/kiM/nkb/kiMnkbMeT.gif" width="350" alt="Summer Sun Clipart | Clipart Panda - Free Clipart Images" /></a>
+  </div>
 
-<div id="popover_content_wrapper" style="display: none">
-  <div>
-    <p>
-      <span class="glyphicon glyphicon-asterisk"></span> Particulates visualization
-    </p>
-    <p>
-      <span class="glyphicon glyphicon-dashboard"></span> Temperature visualization
-    </p>
+  <div id="popover_content_wrapper" style="display: none">
+    <div>
+      <p>
+	<span class="glyphicon glyphicon-asterisk"></span> Particulates visualization
+      </p>
+      <p>
+	<span class="glyphicon glyphicon-dashboard"></span> Temperature visualization
+      </p>
+    </div>
   </div>
 </div>
