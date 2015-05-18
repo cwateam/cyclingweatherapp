@@ -36,8 +36,8 @@
   <div class="container-map">
     <div id="map-canvas"></div>
     <div id="weather">
-    <a href="http://cliparts.co/clipart/2432065" title="Image from cliparts.co"><img src="http://cliparts.co/cliparts/kiM/nkb/kiMnkbMeT.gif" width="350" alt="Summer Sun Clipart | Clipart Panda - Free Clipart Images" /></a>
-  </div>
+      <a href="http://cliparts.co/clipart/2432065" title="Image from cliparts.co"><img src="http://cliparts.co/cliparts/kiM/nkb/kiMnkbMeT.gif" width="350" alt="Summer Sun Clipart | Clipart Panda - Free Clipart Images" /></a>
+    </div>
   </div>
 
   <div id="popover_content_wrapper" style="display: none">

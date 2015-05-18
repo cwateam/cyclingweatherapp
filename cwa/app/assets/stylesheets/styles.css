@@ -18,5 +18,12 @@ html, body {
 
 body { padding-top: 50px; }
 
-#map-canvas {position:absolute;top:50px;left:0;}
-.overlap {position:relative}
+#map-canvas {position:absolute;}
+
+#weather {
+    position:absolute;
+    width: 200px;
+    right: 20px;
+    top: 20px;
+    background-color:lightgray;
+}

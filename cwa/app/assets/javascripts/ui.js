@@ -12,6 +12,4 @@ $( "#target" ).submit(function( event ) {
     event.preventDefault();
 });
 
-/*
 $('#weather').children().attr('disabled', 'disabled');
-*/
