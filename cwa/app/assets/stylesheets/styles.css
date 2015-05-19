@@ -20,10 +20,11 @@ body { padding-top: 50px; }
 
 #map-canvas {position:absolute;}
 
-#weather {
-    position:absolute;
+.temperature {
+    position: fixed;
     width: 200px;
     right: 20px;
-    top: 20px;
+    top: 70px;
     background-color:lightgray;
+    display: none;
 }

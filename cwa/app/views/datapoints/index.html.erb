@@ -20,10 +20,10 @@
 	</form>
 	<div class="btn-group" data-toggle="buttons">
 	  <label class="btn btn-warning navbar-btn">
-	    <input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-asterisk"></span>
+	    <input type="checkbox" value="particulates" onchange="cbChanged(this)"><span class="glyphicon glyphicon-asterisk"></span>
 	  </label>
 	  <label class="btn btn-warning navbar-btn">
-	    <input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-dashboard"></span>
+	    <input type="checkbox"  value="temperature" onchange="cbChanged(this)"><span class="glyphicon glyphicon-dashboard"></span>
 	  </label>
 	</div>
 	<button type="button" class="btn btn-default btn-info" data-placement="bottom" data-toggle="popover">
@@ -35,9 +35,7 @@
 
   <div class="container-map">
     <div id="map-canvas"></div>
-    <div id="weather">
-    <a href="http://cliparts.co/clipart/2432065" title="Image from cliparts.co"><img src="http://cliparts.co/cliparts/kiM/nkb/kiMnkbMeT.gif" width="350" alt="Summer Sun Clipart | Clipart Panda - Free Clipart Images" /></a>
-  </div>
+    <div class="temperature" id="weather"></div>
   </div>
 
   <div id="popover_content_wrapper" style="display: none">
