@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :datapoints
 
-   root 'datapoints#index'
+  root 'datapoints#index'
+
+  namespace :api do
+    resources :temperatures, :particulates
+  end  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
