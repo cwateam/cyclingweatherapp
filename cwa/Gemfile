@@ -51,7 +51,13 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
+end
 
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+  gem 'webmock'
+  gem 'selenium-webdriver'
 end
 
 group :development do

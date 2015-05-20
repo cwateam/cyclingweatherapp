@@ -32,3 +32,9 @@ body {
     background-color:lightgray;
     display: none;
 }
+.big-icon {
+    font-size: 150%;
+}
+.big-icon-padding {
+    padding: 2px 12px 0px;
+}

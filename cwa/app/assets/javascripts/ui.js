@@ -21,6 +21,6 @@ function cbChanged(checkboxElem){
 	*/
     }
     if(checkboxElem.value == "temperature") {
-	$(".temperature").toggle();
+	    $(".temperature").toggle();
     }
 }

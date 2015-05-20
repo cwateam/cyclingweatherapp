@@ -81,3 +81,6 @@ bower.json
 
 # backup files begone
 *~
+
+# secrets and extra stuff that shouldn't go on github
+/super_secret/
