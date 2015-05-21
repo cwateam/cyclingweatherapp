@@ -9,10 +9,6 @@ describe 'FmiAPi' do
     WebMock.disable_net_connect!(allow_localhost:true,)
   end
 
-  it 'Should show temperature of kumpula' do
-    expect(true).to be(true)
-  end
-
   it 'Should show temperature of kumpula', js:true do
 
     canned_answ = <<eos
