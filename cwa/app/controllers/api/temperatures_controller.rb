@@ -4,11 +4,11 @@ module Api
     private
 
     def temperature_params
-      # params.require(:artist).permit(:name)
+      params.require(:temperature).permit(:geohash, :timestamp, :type, :data)
     end
 
     def query_params
-      # params.permit(:name)
+      params.permit(:geohash)
     end
 
   end
