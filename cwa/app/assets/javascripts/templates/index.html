@@ -1,0 +1,53 @@
+<div id="content">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">CWA</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div ng-controller="MapController">
+                    <form  class="navbar-form navbar-left" role="form" id="routingForm">
+                      <div class="form-group">
+                            <input type="text" name="origin"  class="form-control" placeholder="Origin" value="gustaf hällstömin katu 2, helsinki">
+                            <input type="text" name="destination" class="form-control" placeholder="Destination" value="intiankatu 18, helsinki, helsinki">
+                      </div>
+                        <button ng-click="calcRoute()" class="btn btn-default btn-info">Route</button>
+                    </form>
+                </div>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-warning navbar-btn big-icon big-icon-padding">
+                        <input type="button" value="particulates" onchange="cbChanged(this)"><span class="glyphicon glyphicon-asterisk"></span>
+                    </label>
+                    <label class="btn btn-warning navbar-btn big-icon big-icon-padding">
+                        <input type="button"  value="temperature" onchange="cbChanged(this)" id="temperature"><span class="glyphicon glyphicon-dashboard"></span>
+                    </label>
+                </div>
+                <button type="button" class="btn btn-default btn-info big-icon big-icon-padding" data-placement="bottom" data-toggle="popover">
+                    <span class="glyphicon glyphicon-question-sign"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+        <div class="container-map">
+            <div ng-model="map"id="map_canvas"></div>
+            <div class="temperature" id="weather"></div>
+        </div>
+
+    <div id="popover_content_wrapper" style="display: none">
+        <div>
+            <p>
+                <span class="glyphicon glyphicon-asterisk big-icon"></span> Particulates visualization
+            </p>
+            <p>
+                <span class="glyphicon glyphicon-dashboard big-icon"></span> Temperature visualization
+            </p>
+        </div>
+    </div>
+</div>

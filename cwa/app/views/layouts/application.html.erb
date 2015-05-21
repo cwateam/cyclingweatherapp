@@ -2,13 +2,12 @@
 <html>
 <head>
   <title>Cycling weather app</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body onload="init()">
+<body onload="init()" ng-app="App">
 <%= yield %>
-
 </body>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false"></script>
