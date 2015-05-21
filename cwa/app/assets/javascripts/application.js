@@ -11,14 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require angular/angular
 //= require bootstrap-sprockets
+//= require angular-route/angular-route
+//= require angular-rails-templates
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require lib/fmi/utils.js
 //= require lib/fmi/wfsrequestparser.js
 //= require lib/fmi/index.js
 //= require controllers/fmi_controller.js
 //= require_tree .
-//= require map.js
+
 

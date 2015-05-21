@@ -84,3 +84,4 @@ bower.json
 
 # secrets and extra stuff that shouldn't go on github
 /super_secret/
+/cwa/nbproject/private/

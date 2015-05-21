@@ -1,5 +1,5 @@
 class DatapointsController < ApplicationController
-  def index
+  def index2
 
   end
 end
