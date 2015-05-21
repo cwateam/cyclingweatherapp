@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
@@ -29,8 +30,6 @@ gem 'kaminari'
 gem 'jbuilder', '~> 2.0'
 # Nokogiri is an HTML, XML, SAX, and Reader parser
 gem 'nokogiri'
-# Simple, efficient background processing for Ruby
-gem 'sidekiq'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -74,3 +73,4 @@ end
 group :development do
   gem 'therubyracer', platforms: :ruby
 end
+
