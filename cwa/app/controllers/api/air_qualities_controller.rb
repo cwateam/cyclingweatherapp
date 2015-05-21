@@ -1,9 +1,9 @@
 module Api
-  class ParticulatesController < Api::BaseController
+  class AirQualitiesController < Api::BaseController
 
     private
 
-    def particulate_params
+    def air_quality_params
       # params.require(:artist).permit(:name)
     end
 

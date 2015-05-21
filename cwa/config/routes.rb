@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
   namespace :api do
-    resources :temperatures, :particulates
+    resources :temperatures, :air_qualities
   end  
 
   root 'home#index'
