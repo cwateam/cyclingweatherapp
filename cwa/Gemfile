@@ -25,6 +25,8 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 # Simple, efficient background processing for Ruby
 gem 'sidekiq'
+# Makes http fun again!
+gem 'httparty'
 # adds pagination to ActiveModels
 gem 'kaminari'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
