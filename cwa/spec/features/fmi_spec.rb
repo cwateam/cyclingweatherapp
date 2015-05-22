@@ -145,7 +145,7 @@ eos
 
     stub_request(:get, /.*kumpula/).to_return(body: canned_answ, headers: { 'Content-Type' => "text/xml" })
     visit root_path
-   # save_and_open_page
+    #save_and_open_page
     #find(:css, "#cityID[value='temperature']").set(true)
     click_button('temperature')
     expect(page).to have_content 'kumpula, Helsinki'
