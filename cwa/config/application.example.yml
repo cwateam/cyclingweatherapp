@@ -1,0 +1,13 @@
+defaults: &defaults
+  FMI_APIKEY: 'your-apikey'
+  GOOGLE_SERVER_APIKEY: 'your-apikey'
+  GOOGLE_BROWSER_APIKEY: 'your-apikey'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
