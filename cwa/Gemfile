@@ -31,6 +31,8 @@ gem 'sidekiq'
 # Makes http fun again!
 gem 'httparty'
 # adds pagination to ActiveModels
+# Nokogiri is an HTML, XML, SAX, and Reader parser. 
+gem 'nokogiri', '~> 1.6.6.2'
 gem 'kaminari'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
