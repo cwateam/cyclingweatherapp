@@ -1,4 +1,7 @@
 asset 'angular'
 asset 'bootstrap-sass-official'
 asset 'angular-route'
+asset 'firebase'
+asset 'geofire'
+asset 'rsvp'
 # vim: ft=ruby
