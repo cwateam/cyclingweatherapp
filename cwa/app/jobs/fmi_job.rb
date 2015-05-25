@@ -14,9 +14,10 @@ class FmiJob < ActiveJob::Base
         # "mtime",
         # "temperature"]
         response = firebase.push("fmi_temp", {
+                                   :datatype => "temperature",
                                    :g => GeoHash.encode(record[1].to_f, record[2].to_f),
-                                   :l => {:'0' => record[1],
-                                          :'1' => record[2]},
+                                   :l => {:'0' => record[1].to_f,
+                                          :'1' => record[2].to_f},
                                    :fmisid => record[0],
                                    :mtime => record[3],
                                    :created => Firebase::ServerValue::TIMESTAMP,
