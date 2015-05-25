@@ -19,7 +19,7 @@
 // require firebase
 // require geofire
 // require angularfire
-//= require rsvp
+// require rsvp
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require lib/fmi/utils.js
