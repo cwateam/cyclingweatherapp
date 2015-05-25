@@ -3,13 +3,14 @@ lock '3.4.0'
 
 set :application, 'cwa'
 set :repo_url, 'git@github.com:cwateam/cyclingweatherapp.git'
+set :repo_tree, 'cwa'
 
 set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa")
 
 set :passenger_restart_with_sudo, true
 set :passenger_restart_command, '-i passenger-config restart-app'
 
-set :bundle_gemfile, -> { release_path.join('cwa/Gemfile') }
+#set :bundle_gemfile, -> { release_path.join('cwa/Gemfile') }
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
