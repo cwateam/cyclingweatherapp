@@ -2,7 +2,8 @@ class FmiJob < ActiveJob::Base
   queue_as :default
 
   def perform(*args)
-    # Do something later
-    puts "hello world x) mac is best!"
+    # fetch temeperature data from fmi and push to firebase
+    data = FmiDataController.deliver("temperature")
+    data.each { || }
   end
 end

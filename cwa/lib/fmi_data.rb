@@ -1,4 +1,4 @@
-class FmiDataController < ApplicationController
+class FmiData
   def self.deliver(type)
     begin
       if type == "temperature"
