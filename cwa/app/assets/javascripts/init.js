@@ -1,5 +1,5 @@
 function init() {
-    FmiController.getTemperature("kumpula, Helsinki")
+    FmiController.getTemperature("kumpula, Helsinki");
 
     $('#temperature :checkbox').change(function() {
 

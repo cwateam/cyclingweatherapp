@@ -1,4 +1,4 @@
-var App = angular.module('App', ['ngRoute', 'templates']);
+var App = angular.module('App', ['ngRoute', 'templates', 'firebase']);
 
 
 App.config(function($routeProvider) {
