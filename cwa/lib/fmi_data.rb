@@ -9,28 +9,29 @@ class FmiData
         response = HTTParty.get(query)
         xml_doc = Nokogiri::XML(response.body)
         data = Array.new
-        xml_doc.xpath("wfs:FeatureCollection/wfs:member/omso:PointTimeSeriesObservation").map { |station|
+        
+        xml_doc.xpath("wfs:FeatureCollection/wfs:member/omso:PointTimeSeriesObservation").each { |station|
           # record = ["fmisid",
           # "latitude",
           # "longitude",
           # "mtime",
           # "temperature"]
           record = Array.new
-
+          
           # fmisid
           record << station.xpath("om:featureOfInterest/sams:SF_SpatialSamplingFeature/sam:sampledFeature/target:LocationCollection/target:member/target:Location/gml:identifier").inner_text
-          
+ 
           # latitude and longitude
           lal = station.xpath("om:featureOfInterest/sams:SF_SpatialSamplingFeature/sams:shape/gml:Point/gml:pos").inner_text.strip
-          record << lal[0..a.index(' ') - 1]
-          record << lal[a.index(' ') + 1..a.length]
+          record << lal[0..lal.index(' ') - 1]
+          record << lal[lal.index(' ') + 1..lal.length]
 
           # mtime and temperature
           record << station.xpath("om:result/wml2:MeasurementTimeseries/wml2:point/wml2:MeasurementTVP/wml2:time").last.inner_text
           record << station.xpath("om:result/wml2:MeasurementTimeseries/wml2:point/wml2:MeasurementTVP/wml2:value").last.inner_text
           data << record
         }
-        data
+        return data
       end
       if type == "air_quality"
       end
@@ -39,4 +40,3 @@ class FmiData
     end
   end
 end
-
