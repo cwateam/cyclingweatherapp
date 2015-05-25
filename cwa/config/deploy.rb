@@ -11,6 +11,8 @@ set :passenger_restart_command, '-i passenger-config restart-app'
 
 set :bundle_gemfile, -> { release_path.join('cwa/Gemfile') }
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
