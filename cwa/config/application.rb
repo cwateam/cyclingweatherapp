@@ -20,6 +20,9 @@ module Cwa
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.assets.enabled = true;
+    config.assets.initialize_on_precompile = false
+
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.autoload_paths += %W(#{config.root}/lib)
     config.active_record.raise_in_transactional_callbacks = true
@@ -28,7 +31,9 @@ module Cwa
     config.assets.paths << Rails.root.join("vendor","assets","bower_components")
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
 
-    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
+    config.assets.precompile = [/\A[^\/\\]+\.(css|js)$/i]
+
+    #config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
 
     config.before_configuration do
       # Load application ENV vars and merge with existing ENV vars. Loaded here so can use values in initializers.
