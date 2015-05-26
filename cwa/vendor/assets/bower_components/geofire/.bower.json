@@ -46,7 +46,6 @@
     "commit": "8d714868a94a3523e42c61181dad0a55068f1e2e"
   },
   "_source": "git://github.com/firebase/geofire-js.git",
-  "_target": "~3.2.2",
-  "_originalSource": "geofire",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "geofire"
 }

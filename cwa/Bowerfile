@@ -1,7 +1,10 @@
 asset 'angular'
-asset 'bootstrap-sass-official'
 asset 'angular-route'
+asset 'angular-resource'
+asset 'bootstrap-sass-official'
 asset 'firebase'
-asset 'geofire'
 asset 'rsvp'
-# vim: ft=ruby
+asset 'angularfire'
+asset 'geofire'
+
+
