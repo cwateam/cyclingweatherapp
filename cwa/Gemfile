@@ -59,6 +59,7 @@ gem 'sprockets', '2.12.3'
 gem 'capistrano-rails', group: :development
 gem 'capistrano-passenger', group: :development
 gem 'capistrano-bundler', '~> 1.1.2', group: :development
+gem 'capistrano-bower', group: :development
 
 # Enable if U really need it...
 #gem 'travis', '~> 1.7.6', group: :development
