@@ -31,9 +31,9 @@ module Cwa
     config.assets.paths << Rails.root.join("vendor","assets","bower_components")
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
 
-    config.assets.precompile = [/\A[^\/\\]+\.(css|js)$/i]
+    #config.assets.precompile = [/\A[^\/\\]+\.(css|js)$/i]
 
-    #config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
+    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
 
     config.before_configuration do
       # Load application ENV vars and merge with existing ENV vars. Loaded here so can use values in initializers.
