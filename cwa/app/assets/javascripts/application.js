@@ -24,7 +24,7 @@
 //= require geofire/dist/geofire
 // require_tree ../templates
 //= require app
-//= require_tree ./services
+//= require_tree ./services/
 //= require ui
 //= require_tree ./controllers/
  
