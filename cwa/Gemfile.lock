@@ -290,7 +290,7 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq
   spring
-  sprockets (= 2.12.3)
+  sprockets
   sqlite3
   therubyracer
   turbolinks
