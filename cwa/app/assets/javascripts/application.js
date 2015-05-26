@@ -22,10 +22,8 @@
 //= require angularfire
 //= require rsvp/rsvp
 //= require geofire/dist/geofire
-// require_tree ../templates
-//= require app
-//= require_tree ./services/
-//= require ui
-//= require_tree ./controllers/
- 
-
+//= require_tree .
+// require app
+// require_tree ./services/
+// require ui
+// require_tree ./controllers/
