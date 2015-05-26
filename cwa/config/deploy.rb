@@ -10,7 +10,7 @@ set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_i
 set :passenger_restart_with_sudo, true
 set :passenger_restart_command, '-i passenger-config restart-app'
 
-set :bower_target_path, "#{release_path}/vendor/assets/"
+set :bower_target_path, "/home/deployer/apps/cwa/current/vendor/assets/"
 
 #set :bundle_gemfile, -> { release_path.join('cwa/Gemfile') }
 
