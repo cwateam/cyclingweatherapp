@@ -26,6 +26,6 @@
 //= require app
 //= require_tree ./services
 //= require ui
-//= require ./controllers/home_controller
+//= require_tree ./controllers/
  
 
