@@ -24,6 +24,9 @@ gem "sidekiq"
 gem 'whenever', :require => false
 gem 'responders', '~> 2.0'
 
+#Pure Ruby gem that implements the MQTT protocol
+gem 'mqtt'
+
 gem "figaro"
 
 # Use jquery as the JavaScript library
