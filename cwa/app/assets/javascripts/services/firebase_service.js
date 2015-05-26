@@ -1,4 +1,4 @@
-App.service('FirebaseService', function($firebase, $firebaseArray) {
+App.service('FirebaseService', function($firebase) {
 
     var firebaseRef = new Firebase('https://glowing-inferno-7580.firebaseio.com/fmi_temp');
 

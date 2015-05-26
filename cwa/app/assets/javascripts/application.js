@@ -10,22 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require angular/angular
-//= require bootstrap-sprockets
-//= require angular-route/angular-route
-//= require angular-rails-templates
 
-//= require firebase
-//= require geofire
-//= require angularfire
-//= require rsvp
-//= require jquery.turbolinks
+//= require jquery
 //= require jquery_ujs
-//= require lib/fmi/utils.js
-//= require lib/fmi/wfsrequestparser.js
-//= require lib/fmi/index.js
-//= require controllers/fmi_controller.js
+//= require angular/angular
+//= require angular-rails-templates
+//= require angular-route/angular-route
+
+//= require bootstrap-sprockets
+//= require firebase/firebase
+//= require angularfire
+//= require rsvp/rsvp
+//= require geofire/dist/geofire
 
 //= require_tree .
 

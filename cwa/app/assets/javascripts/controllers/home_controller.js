@@ -10,7 +10,7 @@ App.controller('HomeController',['$scope','FirebaseService','MapService', functi
 
     $scope.calcRoute = function() {
         MapService.calcRoute($scope.map, $scope.routeStart, $scope.routeEnd);
-    }
+    };
 
     $scope.addMarkers = function(){
         var center = $scope.map.getCenter();
@@ -18,7 +18,7 @@ App.controller('HomeController',['$scope','FirebaseService','MapService', functi
             MapService.addMarker($scope.map, data.l[0],data.l[1],'C', data.value)
 
         });
-    }
+    };
 
     angular.element(document).ready(function () {
        $scope.addMarkers();
