@@ -7,7 +7,8 @@ every 10.minutes do
 end
 
 every 5.minutes do
-  runner2 "ThingseeCloudJob.perform_later"
+  puts "ehhehee"
+  #runner2 "ThingseeCloudJob.perform_later"
 end
 
 # Use this file to easily define all of your cron jobs.
