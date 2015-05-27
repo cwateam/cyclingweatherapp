@@ -2,8 +2,12 @@ env :PATH, ENV['PATH']
 
 job_type :runner2, "cd :path && rails runner -e :environment ':task' :output"
 
-every 1.minutes do
+every 10.minutes do
   runner2 "FmiJob.perform_later"
+end
+
+every 5.minutes do
+  runner2 "ThingseeCloudJob.perform_later"
 end
 
 # Use this file to easily define all of your cron jobs.
