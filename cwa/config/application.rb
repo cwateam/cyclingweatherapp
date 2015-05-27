@@ -38,8 +38,14 @@ module Cwa
       # Load application ENV vars and merge with existing ENV vars. Loaded here so can use values in initializers.
       # NOTE: the specified file is not in github. See config/application.example.yml for template file to insert your own apikeys into.
       # DEV NOTE: config/application.yml is available in the project's Google Drive under 'misc development files'.
-      ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
+      #ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
+      
+      env_file = File.join(Rails.root, 'config', 'application.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value.to_s
+      end if File.exists?(env_file)
+      
     end
-
+    
   end
 end
