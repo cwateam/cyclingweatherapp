@@ -5,14 +5,18 @@ class FmiJob < ActiveJob::Base
     # fetch temeperature data from fmi and push to firebase
     data = FmiData.deliver("temperature")
     if data != "error"
+      base_uri = 'https://glowing-inferno-7580.firebaseio.com/'
+      firebase = Firebase::Client.new(base_uri)
+      
       data.each { |record|
-        base_uri = 'https://glowing-inferno-7580.firebaseio.com/'
-        firebase = Firebase::Client.new(base_uri)
         # record = ["fmisid",
         # "latitude",
         # "longitude",
         # "mtime",
-        # "temperature"]
+        # "temperature",
+        # "location",
+        # "source"]
+        
         response = firebase.push("fmi_temp", {
                                    :datatype => "temperature",
                                    :g => GeoHash.encode(record[1].to_f, record[2].to_f),
@@ -21,9 +25,11 @@ class FmiJob < ActiveJob::Base
                                    :fmisid => record[0],
                                    :mtime => record[3],
                                    :created => Firebase::ServerValue::TIMESTAMP,
-                                   :value => record[4]
+                                   :value => record[4],
+                                   :location => record[5],
+                                   :source => record[6]
                                  })
-      }
+      } 
     end
   end
 end

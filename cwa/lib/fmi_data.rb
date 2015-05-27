@@ -16,7 +16,9 @@ class FmiData
           # "longitude",
           # "mtime",
           # "temperature",
-          # "sname"]
+          # "location",
+          # "source"]
+          
           record = Array.new
           
           # fmisid
@@ -30,9 +32,12 @@ class FmiData
           # mtime and temperature
           record << station.xpath("om:result/wml2:MeasurementTimeseries/wml2:point/wml2:MeasurementTVP/wml2:time").last.inner_text
           record << station.xpath("om:result/wml2:MeasurementTimeseries/wml2:point/wml2:MeasurementTVP/wml2:value").last.inner_text
-          # sname
+          # location
           record << station.xpath("om:featureOfInterest/sams:SF_SpatialSamplingFeature/sam:sampledFeature/target:LocationCollection/target:member/target:Location/gml:name").first.inner_text
 
+          #source
+          record << "fmi"
+          
           data << record
         }
         return data
