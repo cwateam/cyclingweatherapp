@@ -27,8 +27,6 @@ gem 'responders', '~> 2.0'
 #Pure Ruby gem that implements the MQTT protocol
 gem 'mqtt'
 
-gem "figaro"
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
