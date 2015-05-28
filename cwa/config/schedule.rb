@@ -1,6 +1,6 @@
 env :PATH, ENV['PATH']
 
-job_type :runner2, "cd :path && /usr/local/rvm/gems/ruby-2.2.2/bin/bundle exec rails runner -e :environment ':task' :output"
+job_type :runner2, "cd :path && bundle exec rails runner -e :environment ':task' :output"
 
 every 5.minutes do
   runner2 "FmiJob.perform_later"
