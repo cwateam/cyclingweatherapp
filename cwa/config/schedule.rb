@@ -1,11 +1,10 @@
 job_type :runner2, "cd :path && bundle exec rails runner -e :environment ':task' :output"
 
-every 5.minutes do
+every 30.minutes do
   runner2 "FmiJob.perform_later"
 end
 
-every 5.minutes do
-  puts "ehhehee"
+every 30.minutes do
   #runner2 "ThingseeCloudJob.perform_later"
 end
 
