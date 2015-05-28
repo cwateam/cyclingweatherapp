@@ -1,4 +1,4 @@
-class ThingseeCloudData
+class ThingseeCloudDatum
   def self.deliver(type)
 
     require 'rubygems'
@@ -23,7 +23,6 @@ class ThingseeCloudData
                                    :headers => { 'Content-Type' => 'application/json', 'Authorization' => device_token}
 
                                })
-        byebug
         temperature = result['events'][0]['cause']['senses'][0]['val']
         timestamp = result['events'][0]['cause']['senses'][0]['ts']
 

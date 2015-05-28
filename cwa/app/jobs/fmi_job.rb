@@ -3,7 +3,7 @@ class FmiJob < ActiveJob::Base
 
   def perform(*args)
     # fetch temeperature data from fmi and push to firebase
-    data = FmiData.deliver("temperature")
+    data = FmiDatum.deliver("temperature")
     if data != "error"
       base_uri = 'https://glowing-inferno-7580.firebaseio.com/'
       firebase = Firebase::Client.new(base_uri)

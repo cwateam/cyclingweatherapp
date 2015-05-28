@@ -1,6 +1,6 @@
 require 'rspec/rails'
 
-describe 'FmiData' do
+describe 'FmiDatum' do
 
   it 'should parse and return a temperature record returned through HTTP GET' do
 
@@ -10,7 +10,7 @@ describe 'FmiData' do
     #might have to specify :get regex further
     stub_request(:get, /.*temperature.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "text/xml" })
 
-    data = FmiData.deliver("temperature")
+    data = FmiDatum.deliver("temperature")
     puts data.first
     puts data.last
     expect(data.size).to eq(189)

@@ -1,4 +1,4 @@
-class FmiData
+class FmiDatum
   def self.deliver(type)
     begin
       if type == "temperature"
