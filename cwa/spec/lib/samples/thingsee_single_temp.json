@@ -1,0 +1,27 @@
+{
+  "timestamp": 1432850414985,
+  "events": [
+    {
+      "_id": "55678fea2135db6041eb8bcc",
+      "timestamp": 1432850409189,
+      "type": "sense",
+      "deviceAuthUuid": "048e50e0-043d-11e5-812e-897f34f47d48",
+      "cause": {
+        "engine": {
+          "pId": "1",
+          "puId": 1,
+          "stId": 0,
+          "evId": 0,
+          "ts": 1432850409189
+        },
+        "senses": [
+          {
+            "sId": "0x00060100",
+            "val": 26.94,
+            "ts": 1432850409189
+          }
+        ]
+      }
+    }
+  ]
+}

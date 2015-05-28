@@ -8,33 +8,36 @@ class ThingseeCloudDatum
     begin
       device_id = ENV["THINGSEE_ID"]
       device_token = ENV["THINGSEE_TOKEN"]
-      query_base = "http://api.thingsee.com/v1/events/"+device_id+"?type=sense&limit=1"
+      query_base = "http://api.thingsee.com/v1/events/"+device_id+"?type=sense"
       query_headers = { 'Content-Type' => 'application/json', 'Authorization' => device_token}
 
       if type == "temperature"
         record = Array.new
 
-        #TODO should get only temperature sense data
-        query = query_base
+        query = query_base+"&senses=0x00060100&limit=1"
 
         # record = ["thingseeid",
         # "latitude",
         # "longitude",
-        # "mtime",
+        # "mtime", (timestamp of data push to cloud)
         # "temperature"]
 
         result = HTTParty.get(query,
                                {
                                    :headers => query_headers
                                })
-        temperature = result['events'][0]['cause']['senses'][0]['val']
-        timestamp = result['events'][0]['cause']['senses'][0]['ts']
+        # TODO set up lookup so that it doesn't matter if order of data in json-response is random
+        # atm lookup is dependent on order of sense data in hash
+        temperature = result['events'][0]['cause']['senses'][0]['val'] if result['events'][0]['cause']['senses'][0]
+        latitude = result['events'][0]['cause']['senses'][1]['val'] if result['events'][0]['cause']['senses'][1]
+        longitude = result['events'][0]['cause']['senses'][2]['val'] if result['events'][0]['cause']['senses'][2]
+        timestamp = result['events'][0]['timestamp'] if result['events'][0]['timestamp']
 
-        record << 0
-        record << 60.1708
-        record << 24.9375
+        record << latitude
+        record << longitude
         record << timestamp
         record << temperature
+        record << 'thingsee'
 
         return record
       end

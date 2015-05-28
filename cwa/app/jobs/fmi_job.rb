@@ -9,24 +9,24 @@ class FmiJob < ActiveJob::Base
       firebase = Firebase::Client.new(base_uri)
       
       data.each { |record|
-        # record = ["fmisid",
+        # record = [##########"fmisid",
         # "latitude",
         # "longitude",
         # "mtime",
         # "temperature",
-        # "location",
+        ############ "location",
         # "source"]
         
         response = firebase.push("fmi_temp", {
                                    :created => Firebase::ServerValue::TIMESTAMP,
                                    :datatype => "temperature",
                                    #:fmisid => record[0],
-                                   :g => GeoHash.encode(record[1].to_f, record[2].to_f),
-                                   :l => {:'0' => record[1].to_f,
-                                          :'1' => record[2].to_f},
-                                   :mtime => record[3],
-                                   :source => record[6],
-                                   :value => record[4]
+                                   :g => GeoHash.encode(record[0].to_f, record[1].to_f),
+                                   :l => {:'0' => record[0].to_f,
+                                          :'1' => record[1].to_f},
+                                   :mtime => record[2],
+                                   :value => record[3],
+                                   :source => record[4]
                                  })
       } 
     end
