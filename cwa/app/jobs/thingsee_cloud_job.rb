@@ -15,13 +15,13 @@ class ThingseeCloudJob < ActiveJob::Base
         # "temperature"]
         
         firebase.push("thingsee_temp", {
+         :created => Firebase::ServerValue::TIMESTAMP,
          :datatype => "temperature",
          :g => GeoHash.encode(record[1].to_f, record[2].to_f),
          :l => {:'0' => record[1].to_f,
                 :'1' => record[2].to_f},
-         :thingseeid => record[0],
          :mtime => record[3],
-         :created => Firebase::ServerValue::TIMESTAMP,
+         :source => "thingsee",
          :value => record[4]
        })
     end

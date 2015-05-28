@@ -8,9 +8,14 @@ class ThingseeCloudDatum
     begin
       device_id = ENV["THINGSEE_ID"]
       device_token = ENV["THINGSEE_TOKEN"]
+      query_base = "http://api.thingsee.com/v1/events/"+device_id+"?type=sense&limit=1"
+      query_headers = { 'Content-Type' => 'application/json', 'Authorization' => device_token}
 
       if type == "temperature"
         record = Array.new
+
+        #TODO should get only temperature sense data
+        query = query_base
 
         # record = ["thingseeid",
         # "latitude",
@@ -18,10 +23,9 @@ class ThingseeCloudDatum
         # "mtime",
         # "temperature"]
 
-        result = HTTParty.get("http://api.thingsee.com/v1/events/"+device_id+"?type=sense&limit=1",
+        result = HTTParty.get(query,
                                {
-                                   :headers => { 'Content-Type' => 'application/json', 'Authorization' => device_token}
-
+                                   :headers => query_headers
                                })
         temperature = result['events'][0]['cause']['senses'][0]['val']
         timestamp = result['events'][0]['cause']['senses'][0]['ts']
