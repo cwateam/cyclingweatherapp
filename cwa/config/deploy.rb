@@ -56,6 +56,17 @@ set :pty, true
 # check out:
 # http://capistranorb.com/
 
+namespace: deploy do
+
+  desc 'Start sidekiq'
+  task :start_sidekiq do
+    on roles(:all) do |host|
+      within './' { execute('bundle exec sidekiq') }
+    end
+  end
+  
+end
+
 # namespace: deploy do
 
 #   desc 'Restart application'
