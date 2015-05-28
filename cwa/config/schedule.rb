@@ -1,5 +1,4 @@
 env :PATH, ENV['PATH']
-env :GEM_PATH, ENV['GEM_PATH']
 
 job_type :runner2, "cd :path && bundle exec rails runner -e :environment ':task' :output"
 
