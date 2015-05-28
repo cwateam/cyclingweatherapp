@@ -1,6 +1,5 @@
 App.service('MapService', function(){
 
-    var bikeLayer;
 
 
 
@@ -14,7 +13,7 @@ App.service('MapService', function(){
         };
 
         var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
+        var bikeLayer;
         bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
         return map;
@@ -37,12 +36,15 @@ App.service('MapService', function(){
         });
     };
 
-    var addMarker = function(map,lat, lng, type, value){
+    var addMarker = function(map,lat, lng, type, value, source, done){
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
-            title:  value +' °'+type
+            title:  value +' °'+type +'\n' +"from: " +source,
+            source: source
         });
         marker.setMap(map);
+        done(marker);
+
     }
     return{
         initialize: initialize,
