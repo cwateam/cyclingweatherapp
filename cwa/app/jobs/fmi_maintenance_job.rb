@@ -10,7 +10,7 @@ class FmiMaintenanceJob < ActiveJob::Base
     
     json_hash.each { |key, value|
       
-      mtime = Time.iso8601(value["mtime"])
+      mtime = Time.at(value["mtime"])
       
       if mtime < time_now - (60 * 30)
         firebase.delete("fmi_temp/#{key}")
