@@ -11,7 +11,6 @@ App.controller('MarkerController',['$scope','FirebaseService','MapService', func
                 if(data.source === "fmi" || !data.source) {
                     $scope.fmiMarkers.push(data);
                 } else {
-                    console.log(data);
                     $scope.tempPoints.push(data);
                 }
             })

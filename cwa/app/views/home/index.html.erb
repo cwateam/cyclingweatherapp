@@ -1,7 +1,7 @@
 <div ng-controller="HomeController" class="view-container"  >
   <div  class="view-frame animate-view">
 
-    <div id="content" ng-controller="MarkerController as markers">
+    <div id="content">
 
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -28,7 +28,7 @@
               <label class="btn btn-warning navbar-btn big-icon big-icon-padding">
                 <input type="button" value="particulates" ><span class="glyphicon glyphicon-asterisk"></span>
               </label>
-              <label class="btn btn-warning navbar-btn big-icon big-icon-padding">
+              <label ng-controller="MarkerController as markers" class="btn btn-warning navbar-btn big-icon big-icon-padding">
                 <input type="button" ng-click="hideAllTempMarkers()" value="temperature"  id="temperature"><span class="glyphicon glyphicon-dashboard"></span>
               </label>
             </div>
