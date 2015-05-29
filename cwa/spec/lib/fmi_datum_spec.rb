@@ -15,9 +15,9 @@ describe 'FmiDatum' do
     # check first station's record
     record = data[0]
     #expect(record[0]).to eq("100683")
-    expect(record[0]).to eq("60.30375")
-    expect(record[1]).to eq("25.54925")
-    expect(record[2]).to eq(1432409400)
+    expect(record[0]).to eq(60.30375)
+    expect(record[1]).to eq(25.54925)
+    expect(record[2]).to eq(1432409400000)
     expect(record[3]).to eq(7.6)
     expect(record[4]).to eq("fmi")
     #expect(record[5]).to eq("Porvoo Kilpilahti satama")
@@ -25,9 +25,9 @@ describe 'FmiDatum' do
     # check last station's record
     record = data[188]
     #expect(record[0]).to eq("874863")
-    expect(record[0]).to eq("60.17802")
-    expect(record[1]).to eq("24.78732")
-    expect(record[2]).to eq(1432409400)
+    expect(record[0]).to eq(60.17802)
+    expect(record[1]).to eq(24.78732)
+    expect(record[2]).to eq(1432409400000)
     expect(record[3]).to eq(8.1)
     expect(record[4]).to eq("fmi")
     #expect(record[5]).to eq("Espoo Tapiola")

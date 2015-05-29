@@ -21,9 +21,9 @@ class FmiJob < ActiveJob::Base
                                    :created => Firebase::ServerValue::TIMESTAMP,
                                    :datatype => "temperature",
                                    #:fmisid => record[0],
-                                   :g => GeoHash.encode(record[0].to_f, record[1].to_f),
-                                   :l => {:'0' => record[0].to_f,
-                                          :'1' => record[1].to_f},
+                                   :g => GeoHash.encode(record[0], record[1]),
+                                   :l => {:'0' => record[0],
+                                          :'1' => record[1]},
                                    :mtime => record[2],
                                    :value => record[3],
                                    :source => record[4]

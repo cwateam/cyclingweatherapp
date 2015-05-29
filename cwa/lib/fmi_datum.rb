@@ -26,13 +26,11 @@ class FmiDatum
  
           # latitude and longitude
           lal = station.xpath("om:featureOfInterest/sams:SF_SpatialSamplingFeature/sams:shape/gml:Point/gml:pos").inner_text.strip
-          record << lal[0..lal.index(' ') - 1]
-          record << lal[lal.index(' ') + 1..lal.length]
+          record << (lal[0..lal.index(' ') - 1]).to_f
+          record << (lal[lal.index(' ') + 1..lal.length]).to_f
 
           # mtime and temperature
-          
-          record << Time.iso8601(station.xpath("om:result/wml2:MeasurementTimeseries/wml2:point/wml2:MeasurementTVP/wml2:time").last.inner_text).to_i
-          
+          record << (Time.iso8601(station.xpath("om:result/wml2:MeasurementTimeseries/wml2:point/wml2:MeasurementTVP/wml2:time").last.inner_text).to_f*1000).to_i
           record << station.xpath("om:result/wml2:MeasurementTimeseries/wml2:point/wml2:MeasurementTVP/wml2:value").last.inner_text.to_f
           # location
           #record << station.xpath("om:featureOfInterest/sams:SF_SpatialSamplingFeature/sam:sampledFeature/target:LocationCollection/target:member/target:Location/gml:name").first.inner_text
