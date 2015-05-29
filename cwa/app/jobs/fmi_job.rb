@@ -27,6 +27,7 @@ class FmiJob < ActiveJob::Base
                                    :mtime => record[2],
                                    :value => record[3],
                                    :source => record[4]
+		                               #:location => record[5],
                                  })
       } 
     end
