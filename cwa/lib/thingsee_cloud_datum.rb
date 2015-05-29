@@ -29,6 +29,7 @@ class ThingseeCloudDatum
                                })
         # TODO set up lookup so that it doesn't matter if order of data in json-response is random
         # atm lookup is dependent on order of sense data in hash; if specified data not present in hash, value is nil
+
         temperature = result['events'][0]['cause']['senses'][0]['val'] if result['events'][0]['cause']['senses'][0]
         latitude = result['events'][0]['cause']['senses'][1]['val'] if result['events'][0]['cause']['senses'][1]
         longitude = result['events'][0]['cause']['senses'][2]['val'] if result['events'][0]['cause']['senses'][2]
@@ -39,6 +40,11 @@ class ThingseeCloudDatum
         record << timestamp
         record << temperature
         record << 'thingsee'
+        record.each {|entry|
+          if entry.nil?
+            raise "nil"
+          end
+        }
 
         return record
       end
