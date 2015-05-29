@@ -14,8 +14,6 @@ set :bower_target_path, ->{release_path.join('vendor/assets/')}
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
-set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets}
-
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
