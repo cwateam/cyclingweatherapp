@@ -17,7 +17,7 @@ class FmiDatum
           # "mtime",
           # "temperature",
           ###### "location",
-          # "source"]
+          # "source (=fmi)"]
           
           record = Array.new
           

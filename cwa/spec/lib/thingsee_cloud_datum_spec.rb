@@ -5,7 +5,7 @@ describe 'ThingseeCloudDatum' do
   it 'should parse and return a single temperature record returned through get' do
     canned_answer = File.new("./spec/lib/samples/thingsee_single_temp.json").read
 
-    #will have to specify :get regex further
+    #might have to specify :get regex further?
     stub_request(:get, /.*0x00060100.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
 
     record = ThingseeCloudDatum.deliver("temperature")
@@ -19,7 +19,7 @@ describe 'ThingseeCloudDatum' do
   it 'should parse and return a temperature with location record returned through get' do
     canned_answer = File.new("./spec/lib/samples/thingsee_temp_with_loc.json").read
 
-    #will have to specify :get regex further
+    #might have to specify :get regex further?
     stub_request(:get, /.*0x00060100.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
 
     record = ThingseeCloudDatum.deliver("temperature")

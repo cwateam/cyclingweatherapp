@@ -13,21 +13,22 @@ class ThingseeCloudDatum
 
       if type == "temperature"
         record = Array.new
-
+        #get only the latest temperature data
         query = query_base+"&senses=0x00060100&limit=1"
 
-        # record = ["thingseeid",
+        # record = [
         # "latitude",
         # "longitude",
         # "mtime", (timestamp of data push to cloud)
-        # "temperature"]
+        # "temperature",
+        # "source (=thingsee)"]
 
         result = HTTParty.get(query,
                                {
                                    :headers => query_headers
                                })
         # TODO set up lookup so that it doesn't matter if order of data in json-response is random
-        # atm lookup is dependent on order of sense data in hash
+        # atm lookup is dependent on order of sense data in hash; if specified data not present in hash, value is nil
         temperature = result['events'][0]['cause']['senses'][0]['val'] if result['events'][0]['cause']['senses'][0]
         latitude = result['events'][0]['cause']['senses'][1]['val'] if result['events'][0]['cause']['senses'][1]
         longitude = result['events'][0]['cause']['senses'][2]['val'] if result['events'][0]['cause']['senses'][2]
