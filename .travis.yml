@@ -3,7 +3,9 @@ rvm:
 - 2.2.0
 script:
 - cd cwa/
+- npm install -g bower
 - bundle install
+- bundle exec rake bower:install
 - bundle exec rake db:migrate --trace
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
