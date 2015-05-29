@@ -14,13 +14,4 @@ $( "#target" ).submit(function( event ) {
 
 $('#weather').children().attr('disabled', 'disabled');
 
-function cbChanged(checkboxElem){
-    if(checkboxElem.value == "particulates") {
-	/*
-	$(".particulates").toggle();
-	*/
-    }
-    if(checkboxElem.value == "temperature") {
-	    $(".temperature").toggle();
-    }
-}
+
