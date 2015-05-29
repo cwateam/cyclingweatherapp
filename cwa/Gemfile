@@ -23,6 +23,7 @@ gem 'autoprefixer-rails'
 gem "sidekiq"
 gem 'whenever', :require => false
 gem 'responders', '~> 2.0'
+gem 'sinatra', :require => nil
 
 #Pure Ruby gem that implements the MQTT protocol
 gem 'mqtt'

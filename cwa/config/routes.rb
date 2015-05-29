@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :temperatures, :air_qualities
   end
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
 
   # Example of regular route:
