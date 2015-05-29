@@ -19,18 +19,21 @@ App.controller('MarkerController',['$scope','FirebaseService','MapService', func
         });
     };
 
-    $scope.hideFmiMarkers = function(){
-        for (var i = 0; i < $scope.fmiMarkers.length; i++){
+    $scope.hideAllTempMarkers = function(){
+        hideTempMarkers($scope.fmiMarkers, $scope.$parent.map);
+        hideTempMarkers($scope.tempPoints, $scope.$parent.map);
+    };
 
-            var marker =  $scope.fmiMarkers[i];
-
+    hideTempMarkers = function(markers, map){
+        for (var i = 0; i < markers.length; i++){
+            var marker =  markers[i];
             if(!marker.getMap()){
-                marker.setMap($scope.$parent.map);
+                marker.setMap(map);
             } else {
                 marker.setMap(null)
             }
         }
-    }
+    };
 
     angular.element(document).ready(function () {
         $scope.addTemperatureMarkers();
