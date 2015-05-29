@@ -60,7 +60,8 @@ namespace :cwa do
   desc 'Assets'
   task :assets do
     on "deployer@46.101.185.190" do
-      execute ("cd #{deploy_to}/current/public/assets && rm -rf bootstrap && rm * && cd #{deploy_to}/current/ && bundle exec rake assets:precompile")
+      execute ("cd #{deploy_to}/current/public/ && rm -rf assets")
+      execute ("cd #{deploy_to}/current/ && bundle exec rake assets:precompile")
     end
   end
 end
