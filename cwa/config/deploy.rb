@@ -47,32 +47,42 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+# cap deploy:assets
+# cap production rake:assets
+
 # Set the post-deployment instructions here.
 # Once the deployment is complete, Capistrano
 # will begin performing them as described.
 # To learn more about creating tasks,
 # check out:
 # http://capistranorb.com/
+namespace :cwa do
+  desc 'Assets'
+  task :assets do
+    on "deployer@46.101.185.190" do
+      execute ("cd #{deploy_to}/current/public/assets && rm -rf bootstrap && rm * && cd #{deploy_to}/current/ && bundle exec rake assets:precompile")
+    end
+  end
+end
 
-# namespace: deploy do
+#namespace :deploy do
 
-#   desc 'Restart application'
-#   task :restart do
-#     on roles(:app), in: :sequence, wait: 5 do
-#       # Your restart mechanism here, for example:
-#       execute :touch, release_path.join('tmp/restart.txt')
-#     end
-#   end
-
-#   after :publishing, :restart
-
-#   after :restart, :clear_cache do
-#     on roles(:web), in: :groups, limit: 3, wait: 10 do
-#       # Here we can do anything such as:
-#       # within release_path do
-#       #   execute :rake, 'cache:clear'
-#       # end
-#     end
-#   end
-
-# end
+  #   desc 'Restart application'
+  #   task :restart do
+  #     on roles(:app), in: :sequence, wait: 5 do
+  #       # Your restart mechanism here, for example:
+  #       execute :touch, release_path.join('tmp/restart.txt')
+  #     end
+  #   end
+  
+  #   after :publishing, :restart
+  
+  #   after :restart, :clear_cache do
+  #     on roles(:web), in: :groups, limit: 3, wait: 10 do
+  #       # Here we can do anything such as:
+  #       # within release_path do
+  #       #   execute :rake, 'cache:clear'
+  #       # end
+  #     end
+  #   end
+#end
