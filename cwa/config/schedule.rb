@@ -8,8 +8,12 @@ every 10.minutes do
   runner2 "FmiMaintenanceJob.perform_later"
 end
 
-every 30.minutes do
-  #runner2 "ThingseeCloudJob.perform_later"
+every 5.minutes do
+  runner2 "ThingseeCloudJob.perform_later"
+end
+
+every 5.minutes do
+  #Thingsee maintenance
 end
 
 # Use this file to easily define all of your cron jobs.

@@ -10,6 +10,7 @@ describe 'FmiDatum' do
     stub_request(:get, /.*temperature.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "text/xml" })
 
     data = FmiDatum.deliver("temperature")
+    
     expect(data.size).to eq(189)
     # check first station's record
     record = data[0]
