@@ -14,6 +14,8 @@ set :bower_target_path, ->{release_path.join('vendor/assets/')}
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
+set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets}
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -34,8 +36,6 @@ set :format, :pretty
 
 # Default value for :pty is false
 set :pty, true
-
-after "deploy:restart", "deploy:cleanup"
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
