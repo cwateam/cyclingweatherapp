@@ -2,30 +2,29 @@ class ThingseeCloudJob < ActiveJob::Base
   queue_as :default
 
   def perform(*args)
-    data = ThingseeCloudData.deliver("temperature")
-    if data != "error"
+    record= ThingseeCloudDatum.deliver("temperature")
+    if record != "error"
       base_uri = 'https://glowing-inferno-7580.firebaseio.com/'
       firebase = Firebase::Client.new(base_uri)
-      
-      data.each { |record|
+
         
-        # record = ["thingseeid",
+        # record = [
         # "latitude",
         # "longitude",
         # "mtime",
-        # "temperature"]
+        # "temperature",
+        # "thingsee"]
         
-        response = firebase.push("thingsee_temp", {
-                                   :datatype => "temperature",
-                                   :g => GeoHash.encode(record[1].to_f, record[2].to_f),
-                                   :l => {:'0' => record[1].to_f,
-                                          :'1' => record[2].to_f},
-                                   :thingseeid => record[0],
-                                   :mtime => record[3],
-                                   :created => Firebase::ServerValue::TIMESTAMP,
-                                   :value => record[4]
-                                 })
-      }
+        firebase.push("thingsee_temp", {
+         :created => Firebase::ServerValue::TIMESTAMP,
+         :datatype => "temperature",
+         :g => GeoHash.encode(record[0].to_f, record[1].to_f),
+         :l => {:'0' => record[0].to_f,
+                :'1' => record[1].to_f},
+         :mtime => record[2],
+         :value => record[3],
+         :source => record[4]
+       })
     end
   end
 end

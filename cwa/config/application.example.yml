@@ -1,7 +1,10 @@
+# copy this file as "application.yml" and fill in your apikeys and tokens
 defaults: &defaults
   FMI_APIKEY: 'your-apikey'
   GOOGLE_SERVER_APIKEY: 'your-apikey'
   GOOGLE_BROWSER_APIKEY: 'your-apikey'
+  THINGSEE_ID: 'your_device_id'
+  THINGSEE_TOKEN: 'your_device_token'
 
 development:
   <<: *defaults
