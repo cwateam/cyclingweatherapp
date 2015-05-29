@@ -37,10 +37,17 @@ App.service('MapService', function(){
     };
 
     var addMarker = function(map,lat, lng, type, value, source, done){
+        var icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+
+        if (source === 'fmi'){
+            icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+        }
+
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
             title:  value +' °'+type +'\n' +"from: " +source,
-            source: source
+            source: source,
+            icon: icon
         });
         marker.setMap(map);
         done(marker);
