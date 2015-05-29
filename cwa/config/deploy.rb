@@ -12,8 +12,6 @@ set :passenger_restart_command, '-i passenger-config restart-app'
 
 set :bower_target_path, ->{release_path.join('vendor/assets/')}
 
-#set :bundle_gemfile, -> { release_path.join('cwa/Gemfile') }
-
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Default branch is :master
@@ -36,6 +34,8 @@ set :format, :pretty
 
 # Default value for :pty is false
 set :pty, true
+
+after "deploy:restart", "deploy:cleanup"
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')

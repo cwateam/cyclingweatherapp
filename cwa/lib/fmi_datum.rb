@@ -6,7 +6,7 @@ class FmiDatum
         start_time = (Time.now - 1.hours).utc.iso8601
         bbox = "19,59,32,70"
         query = "http://data.fmi.fi/fmi-apikey/" + apikey + "/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=" + bbox + "&parameters=temperature&starttime=" + start_time
-        response = HTTParty.get(query)
+        response = HTTParty.get(query, timeout: 180)
         xml_doc = Nokogiri::XML(response.body)
         data = Array.new
         
