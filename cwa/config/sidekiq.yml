@@ -3,5 +3,6 @@
 :pidfile: ./tmp/pids/sidekiq.pid
 :logfile: ./log/sidekiq.log
 :queues:
-  - default
-  - [high_priority, 2]
+  - [critical, 3]
+  - [default, 2]
+  - [low, 1]

@@ -1,5 +1,5 @@
 class ThingseeCloudMaintenanceJob < ActiveJob::Base
-  queue_as :default
+  queue_as :critical
 
   def perform(*args)
     base_uri = 'https://glowing-inferno-7580.firebaseio.com/'
