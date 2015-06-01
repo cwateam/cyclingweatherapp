@@ -10,7 +10,7 @@ App.service('MapService', function(){
             center: new google.maps.LatLng(60.1900, 24.9375),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             streetViewControl: false,
-            mapTypeControl: false
+            mapTypeControl: true
         };
 
         var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
@@ -19,6 +19,8 @@ App.service('MapService', function(){
         return map;
 
     };
+
+
 
     var toggleBikeOverlay = function(map){
         if(bikeLayer.getMap() !== null){
@@ -55,9 +57,17 @@ App.service('MapService', function(){
 
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
-            title:  value +' °'+type +'\n' +"from: " +source,
             source: source,
             icon: icon
+        });
+        var infowindow = new google.maps.InfoWindow({
+            content: value +' °'+type +'\n' +"from: " +source
+        });
+        google.maps.event.addListener(marker, 'mouseover', function() {
+            infowindow.open(map,marker);
+        });
+        google.maps.event.addListener(marker, 'mouseout', function() {
+            infowindow.close(map,marker);
         });
         marker.setMap(map);
         done(marker);

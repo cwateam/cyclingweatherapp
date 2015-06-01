@@ -6,6 +6,7 @@ App.controller('MarkerController',['$scope','FirebaseService','MapService', func
 
     $scope.addTemperatureMarkers = function(){
         var center = $scope.$parent.map.getCenter();
+        var i = 0;
         var locations = FirebaseService.getTempData(center.lat(),center.lng(), 25, function(data){
         MapService.addMarker($scope.$parent.map, data.l[0],data.l[1],'C', data.value, data.source, function(data){
                 if(data.source === "fmi" || !data.source) {
