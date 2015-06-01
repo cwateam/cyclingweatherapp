@@ -25,15 +25,18 @@
             </form>
 
             <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-warning navbar-btn big-icon big-icon-padding">
-                <input type="button" value="particulates" ><span class="glyphicon glyphicon-asterisk"></span>
+              <label>
+                <span class="glyphicon glyphicon-asterisk btn btn-warning navbar-btn big-icon big-icon-padding"></span>
               </label>
-              <label ng-controller="MarkerController as markers" class="btn btn-warning navbar-btn big-icon big-icon-padding">
-                <input type="button" ng-click="hideAllTempMarkers()" value="temperature"  id="temperature"><span class="glyphicon glyphicon-dashboard"></span>
+              <label ng-controller="MarkerController as markers" ng-click="hideAllTempMarkers()">
+                <span class="glyphicon glyphicon-dashboard btn btn-warning navbar-btn big-icon big-icon-padding"  id="temperature"></span>
+              </label>
+              <label ng-controller="BikeOverlayController as bikeOverlay" ng-click="toggleBikeOverlay()">
+                <span class="glyphicon glyphicon-transfer btn btn-warning navbar-btn big-icon big-icon-padding"  id="bikeOverlay"></span>
               </label>
             </div>
             <button type="button" class="btn btn-default btn-info big-icon big-icon-padding" data-placement="bottom" data-toggle="popover">
-              <span class="glyphicon glyphicon-question-sign"></span>
+              <span class="glyphicon glyphicon-question-sign "></span>
             </button>
           </div>
         </div>

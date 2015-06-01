@@ -1,6 +1,7 @@
 App.service('MapService', function(){
 
     var directionsDisplay;
+    var bikeLayer;
 
 
     var initialize = function() {
@@ -13,11 +14,18 @@ App.service('MapService', function(){
         };
 
         var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        var bikeLayer;
         bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
         return map;
 
+    };
+
+    var toggleBikeOverlay = function(map){
+        if(bikeLayer.getMap() !== null){
+            bikeLayer.setMap(null);
+        } else {
+            bikeLayer.setMap(map);
+        };
     };
 
     var calcRoute = function(map, start, end){
@@ -58,7 +66,8 @@ App.service('MapService', function(){
     return{
         initialize: initialize,
         addMarker: addMarker,
-        calcRoute: calcRoute
+        calcRoute: calcRoute,
+        toggleBikeOverlay: toggleBikeOverlay
     };
 });
 
