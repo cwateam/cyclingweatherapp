@@ -95,4 +95,11 @@ describe('MarkerController', function(){
         expect(scope.fmiMarkers[0].getMap()).toEqual(null);
     });
 
+    it('should should show all the markers again when hide temperatures button is pushed two times', function(){
+        scope.hideAllTempMarkers();
+        scope.hideAllTempMarkers();
+
+        expect(scope.fmiMarkers[0].getMap()).toEqual(mapMock);
+    });
+
 });
