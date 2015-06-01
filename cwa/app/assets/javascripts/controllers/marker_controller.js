@@ -12,8 +12,8 @@ App.controller('MarkerController',['$scope','FirebaseService','MapService', func
                     $scope.fmiMarkers.push(data);
                 } else {
                     $scope.tempPoints.push(data);
-                }
-            })
+                };
+            });
 
         });
     };
@@ -29,9 +29,9 @@ App.controller('MarkerController',['$scope','FirebaseService','MapService', func
             if(!marker.getMap()){
                 marker.setMap(map);
             } else {
-                marker.setMap(null)
-            }
-        }
+                marker.setMap(null);
+            };
+        };
     };
 
     angular.element(document).ready(function () {

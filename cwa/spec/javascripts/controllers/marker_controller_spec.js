@@ -4,14 +4,29 @@ describe('MarkerController', function(){
     var FirebaseServiceMock;
     var mapMock;
     var scope, controller, parent;
+    var marker;
 
     beforeEach(function() {
         module('App');
 
+        marker = function(){
+            this.map = null;
+            return {
+                setMap: function(map){
+                    this.map = map;
+                },
+                getMap: function(){
+                    return this.map;
+                }
+            }
+        };
+
         MapServiceMock = (function(){
             return{
                 addMarker: function(map,lat, lng, type, value, source, done){
-                    done("testi");
+                    var newMarker = new marker;
+                    newMarker.setMap(map);
+                    done(newMarker);
                 }
             }
         })();
@@ -69,8 +84,15 @@ describe('MarkerController', function(){
         expect(scope.fmiMarkers.length).toEqual(1);
     });
 
-
-    it('true should be true', function(){
-        expect(true).toBe(true);
+    it('should set corrrect map for all new markers', function(){
+        expect(scope.fmiMarkers[0].getMap()).toEqual(mapMock);
     });
+
+
+    it('should should hide all the markers when hide temperatures button is pushed', function(){
+        scope.hideAllTempMarkers();
+
+        expect(scope.fmiMarkers[0].getMap()).toEqual(null);
+    });
+
 });

@@ -10,6 +10,4 @@ App.controller('HomeController',['$scope','MapService', function($scope, MapServ
         MapService.calcRoute($scope.map, $scope.routeStart, $scope.routeEnd);
     };
 
-
-
 }]);
