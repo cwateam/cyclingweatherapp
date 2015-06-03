@@ -5,9 +5,9 @@ module API
       format :json
 
       resource :events do
-        desc "Receive  event"
+        desc "Receive event"
         post do
-          puts "ehhehee"
+          puts params.to_s
         end
       end
     end
