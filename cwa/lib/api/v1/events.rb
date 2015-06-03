@@ -7,7 +7,7 @@ module API
       resource :events do
         desc "Receive event"
         post do
-          logger.info params.to_s
+          puts params.to_s
         end
       end
     end
