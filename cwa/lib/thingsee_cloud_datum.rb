@@ -12,7 +12,6 @@ class ThingseeCloudDatum
       device_token = "Bearer " + token
       query_base = "http://api.thingsee.com/v1/events/"+device_id+"?type=sense"
       query_headers = { 'Content-Type' => 'application/json', 'Authorization' => device_token}
-      byebug
       if type == "temperature"
         record = Array.new
         #get only the latest temperature data
