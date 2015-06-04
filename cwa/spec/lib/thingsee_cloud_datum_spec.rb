@@ -1,9 +1,6 @@
 require 'rspec/rails'
 
 describe 'ThingseeCloudDatum' do
-  before :each do
-    Rails.cache.clear
-  end
 
   it 'should return error with incomplete input' do
     temperature_response = File.new("./spec/lib/samples/thingsee_single_temp.json").read
