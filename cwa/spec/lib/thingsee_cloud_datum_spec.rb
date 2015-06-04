@@ -2,6 +2,9 @@ require 'rspec/rails'
 
 describe 'ThingseeCloudDatum' do
 
+  new_token = TsToken.new(token:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0cyI6MTQzMzQxMjI2MzYwOSwidXVpZCI6Ijk5OTM2MjMwLTA0M2MtMTFlNS04MTJlLTg5N2YzNGY0N2Q0OCIsInNjb3BlIjpbImFsbDphbGwiXSwiaWF0IjoxNDMzNDEyMjYzLCJleHAiOjE0MzQwMTcwNjN9.X4_xEOrcIphWsTXquNHKvql9qiJAWgNNL50wkF3Bq3k")
+  new_token.save
+  
   it 'should return error with incomplete input' do
     canned_answer = File.new("./spec/lib/samples/thingsee_single_temp.json").read
 
@@ -20,6 +23,7 @@ describe 'ThingseeCloudDatum' do
 
     record = ThingseeCloudDatum.deliver("temperature")
     # check first station's record
+
     expect(record[0]).to eq(60.1820)
     expect(record[1]).to eq(24.9255)
     expect(record[2]).to eq(1432852761910)
