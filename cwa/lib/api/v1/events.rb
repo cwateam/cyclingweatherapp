@@ -5,9 +5,14 @@ module API
       format :json
 
       resource :events do
+
+        params do
+          requires :senses
+        end
+        
         desc "Receive event"
         post do
-          Rails.logger.info params.to_s
+          Rails.logger.info params.senses.to_s
         end
       end
     end
