@@ -1,15 +1,14 @@
 require 'rspec/rails'
 
 describe 'ThingseeCloudDatum' do
-
-  new_token = TsToken.new(token:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0cyI6MTQzMzQxMjI2MzYwOSwidXVpZCI6Ijk5OTM2MjMwLTA0M2MtMTFlNS04MTJlLTg5N2YzNGY0N2Q0OCIsInNjb3BlIjpbImFsbDphbGwiXSwiaWF0IjoxNDMzNDEyMjYzLCJleHAiOjE0MzQwMTcwNjN9.X4_xEOrcIphWsTXquNHKvql9qiJAWgNNL50wkF3Bq3k")
-  new_token.save
   
   it 'should return error with incomplete input' do
     canned_answer = File.new("./spec/lib/samples/thingsee_single_temp.json").read
 
     #might have to specify :get regex further?
-    stub_request(:get, /.*0x00060100.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
+    stub_request(:get, /.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
+
+    stub_request(:post, /.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
 
     record = ThingseeCloudDatum.deliver("temperature")
     expect(record).to eq("error")
@@ -19,10 +18,13 @@ describe 'ThingseeCloudDatum' do
     canned_answer = File.new("./spec/lib/samples/thingsee_temp_with_loc.json").read
 
     #might have to specify :get regex further?
-    stub_request(:get, /.*0x00060100.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
+    stub_request(:get, /.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
 
+    stub_request(:post, /.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
+    
     record = ThingseeCloudDatum.deliver("temperature")
     # check first station's record
+    byebug
 
     expect(record[0]).to eq(60.1820)
     expect(record[1]).to eq(24.9255)
@@ -40,8 +42,10 @@ describe 'ThingseeCloudDatum' do
     canned_answer = File.new("./spec/lib/samples/thingsee_temp_with_loc.json").read
 
     #might have to specify :get regex further?
-    stub_request(:get, /.*0x00060100.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
+    stub_request(:get, /.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
 
+    stub_request(:post, /.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
+    
     record = ThingseeCloudDatum.deliver("temperature")
     # check first station's record
     expect(record[0]).to eq(60.1820)

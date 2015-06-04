@@ -6,7 +6,8 @@ class ThingseeCloudDatum
     require 'json'
 
     begin
-      token = HTTParty.post("http://api.thingsee.com/v1/accounts/login", :body => { :email => 'cyclingweatherapp@gmail.com', :password => 'Keksipyorauudelleen1'}.to_json, :headers => { 'Content-Type' => 'application/json'})["accountAuthToken"]
+      #haxtoken
+      token = HTTParty.post("http://api.thingsee.com/v1/accounts/login", :body => { :email => ENV["THINGSEE_CLOUD_U"], :password => ENV["THINGSEE_CLOUD_P"] }.to_json, :headers => { 'Content-Type' => 'application/json'})["accountAuthToken"]
       device_id = ENV["THINGSEE_ID"]
       device_token = "Bearer " + token
       query_base = "http://api.thingsee.com/v1/events/"+device_id+"?type=sense"
