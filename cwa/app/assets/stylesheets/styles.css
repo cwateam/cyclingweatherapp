@@ -38,3 +38,14 @@ body {
 .big-icon-padding {
     padding: 2px 12px 0px;
 }
+
+#directions {
+    overflow: scroll;
+    height: 200px;
+}
+
+
+
+#directionsDiv {
+
+}

@@ -33,9 +33,11 @@ App.service('MapService', function(){
     var calcRoute = function(map, start, end){
         if (directionsDisplay != null){
             directionsDisplay.setMap(null);
+            directionsDisplay.setPanel(null);
         };
         var directionsService= new google.maps.DirectionsService();
         directionsDisplay = new google.maps.DirectionsRenderer();
+        directionsDisplay.setPanel(document.getElementById("directions"));
         directionsDisplay.setMap(map);
         var request = {
             origin: start,
