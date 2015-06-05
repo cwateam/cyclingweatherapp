@@ -14,6 +14,8 @@ set :bower_target_path, ->{release_path.join('vendor/assets/')}
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
+set :sidekiq_options, '--config ./config/sidekiq.yml'
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
