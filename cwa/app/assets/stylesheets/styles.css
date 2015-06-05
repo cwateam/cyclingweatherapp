@@ -16,6 +16,10 @@ html, body {
     box-sizing: content-box;
 }
 
+.container-fluid {
+    overflow: scroll;
+}
+
 body {
     padding-top: 50px;
 }
@@ -37,15 +41,4 @@ body {
 }
 .big-icon-padding {
     padding: 2px 12px 0px;
-}
-
-#directions {
-    overflow: scroll;
-    height: 200px;
-}
-
-
-
-#directionsDiv {
-
 }
