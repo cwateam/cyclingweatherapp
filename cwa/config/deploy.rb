@@ -64,6 +64,12 @@ namespace :cwa do
       execute ("cd #{deploy_to}/current/ && bundle exec rake assets:precompile")
     end
   end
+  desc 'Migrations'
+  task :migrations do
+    on "deployer@46.101.185.190" do
+      execute ("cd #{deploy_to}/current/ && rake db:migrate RAILS_ENV=development")
+    end
+  end
 end
 
 #namespace :deploy do
