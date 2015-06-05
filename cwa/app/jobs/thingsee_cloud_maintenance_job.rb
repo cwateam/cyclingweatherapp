@@ -9,7 +9,7 @@ class ThingseeCloudMaintenanceJob < ActiveJob::Base
     time_now = (Time.now.to_f*1000).to_i
 
     json_hash.each { |key, value|
-      firebase.delete("thingsee_temp/#{key}") if value["mtime"] < (time_now - 30*60*1000)
+      firebase.delete("thingsee_temp/#{key}") if value["mtime"] < (time_now - 72*60*60*1000)
     }
   end
 end
