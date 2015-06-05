@@ -17,7 +17,7 @@ html, body {
 }
 
 .container-fluid {
-    overflow: scroll;
+    overflow: auto;
 }
 
 body {
