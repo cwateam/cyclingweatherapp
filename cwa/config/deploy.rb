@@ -1,7 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'cwa'
 set :repo_url, 'git@github.com:cwateam/cyclingweatherapp.git'
 set :repo_tree, 'cwa'
 
@@ -14,13 +13,21 @@ set :bower_target_path, ->{release_path.join('vendor/assets/')}
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
-set :sidekiq_queue, ['critical,3', 'default,2', 'low,1']
+# Specify the server that Resque will be deployed on. If you are using Cap v3
+# and have multiple stages with different Resque requirements for each, then
+# these __must__ be set inside of the applicable config/deploy/... stage files
+# instead of config/deploy.rb:
+role :resque_worker, %w{deployer@46.101.185.190}
+role :resque_scheduler, %w{deployer@46.101.185.190}
+
+set :workers, { "critical" => 3, "default" => 2, "low" => 1 }
+
+set :resque_environment_task, true
+
+after "deploy:restart", "resque:restart"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
-# Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deployer/apps/cwa'
 
 # Deployment user on remote servers
 set :user, 'deployer'

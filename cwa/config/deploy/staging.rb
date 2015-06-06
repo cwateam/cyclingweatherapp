@@ -6,6 +6,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
+server '46.101.185.190', user: 'deployer', roles: %w{web}
 
 
 
@@ -20,6 +21,9 @@
 # role :app, %w{deploy@example.com}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
+role :app, %w{deployer@46.101.185.190}
+role :web, %w{deployer@46.101.185.190}
+role :db,  %w{deployer@46.101.185.190}
 
 
 
@@ -30,6 +34,11 @@
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+set :application, 'cwa_sta'
+
+# Default deploy_to directory is /var/www/my_app_name
+set :deploy_to, '/home/deployer/apps/cwa_sta'
+
 
 
 

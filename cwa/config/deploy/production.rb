@@ -34,6 +34,11 @@ role :db,  %w{deployer@46.101.185.190}
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+set :application, 'cwa'
+
+# Default deploy_to directory is /var/www/my_app_name
+set :deploy_to, '/home/deployer/apps/cwa'
+
 
 
 
