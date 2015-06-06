@@ -13,6 +13,8 @@ set :bower_target_path, ->{release_path.join('vendor/assets/')}
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
+set :branch, 'staging'
+
 # Specify the server that Resque will be deployed on. If you are using Cap v3
 # and have multiple stages with different Resque requirements for each, then
 # these __must__ be set inside of the applicable config/deploy/... stage files

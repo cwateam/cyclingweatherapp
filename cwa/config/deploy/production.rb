@@ -39,9 +39,6 @@ set :application, 'cwa'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/deployer/apps/cwa'
 
-set :branch, fetch(:branch, "master")
-set :env, fetch(:env, "production")
-
 
 
 # Custom SSH Options
