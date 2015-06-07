@@ -13,6 +13,8 @@ set :bower_target_path, ->{release_path.join('vendor/assets/')}
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
+set :whenever_roles, :production
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

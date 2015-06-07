@@ -23,7 +23,8 @@ server '46.101.185.190', user: 'deployer', roles: %w{web}
 # role :db,  %w{deploy@example.com}
 role :app, %w{deployer@46.101.185.190}
 role :web, %w{deployer@46.101.185.190}
-role :db,  %w{deployer@46.101.185.190}
+role :db, %w{deployer@46.101.185.190}
+role :production, %w{deployer@46.101.185.190}
 
 
 
