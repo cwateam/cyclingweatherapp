@@ -22,8 +22,10 @@ notifications:
     on_failure: always
 after_success:
 - "openssl aes-256-cbc -k $DEPLOY_KEY -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa"
-- "[[ $TRAVIS_BRANCH = 'staging' ]] && bundle exec cap staging deploy"
+- "[[ $TRAVIS_BRANCH = 'staging' ]] && bundle exec cap -S branch=staging staging deploy"
 - "[[ $TRAVIS_BRANCH = 'staging' ]] && bundle exec cap staging cwa:migrations"
+- "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap -S branch=master production deploy"
+- "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:migrations"
 env:
   global:
     secure: Bma7tKSmls9w4yOLQjMKyjiCtsW+jm4vgABFzgfgXCF/US2a7d0dD7P+WK/xojOCLGlf9XOGkjMIzH8/aP4Vov6+0IsjQ0t4rvGSG2tkUZ2AepnRwObz2dle10SggxkeQBruotEPBw56X2JkC0FCnkfvEYhQ1YZ9DDmSZ0118GmPo1g7rfBuSjJ+fsav6cXC4b9SAyIkpRqdY3QG2Y7zSaPj8rW4KzGdWc4pU6WybySIfCCH4+Hh6VMGzuxUzsBTHC10Y//zRgMZDzrJT5OTd7mgvgeKdte+BKiU4ywLPZx+/sByBVn0pL2NCe5nV3QIxfcZne1XT3b/x8UZ5Ee98MPsjeJXixRR68rQ8HwLjW4R0zQXkEF3JIVHbyJW9OugUrwVbbwFopzfDGhAUbOX7fznl6UTQqSe1tSukOXK6vJedksEpy4WQ96sqOtzn6C9ausNFojKm+4Tp5Pxq9A6NrrOJJv9T1XrNiGmjNSC1W4Exi9IuJLhwNFubqPNuEpr7GyejTBS+16/3CTDgnXbekEBO1gk7prRZv1G2NbgIBgqzxdYwVe++9qvreIuCmiMEKwjLAT6dkW5CzG1c+5zWX7zdI4cHKU1T6pMkKE4BwlYuBG9BCcuS1gHUPgu2Pwwqw5X0CTyyZMoLFQAEYvOX/3k9I8J+9KtNEFAdvtm2nw=
