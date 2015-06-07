@@ -29,8 +29,6 @@ after "deploy:restart", "resque:restart"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-set :branch, fetch(:branch, 'master')
-
 # Deployment user on remote servers
 set :user, 'deployer'
 

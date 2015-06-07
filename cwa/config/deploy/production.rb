@@ -39,6 +39,8 @@ set :application, 'cwa'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/deployer/apps/cwa'
 
+set :branch, 'master'
+
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
