@@ -4,7 +4,7 @@
     <div id="content">
 
       <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+        <div>
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
               <span class="sr-only">Toggle navigation</span>
@@ -12,7 +12,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#directions"></button>
+
             <a class="navbar-brand" href="/">CWA</a>
           </div>
           <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
@@ -25,7 +25,7 @@
               <button ng-click="calcRoute()" class="btn btn-default btn-info" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Route
               </button>
             </form>
-
+            <button type="button" class="btn btn-default btn-info" data-toggle="collapse" data-target="#directionsDiv"></button>
             <div class="btn-group" data-toggle="buttons">
               <label>
                 <span class="glyphicon glyphicon-asterisk btn btn-warning navbar-btn big-icon big-icon-padding"></span>
@@ -41,12 +41,13 @@
               <span class="glyphicon glyphicon-question-sign "></span>
             </button>
           </div>
-          <div  class="collapse navbar-collapse"  id="directions">
-
-          </div>
         </div>
-      </nav>
 
+        <div class="container-fluid" id="directionsDiv">
+            <div  class="collapse navbar-collapse"  id="directions">
+            </div>
+            </div>
+      </nav>
 
       <div class="container-map">
         <div ng-model="map"id="map_canvas"></div>
