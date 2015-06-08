@@ -62,6 +62,12 @@ namespace :cwa do
       execute ("cd #{deploy_to}/current/ && bundle exec rake assets:precompile")
     end
   end
+  desc 'Clobber'
+  task :clobber do
+    on "deployer@46.101.185.190" do
+      execute ("cd #{deploy_to}/current && bundle exec rake assets:clobber")
+    end
+  end
   desc 'Migrations'
   task :migrations do
     on "deployer@46.101.185.190" do
