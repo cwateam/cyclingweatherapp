@@ -4,7 +4,7 @@
     <div id="content">
 
       <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+        <div>
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
               <span class="sr-only">Toggle navigation</span>
@@ -12,6 +12,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#directions"> <span class="glyphicon glyphicon-sort-by-alphabet"></span></button>
+
             <a class="navbar-brand" href="/">CWA</a>
           </div>
           <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
@@ -21,9 +23,10 @@
                 <input type="text" ng-model="routeStart" name="origin"  class="form-control" placeholder="Origin">
                 <input type="text" ng-model="routeEnd" name="destination" class="form-control" placeholder="Destination">
               </div>
-              <button ng-click="calcRoute()" class="btn btn-default btn-info">Route</button>
+              <button ng-click="calcRoute()" class="btn btn-default btn-info" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Route
+              </button>
             </form>
-
+            <button type="button" class="glyphicon glyphicon-sort-by-alphabet btn btn-warning navbar-btn big-icon big-icon-padding" data-toggle="collapse" data-target="#directions"></button>
             <div class="btn-group" data-toggle="buttons">
               <label>
                 <span class="glyphicon glyphicon-asterisk btn btn-warning navbar-btn big-icon big-icon-padding"></span>
@@ -40,6 +43,11 @@
             </button>
           </div>
         </div>
+
+
+            <div  class="collapse container-fluid"  id="directions">
+            </div>
+
       </nav>
 
       <div class="container-map">
