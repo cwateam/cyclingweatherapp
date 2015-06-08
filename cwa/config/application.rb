@@ -29,7 +29,7 @@ module Cwa
     config.active_record.raise_in_transactional_callbacks = true
     config.active_job.queue_adapter = :resque
 
-    config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","fonts")
 
     #config.assets.precompile = [/\A[^\/\\]+\.(css|js)$/i]
 
