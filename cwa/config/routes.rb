@@ -7,10 +7,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  namespace :api do
-    resources :temperatures, :air_qualities
-  end
-
   mount API::Root => '/'
   
   # Example of regular route:
