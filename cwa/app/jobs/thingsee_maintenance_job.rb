@@ -39,7 +39,7 @@ class ThingseeMaintenanceJob < ActiveJob::Base
     response = f.get('thingsee_temp', :orderBy => par, :endAt => t)
 
     response.each { |key, value|
-      f.delete("fmi_temp/#{key}")
+      f.delete("thingsee_temp/#{key}")
     }
 
     RestFirebase.shutdown
