@@ -13,7 +13,7 @@ every 5.minutes do
 end
 
 every 60.minutes do
-  runner2 "ThingseeCloudMaintenanceJob.perform_later"
+  runner2 "ThingseeMaintenanceJob.perform_later"
 end
 
 # Use this file to easily define all of your cron jobs.
