@@ -6,6 +6,8 @@ gem 'rails', '4.2.1'
 gem 'sqlite3'
 # Use Firebase as database
 gem 'firebase'
+# Ruby Firebase REST API client
+gem 'rest-firebase', '~> 1.0.1'
 # Use GeoHash to interact with GeoFire
 gem 'c_geohash', require: 'geohash'
 # Use SCSS for stylesheets
@@ -81,7 +83,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+ # gem 'spring'
 
   gem 'rspec-rails'
 

@@ -1,4 +1,4 @@
-class FmiMaintenanceJob < ActiveJob::Base
+class ThingseeMaintenanceJob < ActiveJob::Base
   queue_as :critical
 
   def perform(*args)
@@ -32,16 +32,16 @@ class FmiMaintenanceJob < ActiveJob::Base
     @reconnect = true
 
     time_now = (Time.now.to_f*1000).to_i
-    t = time_now - 30 * 60 * 1000
+    t = time_now - 72 * 60 * 60 * 1000
 
     par = "mtime"
     
-    response = f.get('fmi_temp', :orderBy => par, :endAt => t)
-    
+    response = f.get('thingsee_temp', :orderBy => par, :endAt => t)
+
     response.each { |key, value|
-      f.delete("fmi_temp/#{key}")
+      f.delete("thingsee_temp/#{key}")
     }
-    
+
     RestFirebase.shutdown
     
     rescue
