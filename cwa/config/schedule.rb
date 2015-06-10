@@ -4,7 +4,7 @@ every 10.minutes do
   runner2 "FmiJob.perform_later"
 end
 
-every 10.minutes do
+every 30.minutes do
   runner2 "FmiMaintenanceJob.perform_later"
 end
 
