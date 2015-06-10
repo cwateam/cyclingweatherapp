@@ -37,11 +37,11 @@ class FmiMaintenanceJob < ActiveJob::Base
     par = "mtime"
     
     response = f.get('fmi_temp', :orderBy => par, :endAt => t)
-
+    
     response.each { |key, value|
       f.delete("fmi_temp/#{key}")
     }
-
+    
     RestFirebase.shutdown
     
     rescue
