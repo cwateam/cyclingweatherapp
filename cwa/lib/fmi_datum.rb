@@ -11,18 +11,14 @@ class FmiDatum
         data = Array.new
         
         xml_doc.xpath("wfs:FeatureCollection/wfs:member/omso:PointTimeSeriesObservation").each { |station|
-          # record = [####"fmisid",
+          # record = [
           # "latitude",
           # "longitude",
           # "mtime",
           # "temperature",
-          ###### "location",
-          # "source (=fmi)"]
+          # "source"]
           
           record = Array.new
-          
-          # fmisid
-          # record << station.xpath("om:featureOfInterest/sams:SF_SpatialSamplingFeature/sam:sampledFeature/target:LocationCollection/target:member/target:Location/gml:identifier").inner_text
  
           # latitude and longitude
           lal = station.xpath("om:featureOfInterest/sams:SF_SpatialSamplingFeature/sams:shape/gml:Point/gml:pos").inner_text.strip
@@ -32,8 +28,6 @@ class FmiDatum
           # mtime and temperature
           record << (Time.iso8601(station.xpath("om:result/wml2:MeasurementTimeseries/wml2:point/wml2:MeasurementTVP/wml2:time").last.inner_text).to_f*1000).to_i
           record << station.xpath("om:result/wml2:MeasurementTimeseries/wml2:point/wml2:MeasurementTVP/wml2:value").last.inner_text.to_f
-          # location
-          #record << station.xpath("om:featureOfInterest/sams:SF_SpatialSamplingFeature/sam:sampledFeature/target:LocationCollection/target:member/target:Location/gml:name").first.inner_text
 
           #source
           record << "fmi"
