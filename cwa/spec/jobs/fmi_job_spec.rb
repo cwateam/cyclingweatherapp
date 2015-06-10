@@ -29,16 +29,16 @@ RSpec.describe FmiJob, type: :job do
   allow(FmiDatum).to receive(:deliver).and_return(canned_answer)
 
   fmi = FmiJob.new
-
+  
   fmi.perform
   
   canned_answer.each { |r|
     body = <<MARKER
 {"created":#{t},"datatype":"temperature","g":"#{GeoHash.encode(r[0], r[1])}","l":{"0":#{r[0]},"1":#{r[1]}},"mtime":#{r[2]},"value":#{r[3]},"source":"#{r[4]}"}
 MARKER
-
+    
     expect(WebMock).to have_requested(:post, "https://glowing-inferno-7580.firebaseio.com/fmi_temp.json").
-            with(:body => JSON.parse(body), :headers => {'content_type'=>'application/json'})
+                        with(:body => JSON.parse(body), :headers => {'content_type'=>'application/json'})
   }
   end
 end
