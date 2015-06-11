@@ -52,7 +52,7 @@ App.service('MapService', function(){
     };
 
     var addMarker = function(map,lat, lng, type, value, source, done){
-        var icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+        /*var icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
         if (source === 'fmi'){
             icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
         };
@@ -62,17 +62,52 @@ App.service('MapService', function(){
             source: source,
             icon: icon
         });
+
+        marker.setMap(map);
+        */
+        //green
+
+        if (value > 25){
+            var color = '#FF0000';
+        } else if (value > 10){
+            var color = '#00FF00';
+
+        } else if (value > 0){
+            var color = '#0000FF';
+        }else {
+
+        }
+
+
+        var circleOptions = {
+            center: new google.maps.LatLng(lat, lng),
+            fillColor: color,
+            fillOpacity: 0.05,
+            map: map,
+            radius: 500,
+            strokeWeight: 0,
+            clickable: true
+
+        }
+
+        var circle = new google.maps.Circle(circleOptions);
+
+
         var infowindow = new google.maps.InfoWindow({
             content: value +' °'+type +'\n' +"from: " +source
         });
-        google.maps.event.addListener(marker, 'mouseover', function() {
-            infowindow.open(map,marker);
+        circle.infowindow = infowindow;
+
+
+        google.maps.event.addListener(circle, 'mouseover', function(ev) {
+            circle.infowindow.setPosition(circle.getCenter());
+            circle.infowindow.open(map, circle);
         });
-        google.maps.event.addListener(marker, 'mouseout', function() {
-            infowindow.close(map,marker);
+        google.maps.event.addListener(circle, 'mouseout', function() {
+            circle.infowindow.close(map,circle);
         });
-        marker.setMap(map);
-        done(marker);
+
+        done(circle);
 
     }
     return{
