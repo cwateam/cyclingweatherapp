@@ -1,0 +1,5 @@
+[{"name":"temp1"
+  ,"sensor_types":["ts_temp",
+		   "fmi_temp"]
+  ,"color_mappings":[{"0":"(rgba)"
+		      ,"1":"(rgba)"}]}]
