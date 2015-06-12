@@ -37,7 +37,7 @@ App.service('MapService', function(){
         };
         var directionsService= new google.maps.DirectionsService();
         directionsDisplay = new google.maps.DirectionsRenderer();
-        directionsDisplay.setPanel(document.getElementById("directions"));
+        directionsDisplay.setPanel(document.getElementById("directionsTarget"));
         directionsDisplay.setMap(map);
         var request = {
             origin: start,
