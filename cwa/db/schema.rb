@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612080324) do
+ActiveRecord::Schema.define(version: 20150612130230) do
 
   create_table "devices", force: :cascade do |t|
     t.string   "device_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "datatransformer"
   end
 
 end
