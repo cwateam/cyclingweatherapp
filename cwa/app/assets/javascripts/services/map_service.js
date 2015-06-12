@@ -31,12 +31,11 @@ App.service('MapService', function(){
 
     var calcRoute = function(map, start, end){
         if (directionsDisplay != null){
-            directionsDisplay.setMap(null);
-            directionsDisplay.setPanel(null);
+            clearRoute();
         };
         var directionsService= new google.maps.DirectionsService();
         directionsDisplay = new google.maps.DirectionsRenderer();
-        directionsDisplay.setPanel(document.getElementById("directions"));
+        directionsDisplay.setPanel(document.getElementById("directionsTarget"));
         directionsDisplay.setMap(map);
         var request = {
             origin: start,
@@ -48,6 +47,11 @@ App.service('MapService', function(){
                 directionsDisplay.setDirections(response);
             };
         });
+    };
+
+    var clearRoute = function(){
+        directionsDisplay.setMap(null);
+        directionsDisplay.setPanel(null);
     };
 
     var addMarker = function(map,lat, lng, type, value, source, done){
@@ -120,6 +124,7 @@ App.service('MapService', function(){
         calcRoute: calcRoute,
         toggleBikeOverlay: toggleBikeOverlay,
         getBicycleOverlay: getBicycleOverlay
+        clearRoute: clearRoute
     };
 });
 

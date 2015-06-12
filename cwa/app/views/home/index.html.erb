@@ -22,6 +22,7 @@
                 <input type="text" ng-model="routeEnd" name="destination" class="form-control" placeholder="Destination">
               </div>
               <button ng-click="calcRoute()" class="btn btn-default btn-info" data-toggle="collapse" data-target="#bs-example-naar-collapse-1">Route</button>
+              <button ng-click="clearRoute()" class="btn btn-default btn-info">Clear</button>
             </form>
             <button type="button" class="glyphicon glyphicon-sort-by-alphabet btn btn-warning navbar-btn big-icon big-icon-padding" data-toggle="collapse" data-target="#directions"></button>
             <div class="btn-group">
@@ -40,9 +41,10 @@
             </button>
           </div>
         </div>
-        <div  class="collapse container-fluid"  id="directions"> <button type="button"  class="glyphicon glyphicon-print btn btn-warning navbar-btn big-icon big-icon-padding" onclick="printDiv('directions')"/></div>
+        <div  class="collapse container-fluid"  id="directions"> <div class="btn-group"> <button type="button" class="glyphicon glyphicon-print btn btn-warning navbar-btn big-icon big-icon-padding" onclick="printDiv('directionsTarget')"/></div>
+          <div class="container-fluid" id="directionsTarget">
+          </div></div>
       </nav>
-
       <div class="container-map">
         <div ng-model="map"id="map_canvas"></div>
         <div class="temperature" id="weather"></div>
@@ -57,8 +59,6 @@
             <span class="glyphicon glyphicon-dashboard big-icon"></span> Temperature visualization
           </p>
         </div>
-
-
       </div>
     </div>
   </div>
