@@ -50,8 +50,10 @@ App.service('MapService', function(){
     };
 
     var clearRoute = function(){
-        directionsDisplay.setMap(null);
-        directionsDisplay.setPanel(null);
+        if (directionsDisplay != null) {
+            directionsDisplay.setMap(null);
+            directionsDisplay.setPanel(null)
+        }
     };
 
     var addMarker = function(map,lat, lng, type, value, source, done){

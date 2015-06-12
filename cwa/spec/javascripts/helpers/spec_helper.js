@@ -4,7 +4,9 @@ var mapMock;
 var scope, controller, parent;
 var marker;
 var google = {};
-
+var directionsDisplayMap;
+var directionsDisplayPanel;
+var directions;
 
 beforeEach(function(){
 
@@ -25,12 +27,15 @@ beforeEach(function(){
                     }
                 }
             },
-            DirectionStatus: {
+            DirectionsStatus: {
                 OK: "ok"
             },
 
             DirectionsService: function(){
                 return {
+                    route: function(request, done){
+                        done(request, google.maps.DirectionsStatus.OK);
+                    }
                 }
             },
 
@@ -47,15 +52,13 @@ beforeEach(function(){
             },
 
             DirectionsRenderer: function(){
-                var panel;
                 var map;
-                var directions;
                 return {
-                    setPanel: function(paneel){
-                    panel = paneel;
-                },
-                    setMap : function(maap){
-                            map = maap;
+                    setPanel: function(newPanel){
+                        directionsDisplayPanel = newPanel;
+                    },
+                    setMap : function(newMap){
+                        directionsDisplayMap = newMap;
                     },
                     setDirections: function(dir){
                         directions = dir;
@@ -95,6 +98,9 @@ beforeEach(function(){
             event:{
                 addListener: function(object, event, done){
                 }
+            },
+            TravelMode: {
+                BICYCLING: "bicycling"
             }
 
     }};
