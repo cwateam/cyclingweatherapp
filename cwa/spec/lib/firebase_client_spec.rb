@@ -1,6 +1,10 @@
 require 'rspec/rails'
 
 describe 'FirebaseClient' do
+
+  after do
+    WebMock.reset!
+  end
   
   it 'should send correct post request' do
     

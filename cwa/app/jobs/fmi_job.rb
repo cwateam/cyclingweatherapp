@@ -9,23 +9,8 @@ class FmiJob < ActiveJob::Base
     if data != "error"
       fbc = FirebaseClient.new
       
-      data.each { |record|
-        # record = [
-        # "latitude",
-        # "longitude",
-        # "mtime",
-        # "temperature",
-        # "source"]
-        
-        fbc.post("fmi_temp", :created => (Time.now.to_f*1000).to_i,
-                 :datatype => "temperature",
-                 :g => GeoHash.encode(record[0], record[1]),
-                 :l => {:'0' => record[0],
-                        :'1' => record[1]},
-                 :mtime => record[2],
-                 :value => record[3],
-                 :source => record[4]
-                )
+      data.each { |record|  
+        fbc.post("data", record)
       }
       
       FirebaseClient.shutdown
