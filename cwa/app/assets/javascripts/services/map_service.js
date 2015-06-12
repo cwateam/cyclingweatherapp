@@ -123,7 +123,7 @@ App.service('MapService', function(){
         addMarker: addMarker,
         calcRoute: calcRoute,
         toggleBikeOverlay: toggleBikeOverlay,
-        getBicycleOverlay: getBicycleOverlay
+        getBicycleOverlay: getBicycleOverlay,
         clearRoute: clearRoute
     };
 });
