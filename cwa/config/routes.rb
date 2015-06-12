@@ -1,5 +1,9 @@
 # coding: utf-8
 Rails.application.routes.draw do
+
+  # enable this when admin panel needed. Remember authentications!
+  # resources :devices
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
