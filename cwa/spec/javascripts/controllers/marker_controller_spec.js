@@ -2,24 +2,25 @@ describe('MarkerController', function(){
 
     beforeEach(function() {
 
-        inject(function($controller, $rootScope) {
+        inject(function($controller, $rootScope, MapService) {
             scope = $rootScope.$new();
-            scope.$parent.map = mapMock;
+            scope.$parent.map = MapService.initialize();
 
             controller = $controller('MarkerController', {
                 $scope: scope,
                 FirebaseService: FirebaseServiceMock,
-                MapService: MapServiceMock
+                MapService: MapService
             });
         });
     });
 
-    it('should initially add  marker to fmiMarkers array', function(){
+    it('should initially add  marker to fmiMarkers array', inject(function(MapService){
+
         expect(scope.fmiMarkers.length).toEqual(1);
-    });
+    }));
 
     it('should set corrrect map for all new markers', function(){
-        expect(scope.fmiMarkers[0].getMap()).toEqual(mapMock);
+        expect(scope.fmiMarkers[0].getMap()).toEqual(scope.$parent.map);
     });
 
 
@@ -33,7 +34,7 @@ describe('MarkerController', function(){
         scope.hideAllTempMarkers();
         scope.hideAllTempMarkers();
 
-        expect(scope.fmiMarkers[0].getMap()).toEqual(mapMock);
+        expect(scope.fmiMarkers[0].getMap()).toEqual(scope.$parent.map);
     });
 
 });

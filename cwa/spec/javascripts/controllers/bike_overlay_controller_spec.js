@@ -4,23 +4,23 @@ describe('BikeOverlayController', function(){
     beforeEach(function() {
         inject(function($controller, $rootScope) {
             scope = $rootScope.$new();
-            scope.$parent.map = mapMock;
-
             controller = $controller('BikeOverlayController', {
                 $scope: scope,
-                MapService: MapServiceMock
             });
         });
     });
 
-    it('should initially have map set up corretly', function(){
-       expect(bicycleOverlay).toEqual(mapMock);
-    });
+    it('should initially have map set up corretly', inject(function(MapService){
 
-    it('should hide bike overlay when toggle bike overay button is pushed', function(){
-        scope.toggleBikeOverlay(scope.$parent.map);
-        expect(bicycleOverlay).toEqual(null);
-    });
+        scope.$parent.map = MapService.initialize();
+        expect(MapService.getBicycleOverlay().getMap()).toEqual(scope.$parent.map);
+    }));
+
+    it('should hide bike overlay when toggle bike overay button is pushed', inject(function(MapService){
+        var map = MapService.initialize();
+        scope.toggleBikeOverlay(map);
+        expect(MapService.getBicycleOverlay().getMap()).toEqual(null);
+    }));
 
 
 });

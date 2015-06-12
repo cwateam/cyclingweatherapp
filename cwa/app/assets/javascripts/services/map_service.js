@@ -17,7 +17,6 @@ App.service('MapService', function(){
         bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
         return map;
-
     };
 
 
@@ -27,7 +26,7 @@ App.service('MapService', function(){
             bikeLayer.setMap(null);
         } else {
             bikeLayer.setMap(map);
-        };
+        }
     };
 
     var calcRoute = function(map, start, end){
@@ -92,6 +91,7 @@ App.service('MapService', function(){
 
         var circle = new google.maps.Circle(circleOptions);
 
+        console.log(circle)
 
         var infowindow = new google.maps.InfoWindow({
             content: value +' °'+type +'\n' +"from: " +source
@@ -110,11 +110,16 @@ App.service('MapService', function(){
         done(circle);
 
     }
+    var getBicycleOverlay = function(){
+        return bikeLayer;
+    }
+
     return{
         initialize: initialize,
         addMarker: addMarker,
         calcRoute: calcRoute,
-        toggleBikeOverlay: toggleBikeOverlay
+        toggleBikeOverlay: toggleBikeOverlay,
+        getBicycleOverlay: getBicycleOverlay
     };
 });
 

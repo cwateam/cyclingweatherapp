@@ -2,60 +2,102 @@ var MapServiceMock;
 var FirebaseServiceMock;
 var mapMock;
 var scope, controller, parent;
-var marker, bicycleOverlay;
+var marker;
+var google = {};
 
 
 beforeEach(function(){
+
     module('App');
 
-    marker = function(){
-        this.map = null;
-        return {
-            setMap: function(map){
-                this.map = map;
-            },
-            getMap: function(){
-                return this.map;
-            }
-        }
-    };
 
+    //Mock for google.maps API
+    google = {
 
-    mapMock = map = (function(){
-        return {
-            getCenter: function(){
+        maps: {
+            Map : function(element, mapOptions){
+                var center = mapOptions.center;
                 return {
-                    lat: function(){
-                        return 60.1900 ;
-                    },
-                    lng: function(){
-                        return 24.9375;
+                    options : mapOptions,
+                    element : element,
+                    getCenter: function(){
+                        return center
                     }
-                };
-            }
-        }
-    })();
-
-    MapServiceMock = (function(){
-         bicycleOverlay = mapMock;
-        return{
-            addMarker: function(map,lat, lng, type, value, source, done){
-                var newMarker = new marker;
-                newMarker.setMap(map);
-                done(newMarker);
-            },
-            toggleBikeOverlay: function(map){
-                if (bicycleOverlay !== null){
-                    bicycleOverlay = null;
-                } else {
-                    bicycleOverlay = map;
                 }
+            },
+            DirectionStatus: {
+                OK: "ok"
+            },
 
+            DirectionsService: function(){
+                return {
+                }
+            },
+
+            BicyclingLayer: function(){
+                var map;
+                return {
+                    setMap: function(newMap){
+                        map = newMap;
+                    },
+                    getMap: function(){
+                        return map;
+                    }
+                }
+            },
+
+            DirectionsRenderer: function(){
+                var panel;
+                var map;
+                var directions;
+                return {
+                    setPanel: function(paneel){
+                    panel = paneel;
+                },
+                    setMap : function(maap){
+                            map = maap;
+                    },
+                    setDirections: function(dir){
+                        directions = dir;
+                    }
+                }
+            },
+            MapTypeId: {
+                    ROADMAP: "roadmap"
+            },
+
+            LatLng: function(lat, lng) {
+                return {
+                    latitude: parseFloat(lat),
+                    longitude: parseFloat(lng),
+
+                    lat: function() { return this.latitude; },
+                    lng: function() { return this.longitude; }
+                };
+            },
+            Circle: function(circleOptions){
+                var map = circleOptions.map;
+                return {
+                    circleOptions: circleOptions,
+                    getMap: function(){
+                        return map;
+                    },
+                    setMap: function(newMap){
+                        map = newMap;
+                    }
+                }
+            },
+            InfoWindow: function(content){
+                return{
+                    content: content
+                }
+            },
+            event:{
+                addListener: function(object, event, done){
+                }
             }
-        }
-    })();
 
-
+    }};
 
 
     FirebaseServiceMock = (function () {
