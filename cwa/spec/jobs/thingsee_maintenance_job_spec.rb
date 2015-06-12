@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ThingseeMaintenanceJob, type: :job do
+
   after do
     WebMock.reset!
   end

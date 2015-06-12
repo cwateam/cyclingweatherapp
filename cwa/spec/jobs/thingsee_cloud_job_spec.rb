@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe ThingseeCloudJob, type: :job do
+
+  after do
+    WebMock.reset!
+  end
   
   it 'should work' do
   canned_answer = [67.6521, 24.90162, 1433955600000, 10.9, "thingsee"]
