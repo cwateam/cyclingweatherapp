@@ -1,6 +1,7 @@
 class FmiTemperatureDataTransformer
   def self.transform(xml_doc)
     data = Array.new
+    
     xml_doc.xpath("wfs:FeatureCollection/wfs:member/omso:PointTimeSeriesObservation").each { |station|
       record = Hash.new
       # created
