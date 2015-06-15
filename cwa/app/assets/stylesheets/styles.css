@@ -43,3 +43,17 @@ body {
 .big-icon-padding {
     padding: 2px 12px 0px;
 }
+
+#information-container {
+    display: inline-block;
+    position: relative;
+    right: 5px;
+    top: 9px;
+    float: left;
+}
+
+.popover {
+    width: 300px;
+    overflow: auto;
+    max-height: 300px;
+}

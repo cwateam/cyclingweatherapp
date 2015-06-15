@@ -12,8 +12,13 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#directions"> <span class="glyphicon glyphicon-sort-by-alphabet"></span></button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#directions-container"> <span class="glyphicon glyphicon-sort-by-alphabet"></span></button>
             <a class="navbar-brand" href="/">CWA</a>
+            <div id="information-container">
+              <button type="button" class="btn btn-default" data-placement="bottom" data-toggle="popover">
+                <span class="glyphicon glyphicon-question-sign"></span>
+              </button>
+            </div>
           </div>
           <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
             <form  class="navbar-form navbar-left" role="form" id="routingForm">
@@ -26,7 +31,7 @@
             </form>
             <div class="btn-group">
               <label>
-                <span class="glyphicon glyphicon-sort-by-alphabet btn btn-warning navbar-btn big-icon big-icon-padding" data-toggle="collapse" data-target="#directions"></span>
+                <span class="glyphicon glyphicon-sort-by-alphabet btn btn-warning navbar-btn big-icon big-icon-padding" data-toggle="collapse" data-target="#directions-container"></span>
               </label>
               <label>
                 <span class="glyphicon glyphicon-asterisk btn btn-warning navbar-btn big-icon big-icon-padding"></span>
@@ -38,13 +43,10 @@
                 <span class="glyphicon glyphicon-transfer btn btn-warning navbar-btn big-icon big-icon-padding"  id="bikeOverlay"></span>
               </label>
             </div>
-            <button type="button" class="btn btn-default btn-info big-icon big-icon-padding" data-placement="bottom" data-toggle="popover">
-              <span class="glyphicon glyphicon-question-sign "></span>
-            </button>
           </div>
         </div>
-        <div  class="collapse container-fluid"  id="directions"> <div class="btn-group"> <button type="button" class="glyphicon glyphicon-print btn btn-warning navbar-btn big-icon big-icon-padding" onclick="printDiv('directionsTarget')"/></div>
-          <div class="container-fluid" id="directionsTarget">
+        <div  class="collapse container-fluid"  id="directions-container"> <div class="btn-group" id="print-button-container"> <button type="button" class="glyphicon glyphicon-print btn btn-warning navbar-btn big-icon big-icon-padding" onclick="printDiv('directionsTarget')"/></div>
+          <div id="directionsTarget">
           </div></div>
       </nav>
       <div class="container-map">
@@ -55,10 +57,22 @@
       <div id="popover_content_wrapper" style="display: none">
         <div>
           <p>
+            Cyclingweatherapp
+          </p>
+          <p>
+            Legend:
+          </p>
+          <p>
             <span class="glyphicon glyphicon-asterisk big-icon"></span> Particulates visualization
           </p>
           <p>
             <span class="glyphicon glyphicon-dashboard big-icon"></span> Temperature visualization
+          </p>
+          <p>
+            Data sources:
+          </p>
+          <p>
+            Finnish Meteorological Institute and Google.
           </p>
         </div>
       </div>
