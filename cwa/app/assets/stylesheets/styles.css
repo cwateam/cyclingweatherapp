@@ -47,8 +47,8 @@ body {
 #information-container {
     display: inline-block;
     position: relative;
-    right: 5px;
-    top: 9px;
+    right: -1px;
+    top: 8px;
     float: left;
 }
 
