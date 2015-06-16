@@ -1,8 +1,19 @@
+
+
+
 App.service('MapService', function(){
 
     var directionsDisplay;
     var bikeLayer;
 
+    var overlay;
+
+    var addOverlay = function(map){
+        var srcImage = 'http://www.cs.helsinki.fi/u/ajvuolas/kuvat/fmi_test.png';
+        var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(59.7, 24.4), new google.maps.LatLng(60.7,25.4));
+        console.log(bounds)
+        overlay = new GdalOverlay(bounds, srcImage, map);
+    }
 
     var initialize = function() {
         var mapOptions = {
@@ -16,8 +27,11 @@ App.service('MapService', function(){
         var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
         bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
+        addOverlay(map)
         return map;
     };
+
+
 
 
 
@@ -96,8 +110,6 @@ App.service('MapService', function(){
         }
 
         var circle = new google.maps.Circle(circleOptions);
-
-        console.log(circle)
 
         var infowindow = new google.maps.InfoWindow({
             content: value +' °'+type +'\n' +"from: " +source
