@@ -12,11 +12,13 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#directions-container"> <span class="glyphicon glyphicon-sort-by-alphabet"></span></button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#directions-container">
+                <span class="glyphicon glyphicon-sort-by-alphabet directions-icon"></span>
+            </button>
             <a class="navbar-brand" href="/">CWA</a>
             <div id="information-container">
               <button type="button" class="btn btn-default" data-placement="bottom" data-toggle="popover">
-                <span class="glyphicon glyphicon-question-sign"></span>
+                <span class="glyphicon glyphicon-question-sign question-icon"></span>
               </button>
             </div>
           </div>
@@ -26,7 +28,7 @@
                 <input type="text" ng-model="routeStart" name="origin"  class="form-control" placeholder="Origin">
                 <input type="text" ng-model="routeEnd" name="destination" class="form-control" placeholder="Destination">
               </div>
-              <button ng-click="calcRoute()" class="btn btn-default btn-info" data-toggle="collapse" data-target="#bs-example-naar-collapse-1">Route</button>
+              <button ng-click="calcRoute()" class="btn btn-default btn-info" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Route</button>
               <button ng-click="clearRoute()" class="btn btn-default btn-info">Clear</button>
             </form>
             <div class="btn-group">
