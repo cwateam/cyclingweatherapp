@@ -11,7 +11,6 @@ App.service('MapService', function(){
     var addOverlay = function(map){
         var srcImage = 'http://www.cs.helsinki.fi/u/ajvuolas/kuvat/fmi_test.png';
         var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(59.7, 24.4), new google.maps.LatLng(60.7,25.4));
-        console.log(bounds)
         overlay = new GdalOverlay(bounds, srcImage, map);
     }
 
@@ -30,9 +29,6 @@ App.service('MapService', function(){
         addOverlay(map)
         return map;
     };
-
-
-
 
 
     var toggleBikeOverlay = function(map){

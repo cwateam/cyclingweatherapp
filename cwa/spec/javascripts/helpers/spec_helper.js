@@ -51,6 +51,16 @@ beforeEach(function(){
                 }
             },
 
+            OverlayView: function(){
+                this.map;
+                var setMap = function(newMap){
+                    this.map = newMap;
+                }
+                return {
+                    setMap: setMap,
+                }
+            },
+
             DirectionsRenderer: function(){
                 var map;
                 return {
@@ -67,6 +77,11 @@ beforeEach(function(){
             },
             MapTypeId: {
                     ROADMAP: "roadmap"
+            },
+
+            LatLngBounds: function(sw, ne){
+                this.sw = sw;
+                this.ne = ne;
             },
 
             LatLng: function(lat, lng) {
@@ -105,6 +120,7 @@ beforeEach(function(){
 
     }};
 
+    GdalOverlay.prototype = new google.maps.OverlayView();
 
     FirebaseServiceMock = (function () {
         var temperatures = [{

@@ -1,6 +1,7 @@
 GdalOverlay.prototype = new google.maps.OverlayView();
 
 function GdalOverlay(bounds, image, map){
+
     this.bounds = bounds;
     this.image = image;
     this.map = map;
