@@ -25,12 +25,11 @@ ActiveRecord::Schema.define(version: 20150617135932) do
     t.string   "info"
   end
 
-  create_table "devices", force: :cascade do |t|
-    t.string   "device_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "user_id"
-    t.string   "device_profile_id"
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "sensor_types", force: :cascade do |t|
