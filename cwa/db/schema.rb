@@ -11,13 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612130230) do
+ActiveRecord::Schema.define(version: 20150617124449) do
+
+  create_table "device_profiles", force: :cascade do |t|
+    t.string   "data_transformer"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "name"
+    t.string   "profile_name"
+    t.string   "device_type"
+    t.string   "hw_version"
+    t.string   "sw_version"
+    t.string   "info"
+  end
 
   create_table "devices", force: :cascade do |t|
     t.string   "device_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "datatransformer"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "user_id"
+    t.string   "device_profile_id"
   end
 
 end
