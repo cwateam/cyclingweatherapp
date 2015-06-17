@@ -18,8 +18,7 @@ html, body {
 
 .container-fluid {
     overflow: auto;
-    max-height: 300px;
-    max-height: 80vh;
+    max-height: 50vh;
 }
 
 body {
