@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617124449) do
+ActiveRecord::Schema.define(version: 20150617135932) do
 
   create_table "device_profiles", force: :cascade do |t|
     t.string   "data_transformer"
@@ -31,6 +31,21 @@ ActiveRecord::Schema.define(version: 20150617124449) do
     t.datetime "updated_at",        null: false
     t.string   "user_id"
     t.string   "device_profile_id"
+  end
+
+  create_table "sensor_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sensors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "device_profile_id"
+    t.string   "sensor_type_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end
