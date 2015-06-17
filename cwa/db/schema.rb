@@ -11,13 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612130230) do
+ActiveRecord::Schema.define(version: 20150617105523) do
+
+  create_table "color_drops", force: :cascade do |t|
+    t.integer  "value"
+    t.string   "color"
+    t.integer  "layer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "devices", force: :cascade do |t|
     t.string   "device_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "datatransformer"
+  end
+
+  create_table "layers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "color_drop_id"
+    t.integer  "layers_sensors_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end
