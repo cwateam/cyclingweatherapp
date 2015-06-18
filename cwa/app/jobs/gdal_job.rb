@@ -5,9 +5,11 @@ class GdalJob < ActiveJob::Base
 
     dataType = getData()
 
-      system("cd ~/.gdal/#{dataType} && gdal_grid -zfield \"Data\" -a invdist:power=8:smoothing=0.3:nodata=0:radius1=0.1:radius2=0.1 -txe 24.40 25.40 -tye 60.700 59.700 -outsize 2000 2000 -of GTiff -ot Float64 -l dem dem.vrt dem.tiff --config GDAL_NUM_THREADS ALL_CPUS && gdaldem color-relief -alpha  dem.tiff colors.txt dem.tiff && gdal_translate -of PNG dem.tiff data.png
-")
+    if dataType
 
+      system("cd ~/.gdal/#{dataType} && gdal_grid -zfield \"Data\" -a invdist:power=8:smoothing=0.3:nodata=0:radius1=0.1:radius2=0.1 -txe 24.40 25.40 -tye 60.700 59.700 -outsize 2000 2000 -of GTiff -ot Float64 -l dem dem.vrt dem.tiff --config GDAL_NUM_THREADS ALL_CPUS && gdaldem color-relief -alpha  dem.tiff colors.txt dem.tiff && gdal_translate -of PNG dem.tiff data.png")
+
+    end
 
   end
 
@@ -15,37 +17,43 @@ class GdalJob < ActiveJob::Base
     fbc = FirebaseClient.new
 
     layer = Layer.find_by name: 'temperature'
+
+    if layer
+
     #hard coded, going to be replaced with database query to sensortype table
-    dataType = "temperature"
+      dataType = "temperature"
 
-    system("mkdir ~/.gdal/#{dataType}")
-    system("cp ~/.gdal/dem.vrt ~/.gdal/#{dataType}")
 
-    response = fbc.get('fmi_temp', :orderBy => "datatype", :equalTo => dataType)
+      system("mkdir ~/.gdal/#{dataType}")
+      system("cp ~/.gdal/dem.vrt ~/.gdal/#{dataType}")
 
-    #Empty old values from csv file
-    system("echo 'Easting,Northing,Data' > ~/.gdal/#{dataType}/dem.csv")
+      response = fbc.get('fmi_temp', :orderBy => "datatype", :equalTo => dataType)
 
-    #Add values to csv file
-    response.each { |value|
-      #Check if datapoint is inside the specified boundaries
-      if value[1]["l"][0] >  59.5 && value[1]["l"][0] < 60.5 && value[1]["l"][1] > 24.4 && value[1]["l"][1] < 25.4
-        system("echo '#{value[1]["l"][1]}','#{value[1]["l"][0]}','#{value[1]["value"]}' >> ~/.gdal/#{dataType}/dem.csv")
-      end
-    }
+      #Empty old values from csv file
+      system("echo 'Easting,Northing,Data' > ~/.gdal/#{dataType}/dem.csv")
 
-    #Find the right color drops for layer to render
-    drops = ColorDrop.where layer_id:layer.id
+      #Add values to csv file
+      response.each { |value|
+        #Check if datapoint is inside the specified boundaries
+        if value[1]["l"][0] >  59.5 && value[1]["l"][0] < 60.5 && value[1]["l"][1] > 24.4 && value[1]["l"][1] < 25.4
+         system("echo '#{value[1]["l"][1]}','#{value[1]["l"][0]}','#{value[1]["value"]}' >> ~/.gdal/#{dataType}/dem.csv")
+        end
+      }
 
-    #Empty old version of colors file
-    system("echo '' > ~/.gdal/#{dataType}/colors.txt")
+      #Find the right color drops for layer to render
+      drops = ColorDrop.where layer_id:layer.id
 
-    #Add new color drops to colors file
-    drops.each { |value|
-      system("echo '#{value.value} #{value.color}' >> ~/.gdal/#{dataType}/colors.txt")
-    }
+      #Empty old version of colors file
+      system("echo '' > ~/.gdal/#{dataType}/colors.txt")
+
+      #Add new color drops to colors file
+      drops.each { |value|
+        system("echo '#{value.value} #{value.color}' >> ~/.gdal/#{dataType}/colors.txt")
+      }
+    end
 
     return dataType
+
   end
 
 
