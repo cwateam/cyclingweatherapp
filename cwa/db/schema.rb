@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20150617135932) do
 
+  create_table "color_drops", force: :cascade do |t|
+    t.integer  "value"
+    t.string   "color"
+    t.integer  "layer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "device_profiles", force: :cascade do |t|
     t.string   "data_transformer"
     t.datetime "created_at",       null: false
@@ -25,20 +33,19 @@ ActiveRecord::Schema.define(version: 20150617135932) do
     t.string   "info"
   end
 
-  create_table "color_drops", force: :cascade do |t|
-    t.integer  "value"
-    t.string   "color"
-    t.integer  "layer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "devices", force: :cascade do |t|
     t.string   "device_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "user_id"
     t.string   "device_profile_id"
+  end
+
+  create_table "layers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "layers_sensors_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "sensor_types", force: :cascade do |t|
@@ -61,13 +68,6 @@ ActiveRecord::Schema.define(version: 20150617135932) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-  end
-
-  create_table "layers", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "layers_sensors_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
   end
 
 end

@@ -11,6 +11,8 @@ describe 'FirebaseClient' do
     f = FirebaseClient.new
     
     f.post("test", :test_data => "test string")
+
+    FirebaseClient.shutdown
     
     body = <<MARKER
 {"test_data":"test string"}
