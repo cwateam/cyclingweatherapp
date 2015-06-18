@@ -14,6 +14,7 @@ dp = DeviceProfile.create sw_version:"2015.05.21.8_Thingsee_Retail", hw_version:
 dp.devices.create device_id:"XNG51760148", user_id:User.first.id
 
 # Create sensor_types and add sensors to profile (from device.jsn on the device and TS Engine API 00.20)
+# Commented out sensors have no specification in the API
 st1=SensorType.create name:"Temperature"
 st1.sensors.create device_profile_id:dp.id, name:"ThingseeOne temperature sensor", address:"0x00060100"
 
@@ -127,3 +128,9 @@ st36.sensors.create device_profile_id:dp.id, name:"ThingseeOne connected to char
 
 st38=SensorType.create name:"Ambient light"
 st38.sensors.create device_profile_id:dp.id, name:"ThingseeOne ambient light sensor", address:"0x00060300"
+
+#Create a layer for temperature visualization
+layer=Layer.create sensor_type_id:st1.id, name:st1.name
+#Create color drops for layer
+layer.color_drops.create value:0, color:"200,200,200,0"
+
