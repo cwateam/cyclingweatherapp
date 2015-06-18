@@ -28,6 +28,7 @@ class GdalJob < ActiveJob::Base
       system("cp ~/.gdal/dem.vrt ~/.gdal/#{dataType}")
 
       response = fbc.get('fmi_temp', :orderBy => "datatype", :equalTo => dataType)
+      FirebaseClient.shutdown
 
       #Empty old values from csv file
       system("echo 'Easting,Northing,Data' > ~/.gdal/#{dataType}/dem.csv")
