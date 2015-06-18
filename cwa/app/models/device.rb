@@ -1,3 +1,3 @@
 class Device < ActiveRecord::Base
-  belongs_to :device_profiles
+  belongs_to :device_profile
 end
