@@ -23,10 +23,20 @@ App.service('MapService', function(){
             mapTypeControl: true
         };
 
+
         var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+        google.maps.event.addListenerOnce(map, 'idle', function(){
+            var legendDiv = document.getElementById('visualization-legend');
+            legendDiv.style.display='inline';
+            map.controls[google.maps.ControlPosition.RIGHT_TOP].push(
+                legendDiv);
+            mapLegend(document.getElementById("myCanvas"));
+        });
+
         bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
-        addOverlay(map)
+        addOverlay(map);
         return map;
     };
 

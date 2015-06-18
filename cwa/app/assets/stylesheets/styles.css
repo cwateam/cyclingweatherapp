@@ -68,3 +68,10 @@ body {
     overflow: auto;
     max-height: 80vh;
 }
+
+#visualization-legend {
+    padding: 10px;
+    max-height: 80vh;
+    bacgroung-color: white;
+    display:none;
+}
