@@ -1,17 +1,19 @@
-# HOX: before seeding you should have at least one user in your database!
-
 #To start from a fresh database (on the command line):
+# rake db:reset
+
+# If you wish to seed devices, before seeding you should have at least one user in your database.
+# Uncomment and edit relevant line below, then run the following commands:
 #rake db:drop db:create db:migrate
 #rails c
-# > User.create name: "[name]", password:"[password]", password_confirmation:"[password]"
+# > User.create username: "[username]", password:"[password]", password_confirmation:"[password]"
 # > quit
 #rake:db seed
 
 # Create profile for Thingsee One beta
 dp = DeviceProfile.create sw_version:"2015.05.21.8_Thingsee_Retail", hw_version:"0402", device_type:"Thingsee", profile_name:"Thingsee One beta version"
 
-# Create device
-dp.devices.create device_id:"XNG51760148", user_id:User.first.id
+# Create device. HOX: username must exist in the database lest seeding fail
+# dp.devices.create device_id:"XNG51760148", user_id:(User.find_by username:"[username]").id
 
 # Create sensor_types and add sensors to profile (from device.jsn on the device and TS Engine API 00.20)
 # Commented out sensors have no specification in the API
