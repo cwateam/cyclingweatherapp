@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
   # enable this when admin panel needed. Remember authentications!
-  # resources :devices
+  #resources :devices
+  resources :devices, only: [:index, :show]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
