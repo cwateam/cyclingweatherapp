@@ -130,7 +130,13 @@ st38=SensorType.create name:"Ambient light"
 st38.sensors.create device_profile_id:dp.id, name:"ThingseeOne ambient light sensor", address:"0x00060300"
 
 #Create a layer for temperature visualization
-layer=Layer.create sensor_type_id:st1.id, name:st1.name
+layer=Layer.create sensor_type_id:st1.id, name:st1.name+" reds"
 #Create color drops for layer
-layer.color_drops.create value:0, color:"200,200,200,0"
+layer.color_drops.create value:0, color:"255,255,255,0"
+layer.color_drops.create value:5, color:"255,204,204,0"
+layer.color_drops.create value:10, color:"255,153,153,0"
+layer.color_drops.create value:15, color:"255,102,102,0"
+layer.color_drops.create value:20, color:"255,51,51,0"
+layer.color_drops.create value:25, color:"255,0,0,0"
+layer.color_drops.create value:30, color:"204,0,0,0"
 
