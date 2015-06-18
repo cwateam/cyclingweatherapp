@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617105523) do
+ActiveRecord::Schema.define(version: 20150617133718) do
 
   create_table "color_drops", force: :cascade do |t|
     t.integer  "value"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20150617105523) do
 
   create_table "layers", force: :cascade do |t|
     t.string   "name"
-    t.integer  "color_drop_id"
     t.integer  "layers_sensors_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
