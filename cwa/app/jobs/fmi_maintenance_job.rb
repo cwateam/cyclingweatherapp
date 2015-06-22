@@ -9,10 +9,10 @@ class FmiMaintenanceJob < ActiveJob::Base
     
     par = "mtime"
     
-    response = fbc.get('fmi_temp', :orderBy => par, :endAt => t)
+    response = fbc.get('data', :orderBy => par, :endAt => t)
     
     response.each { |key, value|
-      fbc.delete("fmi_temp/#{key}")
+      fbc.delete("data/#{key}")
     }
     
     FirebaseClient.shutdown

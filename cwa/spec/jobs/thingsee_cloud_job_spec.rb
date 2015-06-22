@@ -23,7 +23,7 @@ RSpec.describe ThingseeCloudJob, type: :job do
 {"created":#{t},"datatype":"temperature","g":"#{GeoHash.encode(canned_answer[0], canned_answer[1])}","l":{"0":#{canned_answer[0]},"1":#{canned_answer[1]}},"mtime":#{canned_answer[2]},"value":#{canned_answer[3]},"source":"#{canned_answer[4]}"}
 MARKER
   
-  expect(WebMock).to have_requested(:post, "https://glowing-inferno-7580.firebaseio.com/thingsee_temp.json").
+  expect(WebMock).to have_requested(:post, "https://glowing-inferno-7580.firebaseio.com/data.json").
                       with(:body => JSON.parse(body), :headers => {'content_type'=>'application/json'})
   end
 end

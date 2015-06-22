@@ -29,7 +29,7 @@ describe 'FmiTemperatureDataTransformer' do
     expect(record["mtime"]).to eq(1432409400000)
     expect(record["value"]).to eq(7.6)
     expect(record["source"]).to eq("fmi")
-    expect(record["sensor_type"]).to eq("")
+    expect(record["sensor_type"]).to eq("temperature")
 
     # check last station's record
     record = data[188]
@@ -42,6 +42,6 @@ describe 'FmiTemperatureDataTransformer' do
     expect(record["mtime"]).to eq(1432409400000)
     expect(record["value"]).to eq(8.1)
     expect(record["source"]).to eq("fmi")
-    expect(record["sensor_type"]).to eq("")
+    expect(record["sensor_type"]).to eq("temperature")
   end
 end

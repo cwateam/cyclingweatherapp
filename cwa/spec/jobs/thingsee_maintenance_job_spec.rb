@@ -8,7 +8,7 @@ RSpec.describe ThingseeMaintenanceJob, type: :job do
   
   it 'should work' do
   
-  uri = 'https://glowing-inferno-7580.firebaseio.com/thingsee_temp.json?endAt=1433668813855&orderBy=%22mtime%22'
+  uri = 'https://glowing-inferno-7580.firebaseio.com/data.json?endAt=1433668813855&orderBy=%22mtime%22'
 
   canned_answer = File.new("./spec/lib/samples/ts_temp_data_from_firebase.json").read
 
@@ -24,7 +24,7 @@ RSpec.describe ThingseeMaintenanceJob, type: :job do
   data_to_be_deleted = JSON.parse(canned_answer)
   
   data_to_be_deleted.each { |key, value|
-    expect(WebMock).to have_requested(:delete, "https://glowing-inferno-7580.firebaseio.com/thingsee_temp/#{key}.json")  
+    expect(WebMock).to have_requested(:delete, "https://glowing-inferno-7580.firebaseio.com/data/#{key}.json")  
   }
   
   end
