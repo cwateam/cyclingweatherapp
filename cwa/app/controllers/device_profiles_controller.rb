@@ -1,4 +1,5 @@
 class DeviceProfilesController < ApplicationController
+  layout "admin"
   before_action :set_device_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /devices
@@ -24,7 +25,7 @@ class DeviceProfilesController < ApplicationController
   # POST /devices
   # POST /devices.json
   def create
-    @device = Device.new(device_params)
+    @device = Device.new(device_params) if current_user
 
     respond_to do |format|
       if @device.save

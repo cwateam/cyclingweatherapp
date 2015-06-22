@@ -70,5 +70,14 @@ body {
 
 #visualization-legend {
     padding: 10px;
-    display:none;
+    display: none;
+}
+
+.admin-pages {
+    padding-left: 50px;
+
+}
+
+td {
+    padding-right: 15px;
 }
