@@ -28,7 +28,7 @@ class FmiTemperatureDataTransformer
       record["source"] = "fmi"
 
       # sensor type
-      record["sensor_type"] = ""
+      record["sensor_type"] = "temperature"
       
       data << record
     }

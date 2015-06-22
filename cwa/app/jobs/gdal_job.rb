@@ -16,7 +16,7 @@ class GdalJob < ActiveJob::Base
   def getData()
     fbc = FirebaseClient.new
 
-    layer = Layer.find_by name: 'temperature'
+    layer = Layer.find_by name: 'Temperature reds'
 
     if layer
 
@@ -27,7 +27,7 @@ class GdalJob < ActiveJob::Base
       system("mkdir ~/.gdal/#{dataType}")
       system("cp ~/.gdal/dem.vrt ~/.gdal/#{dataType}")
 
-      response = fbc.get('fmi_temp', :orderBy => "datatype", :equalTo => dataType)
+      response = fbc.get('data', :orderBy => "sensor_type", :equalTo => dataType)
       FirebaseClient.shutdown
 
       #Empty old values from csv file
