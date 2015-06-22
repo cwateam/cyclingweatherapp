@@ -19,17 +19,25 @@ describe 'ThingseeCloudDatum' do
     canned_answer1 = File.new("./spec/lib/samples/thingsee_temp_with_loc.json").read
     login_response = File.new("./spec/lib/samples/thingsee_login_response.json").read
 
+    t = 1433928013855
+    
+    Time.stub(:now) { Time.at(t/1000.to_f) }
+    
     #might have to specify :get regex further?
     stub_request(:get, /.*type=sense.*/).to_return(body: canned_answer1, headers: { 'Content-Type' => "application/json" })
     stub_request(:post, /.*login.*/).to_return(body: login_response, headers: { 'Content-Type' => "application/json" })
     
-    record = ThingseeCloudDatum.deliver("temperature")
+    record = ThingseeCloudDatum.deliver("temperature")[0]
 
-    expect(record[0]).to eq(60.1820)
-    expect(record[1]).to eq(24.9255)
-    expect(record[2]).to eq(1432852761910)
-    expect(record[3]).to eq(26.94)
-    expect(record[4]).to eq("thingsee")
+    expect(record.size).to eq(7)
+    expect(record["created"]).to eq(t)
+    expect(record["l"]['0']).to eq(60.1820)
+    expect(record["l"]['1']).to eq(24.9255)
+    expect(record["g"]).to eq("ud9wr5y1w1")
+    expect(record["mtime"]).to eq(1432852761910)
+    expect(record["value"]).to eq(26.94)
+    expect(record["source"]).to eq("thingsee")
+    expect(record["sensor_type"]).to eq("temperature")
 
   end
 
@@ -38,6 +46,11 @@ describe 'ThingseeCloudDatum' do
     # the idea for this is that ThingseeDatum should be able to parse a temperature record from input
     # with various events with different timestamps; i.e. the file specified below in the commented out version
     #canned_answer = File.new("./spec/lib/samples/thingsee_multiple_events.json").read
+
+    t = 1433928013855
+    
+    Time.stub(:now) { Time.at(t/1000.to_f) }
+    
     canned_answer = File.new("./spec/lib/samples/thingsee_temp_with_loc.json").read
     login_response = File.new("./spec/lib/samples/thingsee_login_response.json").read
 
@@ -45,13 +58,23 @@ describe 'ThingseeCloudDatum' do
     stub_request(:get, /.*type=sense.*/).to_return(body: canned_answer, headers: { 'Content-Type' => "application/json" })
     stub_request(:post, /.*login.*/).to_return(body: login_response, headers: { 'Content-Type' => "application/json" })
     
-    record = ThingseeCloudDatum.deliver("temperature")
+    record = ThingseeCloudDatum.deliver("temperature")[0]
     # check first station's record
-    expect(record[0]).to eq(60.1820)
-    expect(record[1]).to eq(24.9255)
-    expect(record[2]).to eq(1432852761910)
-    expect(record[3]).to eq(26.94)
-    expect(record[4]).to eq("thingsee")
+    #expect(record[0]).to eq(60.1820)
+    #expect(record[1]).to eq(24.9255)
+    #expect(record[2]).to eq(1432852761910)
+    #expect(record[3]).to eq(26.94)
+    #expect(record[4]).to eq("thingsee")
 
+    expect(record.size).to eq(7)
+    expect(record["created"]).to eq(t)
+    expect(record["l"]['0']).to eq(60.1820)
+    expect(record["l"]['1']).to eq(24.9255)
+    expect(record["g"]).to eq("ud9wr5y1w1")
+    expect(record["mtime"]).to eq(1432852761910)
+    expect(record["value"]).to eq(26.94)
+    expect(record["source"]).to eq("thingsee")
+    expect(record["sensor_type"]).to eq("temperature")
+    
   end
 end

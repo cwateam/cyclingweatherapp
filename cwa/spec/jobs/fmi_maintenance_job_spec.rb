@@ -8,11 +8,13 @@ RSpec.describe FmiMaintenanceJob, type: :job do
 
   it 'should work' do
   
-  uri = 'https://glowing-inferno-7580.firebaseio.com/fmi_temp.json?endAt=1433926213855&orderBy=%22mtime%22'
+  uri = 'https://glowing-inferno-7580.firebaseio.com/data.json?endAt=1433926213855&orderBy=%22mtime%22'
 
   canned_answer = File.new("./spec/lib/samples/fmi_temp_data_from_firebase.json").read
 
-  Time.stub(:now) { Time.at(1433928013855/1000.to_f) }
+  t = 1433928013855
+  
+  Time.stub(:now) { Time.at(t/1000.to_f) }
   
   stub_request(:get, uri).
     to_return(:body => canned_answer, headers: { 'Content-Type' => "text/json" })
@@ -24,7 +26,7 @@ RSpec.describe FmiMaintenanceJob, type: :job do
   data_to_be_deleted = JSON.parse(canned_answer)
   
   data_to_be_deleted.each { |key, value|
-    expect(WebMock).to have_requested(:delete, "https://glowing-inferno-7580.firebaseio.com/fmi_temp/#{key}.json")  
+    expect(WebMock).to have_requested(:delete, "https://glowing-inferno-7580.firebaseio.com/data/#{key}.json")  
   }
   
   end
