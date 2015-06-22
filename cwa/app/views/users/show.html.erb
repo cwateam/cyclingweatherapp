@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-<% if @user = current_user %>
 
 <p>
   <strong>Username:</strong>
@@ -22,14 +21,9 @@
   </tbody>
 </table>
 <br />
-<p>
-  <%= link_to 'Sign out', signout_path, method: :delete %>
-</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<% else %>
-<p>
-  You must be signed in to see your profile page!
-</p>
+<% if current_user == @user %>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>  |
 <% end %>
-<%= link_to 'Back', users_path %>
+<%= link_to 'Users list', users_path %>

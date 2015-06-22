@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
-<% if current_user %>
 <h1>Listing Devices</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Device</th>
+      <th>Device </th>
+      <th>Device profile </th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -13,9 +13,12 @@
   <tbody>
     <% @devices.each do |device| %>
       <tr>
-        <td><%= link_to device.device_id, device %></td>
-        <td><%#= link_to 'Edit', edit_device_path(device) %></td>
-        <td><%#= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to device.device_id, device %> </td>
+        <td><%= device.device_profile.profile_name %> </td>
+        <% if current_user and device.user_id == current_user.id %>
+          <td><%= link_to 'Edit', edit_device_path(device) %></td>
+          <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -23,10 +26,4 @@
 
 <br>
 
-<%#= link_to 'New Device', new_device_path %>
-<% else %>
-<p>
-You must be signed in to view devices!
-</p>
-<%= link_to 'Sign in', signin_path %></td>
-<% end %>
+<%= link_to 'New Device', new_device_path %>
