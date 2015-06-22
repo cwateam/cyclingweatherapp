@@ -14,6 +14,11 @@ function mapLegend(canvas) {
     ctx.fillText("0",0,20);
     ctx.fillText("20",0,120);
 
+    <%=ColorDrop.where layer_id:1%>
+    <%=ColorDrop.all.to_json%>
+
+
+
     var my_gradient=ctx.createLinearGradient(0,0,0,canvasHeight-20);
     my_gradient.addColorStop(0,"red");
     my_gradient.addColorStop(0.2,"orange");

@@ -23,7 +23,6 @@ App.service('MapService', function(){
             mapTypeControl: true
         };
 
-
         var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
         google.maps.event.addListenerOnce(map, 'idle', function(){

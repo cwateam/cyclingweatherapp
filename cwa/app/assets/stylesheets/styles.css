@@ -52,7 +52,6 @@ body {
     position: relative;
     height: 14px;
     display: inline-block;
-    bacground-color: #ddd;
 }
 
 #information-container {
@@ -71,7 +70,5 @@ body {
 
 #visualization-legend {
     padding: 10px;
-    max-height: 80vh;
-    bacgroung-color: white;
     display:none;
 }
