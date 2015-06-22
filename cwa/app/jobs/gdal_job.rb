@@ -7,7 +7,7 @@ class GdalJob < ActiveJob::Base
 
     if dataType
 
-      system("cd ~/.gdal/#{dataType} && gdal_grid -zfield \"Data\" -a invdist:power=8:smoothing=0.3:nodata=0:radius1=0.1:radius2=0.1 -txe 24.40 25.40 -tye 60.700 59.700 -outsize 2000 2000 -of GTiff -ot Float64 -l dem dem.vrt dem.tiff --config GDAL_NUM_THREADS ALL_CPUS && gdaldem color-relief -alpha  dem.tiff colors.txt dem.tiff && gdal_translate -of PNG dem.tiff data.png")
+      system("cd ~/.gdal/#{dataType} && gdal_grid -zfield \"Data\" -a invdist:power=8:smoothing=0.3:nodata=0:radius1=0.1:radius2=0.1 -txe 24.40 25.40 -tye 60.700 59.700 -outsize 2000 2000 -of GTiff -ot Float64 -l dem dem.vrt dem.tiff --config GDAL_NUM_THREADS ALL_CPUS && gdaldem color-relief -alpha  dem.tiff colors.txt dem.tiff && gdal_translate -of PNG dem.tiff #{Rails.root.join('app','assets', 'images', 'data.png')} ")
 
     end
 
