@@ -1,7 +1,6 @@
 function mapLegend(canvas) {
 
     var ctx = canvas.getContext("2d");
-  //  ctx.fillRect(10, 10, 10, 10
 
     var canvasHeight=350;
 
@@ -11,21 +10,44 @@ function mapLegend(canvas) {
     }
 
     ctx.font="15px Georgia";
-    ctx.fillText("0",0,20);
-    ctx.fillText("20",0,120);
 
-    <%=ColorDrop.where layer_id:1%>
-    <%=ColorDrop.all.to_json%>
+    var colorsJSON = <%=(ColorDrop.where layer_id:1).to_json%>;
+    var my_gradient=ctx.createLinearGradient(0,canvasHeight-20,0,0);
 
 
+    var step = 1/colorsJSON.length;
+    var counter = 0;
+    var stepCounter = 0;
 
-    var my_gradient=ctx.createLinearGradient(0,0,0,canvasHeight-20);
-    my_gradient.addColorStop(0,"red");
-    my_gradient.addColorStop(0.2,"orange");
-    my_gradient.addColorStop(0.4,"yellow");
-    my_gradient.addColorStop(0.6,"green");
-    my_gradient.addColorStop(0.8,"blue");
-    my_gradient.addColorStop(1,"purple");
+    colorsJSON.forEach(function(a)
+    {
+        if (a.value==0) {
+            my_gradient.addColorStop((step * stepCounter), 'rgba(' + colorsJSON[counter].color + ')');
+            ctx.fillText(colorsJSON[0].value,0,canvasHeight-2);
+        }
+        else {
+            my_gradient.addColorStop((step * stepCounter), 'rgba(' + colorsJSON[counter].color + ',5)');
+        }
+        if (counter == colorsJSON.length/2>>0) {
+            ctx.fillText(colorsJSON[counter].value,0,(canvasHeight-canvasHeight/colorsJSON.length*stepCounter)-20);
+             console.log(canvasHeight-canvasHeight/colorsJSON.length*stepCounter);
+        }
+        if (counter == colorsJSON.length-1) {
+            ctx.fillText(colorsJSON[counter].value,0,30);
+        }
+
+        console.log(a);
+        counter++;
+        stepCounter++;
+    });
+
+
+
+
+
+
+
+
     ctx.fillStyle=my_gradient;
     ctx.fillRect(20,20,100,canvasHeight-20);
 }
