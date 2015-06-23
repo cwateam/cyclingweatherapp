@@ -3,7 +3,7 @@ class FmiMaintenanceJob < ActiveJob::Base
 
   def perform(*args)
     time_now = (Time.now.to_f*1000).to_i
-    t = time_now - 30 * 60 * 1000
+    t = time_now - 60 * 60 * 1000
     
     fbc = FirebaseClient.new
     
