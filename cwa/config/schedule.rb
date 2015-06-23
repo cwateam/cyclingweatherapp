@@ -17,7 +17,7 @@ every 60.minutes do
 end
 
 every 10.minutes do
-  runner "GdalJob.perform_later"
+  runner2 "GdalJob.perform_later"
 end
 
 
