@@ -7,7 +7,7 @@ class GdalJob < ActiveJob::Base
 
     if dataType
 
-      system("cd ~/.gdal/#{dataType} && gdal_grid -zfield \"Data\" -a invdist:power=8:smoothing=0.3:nodata=0:radius1=0.1:radius2=0.1 -txe 24.40 25.40 -tye 60.700 59.700 -outsize 2000 2000 -of GTiff -ot Float64 -l dem dem.vrt dem.tiff --config GDAL_NUM_THREADS ALL_CPUS && gdaldem color-relief -alpha  dem.tiff colors.txt dem.tiff && gdal_translate -of PNG dem.tiff #{Rails.root.join('app','assets', 'images', 'data.png')} ")
+      system("cd ~/.gdal/#{dataType} && gdal_grid -zfield \"Data\" -a invdist:power=8:smoothing=0.3:nodata=-5000:radius1=0.1:radius2=0.1 -txe 24.40 25.40 -tye 60.700 59.700 -outsize 2000 2000 -of GTiff -ot Float64 -l dem dem.vrt dem.tiff --config GDAL_NUM_THREADS ALL_CPUS && gdaldem color-relief -alpha  dem.tiff colors.txt dem.tiff && gdal_translate -of PNG dem.tiff #{Rails.root.join('app','assets', 'images', 'data.png')} ")
 
     end
 
@@ -16,7 +16,7 @@ class GdalJob < ActiveJob::Base
   def getData()
     fbc = FirebaseClient.new
 
-    layer = Layer.find_by name: 'Temperature reds'
+    layer = Layer.find_by name: 'Temperature temp1'
 
     if layer
 
@@ -45,7 +45,7 @@ class GdalJob < ActiveJob::Base
       drops = ColorDrop.where layer_id:layer.id
 
       #Empty old version of colors file
-      system("echo '' > ~/.gdal/#{dataType}/colors.txt")
+      system("echo '-5000 0,0,0,0' > ~/.gdal/#{dataType}/colors.txt")
 
       #Add new color drops to colors file
       drops.each { |value|

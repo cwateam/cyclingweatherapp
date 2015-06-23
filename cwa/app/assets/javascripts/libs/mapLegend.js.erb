@@ -9,9 +9,9 @@ function mapLegend(canvas) {
         canvas.height = canvasHeight;
     }
 
-    ctx.font="15px Georgia";
+    ctx.font="14px Times New Roman";
 
-    var colorsJSON = <%=(ColorDrop.where layer_id:1).to_json%>;
+    var colorsJSON = <%=(ColorDrop.where layer_id:2).to_json%>;
     var my_gradient=ctx.createLinearGradient(0,canvasHeight-20,0,0);
 
 
@@ -21,15 +21,15 @@ function mapLegend(canvas) {
 
     colorsJSON.forEach(function(a)
     {
-        if (a.value==0) {
-            my_gradient.addColorStop((step * stepCounter), 'rgba(' + colorsJSON[counter].color + ')');
+        if (counter==0) {
             ctx.fillText(colorsJSON[0].value,0,canvasHeight-2);
         }
-        else {
-            my_gradient.addColorStop((step * stepCounter), 'rgba(' + colorsJSON[counter].color + ',5)');
-        }
+
+        my_gradient.addColorStop((step * stepCounter), 'rgba(' + colorsJSON[counter].color + ',1)');
+
+
         if (counter == colorsJSON.length/2>>0) {
-            ctx.fillText(colorsJSON[counter].value,0,(canvasHeight-canvasHeight/colorsJSON.length*stepCounter)-20);
+            ctx.fillText(colorsJSON[counter].value,0,(canvasHeight-canvasHeight/colorsJSON.length*stepCounter)-10);
              console.log(canvasHeight-canvasHeight/colorsJSON.length*stepCounter);
         }
         if (counter == colorsJSON.length-1) {
