@@ -17,27 +17,29 @@ function mapLegend(canvas) {
 
     var step = 1/colorsJSON.length;
     var counter = 0;
-    var stepCounter = 0;
 
     colorsJSON.forEach(function(a)
     {
+        // Writing the beginning number value of the layer to the bottom of the legend
         if (counter==0) {
-            ctx.fillText(colorsJSON[0].value,0,canvasHeight-2);
+            ctx.fillText(colorsJSON[0].value,0,canvasHeight-2); // Writing the beginning number value of the layer to the bottom of the legend
         }
 
-        my_gradient.addColorStop((step * stepCounter), 'rgba(' + colorsJSON[counter].color + ',1)');
+        // Creating the visual gradient for maplegend
+        my_gradient.addColorStop((step * counter), 'rgba(' + colorsJSON[counter].color + ',1)');
 
-        if (counter == colorsJSON.length/2>>0) {
-            ctx.fillText(colorsJSON[counter].value,0,(canvasHeight-canvasHeight/colorsJSON.length*stepCounter)-10);
-             console.log(canvasHeight-canvasHeight/colorsJSON.length*stepCounter);
+        // Writing the value about in the middle of the value range as a number to the middle point of the gradiant.
+        // Number does not necessarily end up exactly on the same position as the exact color it explains, but more or less.
+        if (counter  == colorsJSON.length/2>>0) {
+            ctx.fillText(colorsJSON[counter].value,0,(canvasHeight-canvasHeight/colorsJSON.length*counter)-10);
         }
+
+        // Writing the last value as a number to top
         if (counter == colorsJSON.length-1) {
             ctx.fillText(colorsJSON[counter].value,0,30);
         }
 
-        console.log(a);
         counter++;
-        stepCounter++;
     });
 
     ctx.fillStyle=my_gradient;
