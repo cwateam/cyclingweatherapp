@@ -8,18 +8,18 @@ describe "Devices pages" do
   end
 end
 
-describe "Device" do
+describe "" do
   let!(:user) {FactoryGirl.create :user}
   let!(:dp){FactoryGirl.create :device_profile}
   let!(:device){FactoryGirl.create :device}
 
-  it "page should not be visible when not signed in" do
+  it "Device page should not be visible when not signed in" do
     visit "/devices/1"
     expect(page).to have_content 'You must be signed in to view this page!'
     expect(page).to have_content 'Sign in'
   end
 
-  describe ", when a user is signed in, " do
+  describe "When a user is signed in," do
     before :each do
       visit signin_path
       fill_in('username', with:'Veera')
@@ -27,36 +27,36 @@ describe "Device" do
       click_button('Log in')
     end
 
-    it "can be viewed" do
+    it "devices can be viewed" do
       visit devices_path
       expect(page).to have_content 'Listing Devices'
-      expect(page).to have_content 'laite abcd Edit Destroy'
+      expect(page).to have_content 'laite yesyes Edit Destroy'
 
     end
 
-    it "can be added" do
+    it "a device can be added" do
       visit devices_path
       click_link "New Device"
 
       fill_in('Device', with:'laite2')
-      select('abcd', from:'device[device_profile_id]')
+      select('yesyes', from:'device[device_profile_id]')
       click_button('Create Device')
 
       expect(page).to have_content 'Device was successfully created.'
     end
 
-    it "can be edited" do
+    it "their own device can be edited" do
       visit devices_path
       click_link "Edit"
 
       fill_in('Device', with:'laite_uusi')
-      select('abcd', from:'device[device_profile_id]')
+      select('yesyes', from:'device[device_profile_id]')
       click_button('Update Device')
 
       expect(page).to have_content 'Device was successfully updated.'
       expect(Device.first.device_id).to eq('laite_uusi')
     end
-    it "cannot be edited if it belongs to another user" do
+    it "a device cannot be edited if it belongs to another user" do
       FactoryGirl.create :user, username:"Matti"
       FactoryGirl.create :device, device_id:"laite2", user_id:2
 
@@ -64,7 +64,7 @@ describe "Device" do
       expect(Device.count).to eq(2)
 
       visit devices_path
-      expect(page).to have_content 'laite2 abcd New Device'
+      expect(page).to have_content 'laite2 yesyes New Device'
 
       # The link to edit devices is not displayed on other users' device pages.
       # To test that editing other users' devices cannot be done, you should uncomment the relevant lines below and comment out some in views/devices/show.html.erb

@@ -4,7 +4,7 @@
   <strong>Device:</strong>
   <%= @device.device_id %><br/>
   <strong>Device profile:</strong>
-  <%= @device.device_profile.profile_name %><br/>
+  <%= @device.device_profile.name %><br/>
 <% if current_user and @device.user.id == current_user.id %>
 <%= link_to 'Edit', edit_device_path(@device) %> | 
 <%= link_to 'Destroy', @device, method: :delete, data: { confirm: 'Are you sure?' } %> 
