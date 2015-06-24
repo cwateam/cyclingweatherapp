@@ -52,7 +52,7 @@ body {
     position: relative;
     height: 14px;
     display: inline-block;
-    bacground-color: #ddd;
+    background-color: #ddd;
 }
 
 #information-container {
@@ -67,4 +67,11 @@ body {
     width: 300px;
     overflow: auto;
     max-height: 80vh;
+}
+.admin-pages {
+    padding-left: 50px;
+
+}
+td {
+    padding-right: 15px;
 }

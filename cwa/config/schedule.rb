@@ -4,7 +4,7 @@ every 10.minutes do
   runner2 "FmiJob.perform_later"
 end
 
-every 10.minutes do
+every 60.minutes do
   runner2 "FmiMaintenanceJob.perform_later"
 end
 
@@ -15,6 +15,11 @@ end
 every 60.minutes do
   runner2 "ThingseeMaintenanceJob.perform_later"
 end
+
+every 10.minutes do
+  runner2 "GdalJob.perform_later"
+end
+
 
 # Use this file to easily define all of your cron jobs.
 #

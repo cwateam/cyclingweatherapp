@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Devices</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.devices.each do |device| %>
+      <tr>
+        <td><%= link_to device.device_id, device %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<%= link_to 'New Device', new_device_path %> <br /><br />
+
+<% if current_user == @user %>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>  |
+<% end %>
+<%= link_to 'Users list', users_path %>

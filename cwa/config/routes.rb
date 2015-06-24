@@ -1,8 +1,14 @@
 # coding: utf-8
 Rails.application.routes.draw do
 
+  resources :users
+  get 'signup', to: 'users#new'
+  resource :session, only: [:new, :create, :delete]
+  get 'signin', to: 'sessions#new'
+  delete 'signout', to: 'sessions#destroy'
   # enable this when admin panel needed. Remember authentications!
-  # resources :devices
+  resources :devices
+  #resources :devices, only: [:index, :show, :new, :edit, :create, :delete]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

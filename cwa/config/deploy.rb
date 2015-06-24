@@ -74,6 +74,12 @@ namespace :cwa do
       execute ("cd #{deploy_to}/current/ && rake db:migrate RAILS_ENV=development")
     end
   end
+  desc 'Make bin/rails executable for deployer'
+  task :railsExe do
+    on "deployer@46.101.185.190" do
+      execute ("chmod o+x #{deploy_to}/current/bin/rails") 
+    end
+  end
 end
 
 #namespace :deploy do

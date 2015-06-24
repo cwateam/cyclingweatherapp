@@ -16,7 +16,7 @@ class ThingseeCloudJob < ActiveJob::Base
       # "temperature",
       # "source"]
       
-      fbc.post("thingsee_temp", :created => (Time.now.to_f*1000).to_i,
+      fbc.post("data", :created => (Time.now.to_f*1000).to_i,
                :datatype => "temperature",
                :g => GeoHash.encode(record[0], record[1]),
                :l => {:'0' => record[0],
