@@ -112,7 +112,8 @@ beforeEach(function(){
             },
             event:{
                 addListener: function(object, event, done){
-                }
+                },
+                addListenerOnce: function(object, event, done) {}
             },
             TravelMode: {
                 BICYCLING: "bicycling"

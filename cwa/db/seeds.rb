@@ -135,11 +135,22 @@ st38.sensors.create device_profile_id:dp.id, name:"ThingseeOne ambient light sen
 layer=Layer.create sensor_type_id:st1.id, name:st1.name+" reds"
 
 #Create ColorDrops for layer
-layer.color_drops.create value:0, color:"255,255,255,0"
+layer.color_drops.create value:0, color:"255,255,255"
 layer.color_drops.create value:5, color:"255,204,204"
 layer.color_drops.create value:10, color:"255,153,153"
 layer.color_drops.create value:15, color:"255,102,102"
 layer.color_drops.create value:20, color:"255,51,51"
 layer.color_drops.create value:25, color:"255,0,0"
 layer.color_drops.create value:30, color:"204,0,0"
+
+
+layer2=Layer.create sensor_type_id:st1.id, name:st1.name+" temp1"
+
+layer2.color_drops.create value:-30, color:"204,255,255"
+layer2.color_drops.create value:-20, color:"0,255,255"
+layer2.color_drops.create value:-10, color:"102,178,255"
+layer2.color_drops.create value:0, color:"0,102,204"
+layer2.color_drops.create value:10, color:"204,153,255"
+layer2.color_drops.create value:20, color:"255,102,255"
+layer2.color_drops.create value:30, color:"204,0,102"
 

@@ -1,0 +1,47 @@
+function mapLegend(canvas) {
+
+    var ctx = canvas.getContext("2d");
+
+    var canvasHeight=350;
+
+    if (screen.height<400) {
+        canvasHeight = screen.height * 0.6;
+        canvas.height = canvasHeight;
+    }
+
+    ctx.font="14px Times New Roman";
+
+    var colorsJSON = <%=(ColorDrop.where layer_id:2).to_json%>;
+    var my_gradient=ctx.createLinearGradient(0,canvasHeight-20,0,0);
+
+
+    var step = 1/colorsJSON.length;
+    var counter = 0;
+
+    colorsJSON.forEach(function(a)
+    {
+        // Writing the beginning number value of the layer to the bottom of the legend
+        if (counter==0) {
+            ctx.fillText(colorsJSON[0].value,0,canvasHeight-2); // Writing the beginning number value of the layer to the bottom of the legend
+        }
+
+        // Creating the visual gradient for maplegend
+        my_gradient.addColorStop((step * counter), 'rgba(' + colorsJSON[counter].color + ',1)');
+
+        // Writing the value about in the middle of the value range as a number to the middle point of the gradiant.
+        // Number does not necessarily end up exactly on the same position as the exact color it explains, but more or less.
+        if (counter  == colorsJSON.length/2>>0) {
+            ctx.fillText(colorsJSON[counter].value,0,(canvasHeight-canvasHeight/colorsJSON.length*counter)-10);
+        }
+
+        // Writing the last value as a number to top
+        if (counter == colorsJSON.length-1) {
+            ctx.fillText(colorsJSON[counter].value,0,30);
+        }
+
+        counter++;
+    });
+
+    ctx.fillStyle=my_gradient;
+    ctx.fillRect(20,20,100,canvasHeight-20);
+}
