@@ -27,7 +27,6 @@ function mapLegend(canvas) {
 
         my_gradient.addColorStop((step * stepCounter), 'rgba(' + colorsJSON[counter].color + ',1)');
 
-
         if (counter == colorsJSON.length/2>>0) {
             ctx.fillText(colorsJSON[counter].value,0,(canvasHeight-canvasHeight/colorsJSON.length*stepCounter)-10);
              console.log(canvasHeight-canvasHeight/colorsJSON.length*stepCounter);
@@ -40,13 +39,6 @@ function mapLegend(canvas) {
         counter++;
         stepCounter++;
     });
-
-
-
-
-
-
-
 
     ctx.fillStyle=my_gradient;
     ctx.fillRect(20,20,100,canvasHeight-20);
