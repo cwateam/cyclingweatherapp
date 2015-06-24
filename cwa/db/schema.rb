@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150622165030) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "name"
-    t.string   "profile_name"
+    t.string   "profile_name" #poistetaan
     t.string   "device_type"
     t.string   "hw_version"
     t.string   "sw_version"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20150622165030) do
   create_table "sensors", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
-    t.string   "device_profile_id"
-    t.string   "sensor_type_id"
+    t.string   "device_profile_id" #Integer
+    t.string   "sensor_type_id"    #Integer
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
