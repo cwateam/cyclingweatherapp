@@ -5,6 +5,7 @@ every 10.minutes do
 end
 
 every 60.minutes do
+
   runner2 "FmiMaintenanceJob.perform_later"
 end
 
@@ -17,7 +18,9 @@ every 60.minutes do
 end
 
 every 10.minutes do
+
   runner2 "GdalJob.perform_later"
+
 end
 
 

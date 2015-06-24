@@ -52,7 +52,6 @@ body {
     position: relative;
     height: 14px;
     display: inline-block;
-    background-color: #ddd;
 }
 
 #information-container {
@@ -68,10 +67,16 @@ body {
     overflow: auto;
     max-height: 80vh;
 }
+
+#visualization-legend {
+    padding: 10px;
+    display: none;
+}
+
 .admin-pages {
     padding-left: 50px;
-
 }
+
 td {
     padding-right: 15px;
 }

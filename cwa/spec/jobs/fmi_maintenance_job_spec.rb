@@ -7,8 +7,9 @@ RSpec.describe FmiMaintenanceJob, type: :job do
   end
 
   it 'should work' do
-  
+
   uri = 'https://glowing-inferno-7580.firebaseio.com/data.json?endAt=1433924413855&orderBy=%22mtime%22'
+
 
   canned_answer = File.new("./spec/lib/samples/fmi_temp_data_from_firebase.json").read
 
