@@ -10,7 +10,7 @@
 #rake:db seed
 
 # Create profile for Thingsee One beta
-dp = DeviceProfile.create sw_version:"2015.05.21.8_Thingsee_Retail", hw_version:"0402", device_type:"Thingsee", profile_name:"Thingsee One beta version"
+dp = DeviceProfile.create sw_version:"2015.05.21.8_Thingsee_Retail", hw_version:"0402", device_type:"Thingsee", name:"Thingsee One beta version", data_transformer:"ThingseeCloudTemperatureDataTransformer"
 
 # Create device. HOX: username must exist in the database lest seeding fail
 # dp.devices.create device_id:"XNG51760148", user_id:(User.find_by username:"[username]").id
@@ -131,9 +131,10 @@ st36.sensors.create device_profile_id:dp.id, name:"ThingseeOne connected to char
 st38=SensorType.create name:"Ambient light"
 st38.sensors.create device_profile_id:dp.id, name:"ThingseeOne ambient light sensor", address:"0x00060300"
 
-#Create a layer for temperature visualization
+#Create a Layer for temperature visualization
 layer=Layer.create sensor_type_id:st1.id, name:st1.name+" reds"
-#Create color drops for layer
+
+#Create ColorDrops for layer
 layer.color_drops.create value:0, color:"255,255,255"
 layer.color_drops.create value:5, color:"255,204,204"
 layer.color_drops.create value:10, color:"255,153,153"

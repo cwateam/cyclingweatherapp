@@ -34,12 +34,13 @@ class DevicesController < ApplicationController
     else
       @device = Device.new(device_params)
       @device.user_id = current_user.id
+      @device_profiles = DeviceProfile.all
       respond_to do |format|
         if @device.save
           format.html { redirect_to @device, notice: 'Device was successfully created.' }
           format.json { render :show, status: :created, location: @device }
         else
-          format.html { render :new }
+          format.html { render action: 'new' }
           format.json { render json: @device.errors, status: :unprocessable_entity }
         end
       end

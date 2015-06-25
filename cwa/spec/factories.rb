@@ -12,7 +12,6 @@ FactoryGirl.define do
   end
 
   factory :device_profile do
-    profile_name "abcd"
     sw_version "efg"
     hw_version "123"
     device_type "qwerty"
