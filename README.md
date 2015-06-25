@@ -4,7 +4,6 @@
 [![Code Climate](https://codeclimate.com/github/cwateam/cyclingweatherapp.png)](https://codeclimate.com/github/cwateam/cyclingweatherapp)
 
 http://46.101.185.190
-http://cyclingweatherapp.me/
 
 Cyclingweatherapp is a project originally created as a student project for the University of Helsinki Department of Computer Science during the summer term 2015.  The intended purpose of the application is to provide bicyclers and pedestrians current information about routes and conditions. Information about maps and bicycling routes is received from Google Maps. Some weather information is received from Finnish Meteorological Institute. 
 
