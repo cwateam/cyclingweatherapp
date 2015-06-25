@@ -25,12 +25,13 @@ App.service('MapService', function(){
 
         var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
+        // Creates a canvas for legend on the upper right corner of the map after google maps has loaded.
         google.maps.event.addListenerOnce(map, 'idle', function(){
             var legendDiv = document.getElementById('visualization-legend');
             legendDiv.style.display='inline';
             map.controls[google.maps.ControlPosition.RIGHT_TOP].push(
                 legendDiv);
-            mapLegend(document.getElementById("legendCanvas"));
+            mapLegend(document.getElementById("legendCanvas"));  // Calls mapLegend() to draw information on the canvas.
         });
 
         bikeLayer = new google.maps.BicyclingLayer();
