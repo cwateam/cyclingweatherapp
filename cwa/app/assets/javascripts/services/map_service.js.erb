@@ -30,7 +30,7 @@ App.service('MapService', function(){
             legendDiv.style.display='inline';
             map.controls[google.maps.ControlPosition.RIGHT_TOP].push(
                 legendDiv);
-            mapLegend(document.getElementById("myCanvas"));
+            mapLegend(document.getElementById("legendCanvas"));
         });
 
         bikeLayer = new google.maps.BicyclingLayer();

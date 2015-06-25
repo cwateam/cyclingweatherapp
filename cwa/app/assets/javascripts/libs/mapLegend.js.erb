@@ -1,3 +1,9 @@
+/*
+ *  Function MapLegend creates a colorgradient as explanation for the colors used to visualize the data on map.
+ *  Colors and values of the used layer are taken from database using ruby, and then used as colorstops for the gradient.
+ *  The layer_id is currently hardcoded and needs to be changed manually here.
+ */
+
 function mapLegend(canvas) {
 
     var ctx = canvas.getContext("2d");
@@ -11,6 +17,7 @@ function mapLegend(canvas) {
 
     ctx.font="14px Times New Roman";
 
+    // Database query using ruby to get layers values. Layer_id is harcoded and needs to be changed here if a new layer is desired.
     var colorsJSON = <%=(ColorDrop.where layer_id:2).to_json%>;
     var my_gradient=ctx.createLinearGradient(0,canvasHeight-20,0,0);
 
