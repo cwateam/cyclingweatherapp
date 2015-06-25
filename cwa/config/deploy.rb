@@ -71,13 +71,13 @@ namespace :cwa do
   desc 'Migrations'
   task :migrations do
     on "deployer@46.101.185.190" do
-      execute ("cd #{deploy_to}/current/ && rake db:migrate RAILS_ENV=development")
+      execute ("cd #{deploy_to}/current/ && rake db:migrate RAILS_ENV=#{rails_env}")
     end
   end
   desc 'Make bin/rails executable for deployer'
   task :railsExe do
     on "deployer@46.101.185.190" do
-      execute ("chmod o+x #{deploy_to}/current/bin/rails") 
+      execute ("chmod u+x #{deploy_to}/current/bin/rails")
     end
   end
 end

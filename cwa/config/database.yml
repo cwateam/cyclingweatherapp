@@ -22,7 +22,8 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+#Set production database path to shared location between different versions
+  database: ../../db/production.sqlite3
 
 staging:
   <<: *default
