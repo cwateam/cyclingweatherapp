@@ -4,5 +4,5 @@
 # resque_config = YAML.load_file(rails_root + '/config/resque.yml')
 # Resque.redis = resque_config[rails_env]
 
-redis_config = YAML.load_file("#{Rails.root}/config/redis.yml")
+redis_config = YAML.load_file("#{Rails.root}/config/resque.yml")
 Resque.redis = redis_config[Rails.env]
