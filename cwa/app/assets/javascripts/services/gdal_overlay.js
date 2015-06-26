@@ -25,7 +25,7 @@ GdalOverlay.prototype.onAdd = function(){
     img.style.width = '100%';
     img.style.height = '100%';
     img.style.position = 'absolute';
-    img.style.opacity = '0.6'
+    img.style.opacity = '0.6';
     div.appendChild(img);
 
     this.div = div;
