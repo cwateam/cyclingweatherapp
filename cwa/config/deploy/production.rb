@@ -6,9 +6,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server '46.101.185.190', user: 'deployer', roles: %w{web}
-
-
+server ENV["DEPLOYMENT_SERVER_IP"], user: ENV["DEPLOYMENT_SERVER_USER"], roles: %w{web}
 
 # role-based syntax
 # ==================
@@ -21,12 +19,10 @@ server '46.101.185.190', user: 'deployer', roles: %w{web}
 # role :app, %w{deploy@example.com}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
-role :app, %w{deployer@46.101.185.190}
-role :web, %w{deployer@46.101.185.190}
-role :db, %w{deployer@46.101.185.190}
-role :production, %w{deployer@46.101.185.190}
-
-
+role :app, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
+role :web, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
+role :db, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
+role :production, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
 
 # Configuration
 # =============
@@ -37,21 +33,41 @@ role :production, %w{deployer@46.101.185.190}
 # Feel free to add new variables to customise your setup.
 set :application, 'cwa'
 
+##
+# Repository settings
+##
+
+set :branch, 'master'
+
+# ---------------------------------------------
+
+##
+# Deployment server specific settings
+##
+
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/deployer/apps/cwa'
 
-set :branch, 'master'
+# ---------------------------------------------
+
+##
+# Resque settings. https://github.com/sshingler/capistrano-resque
+##
 
 # Specify the server that Resque will be deployed on. If you are using Cap v3
 # and have multiple stages with different Resque requirements for each, then
 # these __must__ be set inside of the applicable config/deploy/... stage files
-# instead of config/deploy.rb:
-role :resque_worker, %w{deployer@46.101.185.190}
-role :resque_scheduler, %w{deployer@46.101.185.190}
+# instead of config/deploy.rb
+role :resque_worker, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
+role :resque_scheduler, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
 
+# Set Resque workers to be started in deployment server. Here you can also define "priorities" for queues (critical, default and low)
 set :workers, { "critical" => 3, "default" => 2, "low" => 1 }
 
+# Uncomment this line if your workers need access to the Rails environment
 set :resque_environment_task, true
+
+# ---------------------------------------------
 
 after "deploy:restart", "resque:restart"
 

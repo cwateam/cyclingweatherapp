@@ -326,6 +326,7 @@ DEPENDENCIES
   bower-rails
   byebug
   c_geohash
+  capistrano (~> 3.4.0)
   capistrano-bower
   capistrano-bundler (~> 1.1.2)
   capistrano-passenger
