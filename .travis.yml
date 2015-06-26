@@ -30,7 +30,7 @@ after_success:
 - "[[ $TRAVIS_BRANCH = 'staging' ]] && bundle exec cap staging cwa:clobber"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production deploy"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:migrations"
-- "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:clobber"
+- "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:assets"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:railsExe"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:secretKeyBase"
 
