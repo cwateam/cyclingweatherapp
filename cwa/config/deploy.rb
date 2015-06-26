@@ -107,14 +107,13 @@ namespace :cwa do
   desc 'Assets'
   task :assets do
     on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
-      execute ("cd #{deploy_to}/current/public/ && rm -rf assets")
-      execute ("cd #{deploy_to}/current/ && bundle exec rake assets:precompile")
+      execute ("cd #{deploy_to}/current/ && RAILS_ENV=#{rails_env} bundle exec rake assets:clobber && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile")
     end
   end
   desc 'Clobber'
   task :clobber do
     on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
-      execute ("cd #{deploy_to}/current && bundle exec rake assets:clobber")
+      execute ("cd #{deploy_to}/current && RAILS_ENV=#{rails_env} bundle exec rake assets:clobber")
     end
   end
   desc 'Migrations'
