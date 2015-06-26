@@ -8,8 +8,6 @@
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 server '46.101.185.190', user: 'deployer', roles: %w{web}
 
-
-
 # role-based syntax
 # ==================
 
@@ -25,8 +23,6 @@ role :app, %w{deployer@46.101.185.190}
 role :web, %w{deployer@46.101.185.190}
 role :db,  %w{deployer@46.101.185.190}
 
-
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -36,10 +32,22 @@ role :db,  %w{deployer@46.101.185.190}
 # Feel free to add new variables to customise your setup.
 set :application, 'cwa_dev'
 
+##
+# Repository settings
+##
+
+set :branch, 'development'
+
+# ---------------------------------------------
+
+##
+# Deployment server specific settings
+##
+
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/deployer/apps/cwa_dev'
 
-set :branch, 'development'
+# ---------------------------------------------
 
 # Custom SSH Options
 # ==================
