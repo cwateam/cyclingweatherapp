@@ -106,26 +106,26 @@ set :whenever_roles, :production
 namespace :cwa do
   desc 'Assets'
   task :assets do
-    on "deployer@46.101.185.190" do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute ("cd #{deploy_to}/current/public/ && rm -rf assets")
       execute ("cd #{deploy_to}/current/ && bundle exec rake assets:precompile")
     end
   end
   desc 'Clobber'
   task :clobber do
-    on "deployer@46.101.185.190" do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute ("cd #{deploy_to}/current && bundle exec rake assets:clobber")
     end
   end
   desc 'Migrations'
   task :migrations do
-    on "deployer@46.101.185.190" do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute ("cd #{deploy_to}/current/ && rake db:migrate RAILS_ENV=#{rails_env}")
     end
   end
   desc 'Make bin/rails executable for deployer'
   task :railsExe do
-    on "deployer@46.101.185.190" do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute ("chmod u+x #{deploy_to}/current/bin/rails")
     end
   end
