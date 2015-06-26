@@ -19,4 +19,4 @@ Heikki Rantala
 Virpi Sumu  
 
   
-Unversity of Helsinki of Helsinki gives everyone a right to use the creations of this project based on principles of open software development in the form of MIT Licence. 
+Unversity of Helsinki gives everyone a right to use the creations of this project based on principles of open software development in the form of MIT Licence.
