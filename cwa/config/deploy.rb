@@ -130,8 +130,8 @@ namespace :cwa do
     end
   end
   desc 'set SECRET_KEY_BASE eviroment variable'
-  taske :secretKeyBase do
-    on "deployer@46.101.185.190" do
+  task :secretKeyBase do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute("cd #{deploy_to}/current && rake secret RAILS_ENV=production >> config/secrets.yml && touch tmp/restart.txt")
     end
   end
