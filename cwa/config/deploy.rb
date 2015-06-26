@@ -135,6 +135,12 @@ namespace :cwa do
       execute("cd #{deploy_to}/current && rake secret RAILS_ENV=production >> config/secrets.yml && touch tmp/restart.txt")
     end
   end
+  desc 'run rvm cron setup'
+  task :rvmCronSetup do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
+      execute("cd #{deploy_to}/current && rvm cron setup")
+    end
+  end
 end
 
 #namespace :deploy do
