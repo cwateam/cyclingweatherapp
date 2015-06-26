@@ -9,7 +9,7 @@ App.service('MapService', function(){
     var overlay;
 
     var addOverlay = function(map){
-        var srcImage = "<%= asset_path('assets/data.png')%>";
+        var srcImage = "<%= asset_path 'data.png'%>";
         var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(59.7, 24.4), new google.maps.LatLng(60.7,25.4));
         overlay = new GdalOverlay(bounds, srcImage, map);
     }

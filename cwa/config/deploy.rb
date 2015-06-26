@@ -80,6 +80,12 @@ namespace :cwa do
       execute ("chmod u+x #{deploy_to}/current/bin/rails")
     end
   end
+  desc 'set SECRET_KEY_BASE eviroment variable'
+  taske :secretKeyBase do
+    on "deployer@46.101.185.190" do
+      execute("cd #{deploy_to}/current && rake secret RAILS_ENV=production >> config/secrets.yml && touch /tmp/restart.txt")
+    end
+  end
 end
 
 #namespace :deploy do

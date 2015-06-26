@@ -32,6 +32,7 @@ after_success:
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:migrations"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:clobber"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:railsExe"
+- "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:secretKeyBase"
 
 env:
   global:
