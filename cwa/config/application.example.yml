@@ -1,10 +1,13 @@
 # copy this file as "application.yml" and fill in your apikeys and tokens
 defaults: &defaults
-  FMI_APIKEY: 'your-apikey'
-  GOOGLE_SERVER_APIKEY: 'your-apikey'
-  GOOGLE_BROWSER_APIKEY: 'your-apikey'
+  FMI_APIKEY: 'your-apikey_from_fmi_open_data'
+  GOOGLE_SERVER_APIKEY: 'your_apikey_from_google_maps'
+  GOOGLE_BROWSER_APIKEY: 'your_apikey_from_google_maps'
   THINGSEE_ID: 'your_device_id'
-  THINGSEE_TOKEN: 'your_device_token'
+  THINGSEE_CLOUD_U: 'your_username_for_thingsee_dashboard'
+  THINGSEE_CLOUD_P: 'your_password_for_thingsee_dashboard'
+  DEPLOYMENT_SERVER_IP: 'your.server.ip.here'
+  DEPLOYMENT_SERVER_USER: 'deployer'
 
 development:
   <<: *defaults
