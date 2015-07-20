@@ -1,66 +1,75 @@
 source 'https://rubygems.org'
 
+# Most of the version specifiers, like >= 1.0, are self-explanatory. The specifier ~> has a special meaning,
+# best shown by example. ~> 2.0.3 is identical to >= 2.0.3 and < 2.1. ~> 2.1 is identical to >= 2.1
+# and < 3.0. ~> 2.2.beta will match prerelease versions like 2.2.beta.12
+# http://bundler.io/gemfile.html
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+# Pure Ruby gem that implements the MQTT protocol
+gem 'mqtt'
+# Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file.
+gem 'figaro'
+# A Ruby framework for rapid API development with great conventions.
+gem 'grape'
+# Makes http fun again!
+gem 'httparty'
+# Nokogiri is an HTML, XML, SAX, and Reader parser. 
+gem 'nokogiri', '~> 1.6.6.2'
+# Kaminari is a Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 3+
+gem 'kaminari'
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.0'
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc', '~> 0.4.0', group: :doc
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+# Enable only if really needed.
+# gem 'travis', '~> 1.7.6', group: :development
+
+# Front specific libraries
+# Use Bootstrap for eye candy
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+gem 'responders', '~> 2.0'
+gem 'sinatra', :require => nil
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+gem 'bower-rails'
+# ---------------------------------------------
+
+# Database and data manipulation
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Firebase as database
 gem 'firebase'
 # Ruby Firebase REST API client
 gem 'rest-firebase', '~> 1.0.1'
-# Use GeoHash to interact with GeoFire
+# C_Geohash provides support for manipulating Geohash strings in Ruby. See http://en.wikipedia.org/wiki/Geohash. This is an actively maintained fork of the original http://rubygems.org/gems/geohash
+# Could be used with front based visualizations.
 gem 'c_geohash', require: 'geohash'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-# Use Bootstrap for eye candy
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby 
+# ---------------------------------------------
+
+# Workers
+# Resque is a Redis-backed Ruby library for creating background jobs, placing those jobs on multiple queues, and processing them later.
 gem 'resque'
+# Clean ruby syntax for writing and deploying cron jobs.
 gem 'whenever', :require => false
-gem 'responders', '~> 2.0'
-gem 'sinatra', :require => nil
+# ---------------------------------------------
 
-# Pure Ruby gem that implements the MQTT protocol
-gem 'mqtt'
-
-gem 'figaro'
-
-# A Ruby framework for rapid API development with great conventions.
-gem 'grape'
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
-# gem 'jquery-turbolinks'
-# Makes http fun again!
-gem 'httparty'
-# adds pagination to ActiveModels
-# Nokogiri is an HTML, XML, SAX, and Reader parser. 
-gem 'nokogiri', '~> 1.6.6.2'
-gem 'kaminari'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
-gem 'bower-rails'
-
-# gem 'angular-rails-templates'
-
-gem 'sprockets', '2.12.3'
-
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app servee
-# gem 'unicorn'
+# Asset pipeline
+# Sprockets is a Rack-based asset packaging system that concatenates and serves JavaScript, CoffeeScript, CSS, LESS, Sass, and SCSS.
+gem 'sprockets', '~> 3.2.0'
+# Sprockets Rails integration
+gem 'sprockets-rails', '~> 2.3.2'
+# Sass adapter for the Rails asset pipeline.
+gem 'sass-rails', '~> 5.0'
+# Uglifier minifies JavaScript files by wrapping UglifyJS to be accessible in Ruby.
+gem 'uglifier', '>= 1.3.0'
+# CoffeeScript adapter for the Rails asset pipeline.
+gem 'coffee-rails', '~> 4.1.0'
+# ---------------------------------------------
 
 # Use Capistrano for deployment
 gem 'capistrano', '~> 3.4.0'
@@ -69,22 +78,16 @@ gem 'capistrano-passenger', group: :development
 gem 'capistrano-bundler', '~> 1.1.2', group: :development
 gem 'capistrano-bower', group: :development
 gem "capistrano-resque", "~> 0.2.2", require: false
-
-# Enable if U really need it...
-# gem 'travis', '~> 1.7.6', group: :development
+# ---------------------------------------------
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
- # gem 'spring'
-
+  # gem 'spring'
   gem 'rspec-rails'
-
   gem 'jasmine'
 end
 
@@ -99,4 +102,3 @@ end
 group :development do
   gem 'therubyracer', platforms: :ruby
 end
-
