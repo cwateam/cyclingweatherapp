@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'resque'
+require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -21,8 +22,12 @@ module Cwa
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.assets.enabled = true;
+    config.assets.enabled = true
+    config.assets.compress = true
     config.assets.initialize_on_precompile = false
+
+    config.assets.css_compressor = :sass
+    config.assets.js_compressor = :uglifier
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.autoload_paths += %W(#{config.root}/lib)
