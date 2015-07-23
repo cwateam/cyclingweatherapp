@@ -100,6 +100,22 @@ set :whenever_roles, %w{production}
 
 # ---------------------------------------------
 
+##
+# Rails settings. https://github.com/capistrano/rails/
+##
+
+set :migration_role, 'db'
+
+# Defaults to false. If true, migrations are skipped if files in db/migrate not modified
+set :conditionally_migrate, false
+
+set :assets_roles, [:web]
+
+# Defaults to 'assets' this should match config.assets.prefix in your rails config/application.rb
+set :assets_prefix, 'assets'
+
+# ---------------------------------------------
+
 # Default value for :log_level is :debug
 # set :log_level, :debug
 
