@@ -3,6 +3,22 @@ lock '3.4.0'
 
 # Configuration documentation: http://capistranorb.com/documentation/getting-started/configuration/
 
+# role-based syntax
+# ==================
+
+# Defines a role with one or multiple servers. The primary server in each
+# group is considered to be the first unless any  hosts have the primary
+# property set. Specify the username and a domain or IP for the server.
+# Don't use `:all`, it's a meta role.
+
+# role :app, %w{deploy@example.com}, my_property: :my_value
+# role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
+# role :db,  %w{deploy@example.com}
+role :app, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
+role :web, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
+role :db, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
+role :production, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
+
 ##
 # Repository settings
 ##
@@ -80,7 +96,7 @@ set :bower_target_path, ->{release_path.join('vendor/assets/')}
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Crontab edit only in production. We want to run jobs only in production.
-set :whenever_roles, :production
+set :whenever_roles, %w{production}
 
 # ---------------------------------------------
 
