@@ -104,24 +104,6 @@ set :whenever_roles, :production
 # http://capistranorb.com/
 
 namespace :cwa do
-  desc 'Assets'
-  task :assets do
-    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
-      execute ("cd #{deploy_to}/current/ && RAILS_ENV=#{rails_env} bundle exec rake assets:clobber && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile")
-    end
-  end
-  desc 'Clobber'
-  task :clobber do
-    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
-      execute ("cd #{deploy_to}/current && RAILS_ENV=#{rails_env} bundle exec rake assets:clobber")
-    end
-  end
-  desc 'Migrations'
-  task :migrations do
-    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
-      execute ("cd #{deploy_to}/current/ && rake db:migrate RAILS_ENV=#{rails_env}")
-    end
-  end
   desc 'Make bin/rails executable for deployer'
   task :railsExe do
     on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
@@ -138,6 +120,24 @@ namespace :cwa do
   task :rvmCronSetup do
     on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute("cd #{deploy_to}/current && rvm cron setup")
+    end
+  end
+  desc 'Assets'
+  task :assets do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
+      execute ("cd #{deploy_to}/current/ && RAILS_ENV=#{rails_env} bundle exec rake assets:clobber && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile")
+    end
+  end
+  desc 'Clobber'
+  task :clobber do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
+      execute ("cd #{deploy_to}/current && RAILS_ENV=#{rails_env} bundle exec rake assets:clobber")
+    end
+  end
+  desc 'Migrations'
+  task :migrations do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
+      execute ("cd #{deploy_to}/current/ && rake db:migrate RAILS_ENV=#{rails_env}")
     end
   end
 end
