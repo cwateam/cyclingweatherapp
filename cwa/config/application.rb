@@ -23,7 +23,6 @@ module Cwa
     # config.i18n.default_locale = :de
 
     config.assets.enabled = true
-    config.assets.compress = true
     config.assets.initialize_on_precompile = false
 
     config.assets.css_compressor = :sass
@@ -36,7 +35,7 @@ module Cwa
 
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
 
-    #config.assets.precompile = [/\A[^\/\\]+\.(css|js)$/i]
+    # config.assets.precompile = [/\A[^\/\\]+\.(css|js)$/i]
 
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
 

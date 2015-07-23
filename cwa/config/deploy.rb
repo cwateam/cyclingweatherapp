@@ -128,7 +128,7 @@ namespace :cwa do
       execute ("chmod u+x #{deploy_to}/current/bin/rails")
     end
   end
-  desc 'set SECRET_KEY_BASE eviroment variable'
+  desc 'set SECRET_KEY_BASE enviroment variable'
   task :secretKeyBase do
     on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute("cd #{deploy_to}/current && rake secret RAILS_ENV=production >> config/secrets.yml && touch tmp/restart.txt")
