@@ -31,6 +31,8 @@ role :db,  ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 set :application, 'cwa_sta'
+# Environment differs from the stage name
+set :rails_env, 'production'
 
 ##
 # Repository settings
