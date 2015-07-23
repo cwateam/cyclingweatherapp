@@ -23,13 +23,8 @@ notifications:
 after_success:
 - "openssl aes-256-cbc -k $DEPLOY_KEY -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa"
 - "[[ $TRAVIS_BRANCH = 'development' ]] && bundle exec cap development deploy"
-- "[[ $TRAVIS_BRANCH = 'development' ]] && bundle exec cap development cwa:migrations"
-- "[[ $TRAVIS_BRANCH = 'development' ]] && bundle exec cap development cwa:clobber"
 - "[[ $TRAVIS_BRANCH = 'staging' ]] && bundle exec cap staging deploy"
-- "[[ $TRAVIS_BRANCH = 'staging' ]] && bundle exec cap staging cwa:migrations"
-- "[[ $TRAVIS_BRANCH = 'staging' ]] && bundle exec cap staging cwa:clobber"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production deploy"
-- "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:migrations"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:railsExe"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:secretKeyBase"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production cwa:rvmCronSetup"
