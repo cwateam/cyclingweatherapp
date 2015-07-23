@@ -6,7 +6,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server ENV["DEPLOYMENT_SERVER_IP"], user: ENV["DEPLOYMENT_SERVER_USER"], roles: %w{web}
+server ENV["DEPLOYMENT_SERVER_IP"], user: ENV["DEPLOYMENT_SERVER_USER"], roles: %w{app web db}
 
 # role-based syntax
 # ==================
@@ -22,7 +22,6 @@ server ENV["DEPLOYMENT_SERVER_IP"], user: ENV["DEPLOYMENT_SERVER_USER"], roles: 
 role :app, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
 role :web, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
 role :db, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
-role :production, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
 
 # Configuration
 # =============
