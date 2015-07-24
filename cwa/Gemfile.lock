@@ -222,7 +222,7 @@ GEM
       redis (~> 3.0)
       resque (~> 1.25)
       rufus-scheduler (~> 3.0)
-    rest-core (3.5.5)
+    rest-core (3.5.6)
       httpclient
       mime-types
       timers (>= 4.0.1)
@@ -322,7 +322,7 @@ DEPENDENCIES
   bower-rails
   byebug
   c_geohash
-  capistrano (~> 3.4.0)
+  capistrano (= 3.4.0)
   capistrano-bower
   capistrano-bundler (~> 1.1.2)
   capistrano-passenger
