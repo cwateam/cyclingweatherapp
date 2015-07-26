@@ -8,6 +8,7 @@ script:
 - bundle exec rake bower:install
 - bundle exec rake db:migrate --trace
 - RAILS_ENV=test bundle exec rake db:migrate --trace
+- "openssl aes-256-cbc -k $DEPLOY_KEY -in config/application_enc_travis.yml -d -a -out config/application.yml"
 - bundle exec rake db:test:prepare
 - bundle exec rspec -fd spec/
 - rake jasmine:ci
