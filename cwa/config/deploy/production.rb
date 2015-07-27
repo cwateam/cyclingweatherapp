@@ -1,4 +1,5 @@
-require 'figaro'
+require 'dotenv'
+Dotenv.load
 
 # Documentation regarding role -and server based syntax: http://capistranorb.com/documentation/getting-started/preparing-your-application/
 
@@ -22,7 +23,7 @@ require 'figaro'
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server Figaro.env.DEPLOYMENT_SERVER_IP, user: Figaro.env.DEPLOYMENT_SERVER_USER, roles: %w{app web db production}
+server ENV["DEPLOYMENT_SERVER_IP"], user: ENV["DEPLOYMENT_SERVER_USER"], roles: %w{app web db production}
 
 # Configuration
 # =============
@@ -58,8 +59,8 @@ set :deploy_to, '/home/deployer/apps/cwa'
 # and have multiple stages with different Resque requirements for each, then
 # these __must__ be set inside of the applicable config/deploy/... stage files
 # instead of config/deploy.rb
-role :resque_worker, ["#{Figaro.env.DEPLOYMENT_SERVER_USER}@#{Figaro.env.DEPLOYMENT_SERVER_IP}"]
-role :resque_scheduler, ["#{Figaro.env.DEPLOYMENT_SERVER_USER}@#{Figaro.env.DEPLOYMENT_SERVER_IP}"]
+role :resque_worker, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
+role :resque_scheduler, ["#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}"]
 
 # Set Resque workers to be started in deployment server. Here you can also define "priorities" for queues (critical, default and low)
 set :workers, { "critical" => 3, "default" => 2, "low" => 1 }

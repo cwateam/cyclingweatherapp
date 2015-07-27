@@ -1,4 +1,5 @@
-require 'figaro'
+require 'dotenv'
+Dotenv.load
 
 # Config valid only for current version of Capistrano. Remember to keep that version in Gemfile.
 lock '3.4.0'
@@ -72,6 +73,8 @@ set :passenger_restart_with_sudo, false
 # Bowers target path
 set :bower_target_path, ->{release_path.join('vendor/assets/')}
 
+set :bower_roles, :app
+
 # ---------------------------------------------
 
 ##
@@ -124,31 +127,31 @@ set :assets_prefix, 'assets'
 namespace :cwa do
   desc 'Make bin/rails executable for deployer'
   task :railsExe do
-    on "#{Figaro.env.DEPLOYMENT_SERVER_USER}@#{Figaro.env.DEPLOYMENT_SERVER_IP}" do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute ("chmod u+x #{deploy_to}/current/bin/rails")
     end
   end
   desc 'set SECRET_KEY_BASE enviroment variable'
   task :secretKeyBase do
-    on "#{Figaro.env.DEPLOYMENT_SERVER_USER}@#{Figaro.env.DEPLOYMENT_SERVER_IP}" do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute("cd #{deploy_to}/current && rake secret RAILS_ENV=production >> config/secrets.yml && touch tmp/restart.txt")
     end
   end
   desc 'run rvm cron setup'
   task :rvmCronSetup do
-    on "#{Figaro.env.DEPLOYMENT_SERVER_USER}@#{Figaro.env.DEPLOYMENT_SERVER_IP}" do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute("cd #{deploy_to}/current && rvm cron setup")
     end
   end
   desc 'Assets'
   task :assets do
-    on "#{Figaro.env.DEPLOYMENT_SERVER_USER}@#{Figaro.env.DEPLOYMENT_SERVER_IP}" do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute ("cd #{deploy_to}/current/ && RAILS_ENV=#{rails_env} bundle exec rake assets:clobber && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile")
     end
   end
   desc 'Clobber'
   task :clobber do
-    on "#{Figaro.env.DEPLOYMENT_SERVER_USER}@#{Figaro.env.DEPLOYMENT_SERVER_IP}" do
+    on "#{ENV["DEPLOYMENT_SERVER_USER"]}@#{ENV["DEPLOYMENT_SERVER_IP"]}" do
       execute ("cd #{deploy_to}/current && RAILS_ENV=#{rails_env} bundle exec rake assets:clobber")
     end
   end
@@ -160,23 +163,23 @@ namespace :cwa do
   end
 end
 
-namespace :figaro do
-  desc "SCP transfer figaro configuration to the shared folder"
+namespace :dotenv do
+  desc "SCP transfer dotenv configuration to the shared folder"
   task :setup do
     on roles(:app) do
-      upload! "config/application.yml", "#{shared_path}/application.yml", via: :scp
+      upload! ".env", "#{shared_path}/.env", via: :scp
     end
   end
 
   desc "Symlink application.yml to the release path"
   task :symlink do
     on roles(:app) do
-      execute "ln -sf #{shared_path}/application.yml #{release_path}/config/application.yml"
+      execute "ln -sf #{shared_path}/.env #{release_path}/.env"
     end
   end
 end
-after "deploy:started", "figaro:setup"
-after "deploy:updating", "figaro:symlink"
+after "deploy:started", "dotenv:setup"
+after "deploy:updating", "dotenv:symlink"
 
 #namespace :deploy do
 

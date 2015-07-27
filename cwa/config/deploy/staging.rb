@@ -1,4 +1,5 @@
-require 'figaro'
+require 'dotenv'
+Dotenv.load
 
 # Documentation regarding role -and server based syntax: http://capistranorb.com/documentation/getting-started/preparing-your-application/
 
@@ -22,7 +23,7 @@ require 'figaro'
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server Figaro.env.DEPLOYMENT_SERVER_IP, user: Figaro.env.DEPLOYMENT_SERVER_USER, roles: %w{app web db}
+server ENV["DEPLOYMENT_SERVER_IP"], user: ENV["DEPLOYMENT_SERVER_USER"], roles: %w{app web db}
 
 # Configuration
 # =============

@@ -3,6 +3,10 @@
 [![Build Status](https://travis-ci.org/cwateam/cyclingweatherapp.svg?branch=master)](https://travis-ci.org/cwateam/cyclingweatherapp)
 [![Code Climate](https://codeclimate.com/github/cwateam/cyclingweatherapp.png)](https://codeclimate.com/github/cwateam/cyclingweatherapp)
 
+debian 7 @ do development
+http://46.101.173.124:82/
+
+cent oc 6.5 @ do production
 http://46.101.185.190
 
 Cyclingweatherapp is a project originally created as a student project for the University of Helsinki Department of Computer Science during the summer term 2015.  The intended purpose of the application is to provide bicyclers and pedestrians current information about routes and conditions. Information about maps and bicycling routes is received from Google Maps. Some weather information is received from Finnish Meteorological Institute. 

@@ -5,12 +5,12 @@ source 'https://rubygems.org'
 # and < 3.0. ~> 2.2.beta will match prerelease versions like 2.2.beta.12
 # http://bundler.io/gemfile.html
 
+# Autoload dotenv in Rails.
+gem 'dotenv-rails', :groups => [:development, :test, :production]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Pure Ruby gem that implements the MQTT protocol
 gem 'mqtt'
-# Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file.
-gem 'figaro'
 # A Ruby framework for rapid API development with great conventions.
 gem 'grape'
 # Makes http fun again!
@@ -79,6 +79,7 @@ gem 'capistrano-passenger', group: :development
 gem 'capistrano-bundler', '~> 1.1.2', group: :development
 gem 'capistrano-bower', group: :development
 gem "capistrano-resque", '~> 0.2.2', require: false
+gem 'capistrano-rvm'
 # ---------------------------------------------
 
 group :development, :test do
