@@ -52,6 +52,9 @@ set :pty, true
 # Default value for :format is :pretty
 set :format, :pretty
 
+# Allow SSH key forwarding
+set :ssh_options, { :forward_agent => true }
+
 # ---------------------------------------------
 
 ##
