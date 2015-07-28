@@ -47,7 +47,7 @@ set :user, 'deployer'
 set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa")
 
 # Default value for :pty is false
-set :pty, true
+set :pty, false
 
 # Default value for :format is :pretty
 set :format, :pretty
